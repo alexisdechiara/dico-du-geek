@@ -90,13 +90,17 @@ module.exports = {
 					lineHeight: '1.5rem',
 					fontWeight: '700'
 				}],
-				header: ['4rem', {
+				entry: ['4rem', {
 					lineHeight: '6rem',
 					fontWeight: '700'
 				}],
 				tag: ['0.875rem', {
 					lineHeight: '1rem',
 					fontWeight: '600'
+				}],
+				header: ['1.125rem', {
+					lineHeight: '1.25rem',
+					fontWeight: '500'
 				}],
 				paragraph: ['1rem', {
 					lineHeight: '1.125rem',
@@ -113,7 +117,7 @@ module.exports = {
 				footer: ['0.875rem', {
 					lineHeight: '1rem',
 					fontWeight: '500',
-					letterSpacing: '-5%',
+					letterSpacing: '-0.8px',
 				}],
 				'presentation-header': ['4rem', {
 					lineHeight: '6rem',
@@ -131,8 +135,14 @@ module.exports = {
 					lineHeight: '6rem',
 					fontWeight: '600'
 				}]
-			}
+			},
 		},
 	},
+	safelist: [
+		{
+			pattern: /(bg|text|border|fill)-(light|dark)-(definition|lore|examples|statistics)-(primary|secondary|ternary|border|hover|background)/,
+			variants: ['sm','md','lg','xl','hover','dark']
+		}
+	],
 	plugins: [],
 }
