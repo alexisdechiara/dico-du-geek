@@ -1,0 +1,13 @@
+---
+export interface Props {
+	page: string;
+	text: string;
+}
+
+const { page, text } = Astro.props;
+---
+
+<span
+	class={`flex w-fit cursor-default transition-colors duration-300 items-center align-middle text-light-${page}-secondary dark:text-dark-${page}-secondary bg-light-${page}-background dark:bg-dark-${page}-background hover:bg-light-${page}-hover dark:hover:bg-dark-${page}-hover rounded-full text-tag h-6 px-4`}>
+	{text}
+</span>

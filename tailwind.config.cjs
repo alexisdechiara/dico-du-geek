@@ -1,7 +1,14 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
+		fontFamily: {
+			sans: ["Work Sans", ...defaultTheme.fontFamily.sans],
+			serif: ["Source Serif 4", ...defaultTheme.fontFamily.sans],
+			header: ["Poppins"]
+		},
 		extend: {
 			colors: {
 				light: {
@@ -91,11 +98,11 @@ module.exports = {
 					fontWeight: '700'
 				}],
 				entry: ['4rem', {
-					lineHeight: '6rem',
+					lineHeight: '4rem',
 					fontWeight: '700'
 				}],
 				tag: ['0.875rem', {
-					lineHeight: '1rem',
+					lineHeight: '0.875rem',
 					fontWeight: '600'
 				}],
 				header: ['1.125rem', {
@@ -104,7 +111,7 @@ module.exports = {
 				}],
 				paragraph: ['1rem', {
 					lineHeight: '1.125rem',
-					fontWeight: '500'
+					fontWeight: '450'
 				}],
 				select: ['1.5rem', {
 					lineHeight: '1.75rem',

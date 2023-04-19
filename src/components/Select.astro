@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon";
 export interface Props {
 	page: string;
 	selected: boolean;
@@ -16,6 +17,6 @@ const { page, selected, text, icon, link } = Astro.props;
 		selected ? `bg-light-${page}-ternary text-light-${page}-background` : ` text-light-${page}-primary hover:bg-light-${page}-hover`,
 		"text-select flex gap-4 items-end w-[218px] py-3 px-4 rounded-2xl cursor-pointer transition duration-300",
 	]}>
-	<i class={`fi ${icon} h-6 w-6`}></i>
+	<Icon name={icon} class:list={[selected ? `fill-light-${page}-background` : `fill-light-${page}-primary`, "h-6 w-6"]} />
 	<span class={!selected ? `opacity-75` : ` `}> {text}</span>
 </a>
