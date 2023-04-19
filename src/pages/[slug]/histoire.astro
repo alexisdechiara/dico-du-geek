@@ -1,0 +1,14 @@
+---
+const { slug } = Astro.params;
+
+import Layout from "../../layouts/Layout.astro";
+import Content from "../../layouts/Content.astro";
+---
+
+<Layout title={"Le dico du geek | " + slug}>
+	<Content page="lore">
+		<span class="text-entry text-light-lore-ternary">
+			{slug}
+		</span>
+	</Content>
+</Layout>

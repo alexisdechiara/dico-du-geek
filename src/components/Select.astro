@@ -1,0 +1,21 @@
+---
+export interface Props {
+	page: string;
+	selected: boolean;
+	text: string;
+	icon: string;
+	link: string;
+}
+
+const { page, selected, text, icon, link } = Astro.props;
+---
+
+<a
+	href={link}
+	class:list={[
+		selected ? `bg-light-${page}-ternary text-light-${page}-background` : ` text-light-${page}-primary hover:bg-light-${page}-hover`,
+		"text-select flex gap-4 items-end w-[218px] py-3 px-4 rounded-2xl cursor-pointer transition duration-300",
+	]}>
+	<i class={`fi ${icon} h-6 w-6`}></i>
+	<span class={!selected ? `opacity-75` : ` `}> {text}</span>
+</a>

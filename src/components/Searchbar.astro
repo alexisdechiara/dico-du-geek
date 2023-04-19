@@ -1,0 +1,15 @@
+---
+import { Icon } from "astro-icon";
+---
+
+<form class="w-1/3">
+	<label for="search" class="mb-2 text-sm font-medium text-light-primary sr-only dark:text-dark-primary">Rechercher dans le dictionnaire</label>
+	<div class="flex justify-between items-center pl-4 pr-2 py-2 border border-light-border dark:border-dark-border rounded-lg text-light-primary dark:text-dark-primary">
+		<input type="text" id="search" class="w-full text-header placeholder:font-normal border-0 ring-0 outline-0" placeholder="Rechercher dans le dictionnaire …" required />
+		<button
+			type="submit"
+			class="px-4 w-12 h-8 rounded-md flex justify-center items-center text-light-background bg-light-ternary hover:bg-light-secondary dark:bg-dark-ternary dark:hover:bg-dark-secondary">
+			<i class="fi fi-rr-search h-6 w-6"></i>
+		</button>
+	</div>
+</form>
