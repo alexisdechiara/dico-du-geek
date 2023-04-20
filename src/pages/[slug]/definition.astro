@@ -3,7 +3,7 @@ const { slug } = Astro.params;
 
 import Layout from "../../layouts/Layout.astro";
 import Content from "../../layouts/Content.astro";
-import Tag from "../../components/Tag.astro";
+import ContentHeader from "../../components/Content/ContentHeader.astro";
 import { Icon } from "astro-icon";
 
 const page = "definition";
@@ -29,26 +29,11 @@ const contents = [
 	<Content page={page}>
 		{
 			contents.map(content => (
-				<section class="mb-8">
-					<div class="flex flex-col gap-y-6 py-6">
-						<div class="flex gap-x-4 items-center">
-							<h2 class="text-entry font-header text-light-definition-ternary">{content.title}</h2>
-							<div class="flex gap-2 items-center">
-								<span class="p-2 bg-light-definition-background rounded-full hover:bg-light-definition-hover transition-colors duration-300">
-									<Icon name="fi-rr-volume" class="w-5 h-5 fill-light-definition-secondary" />
-								</span>
-								<span class="text-light-definition-ternary text-tag">/{content.pronounciation}/</span>
-							</div>
-						</div>
-						<div class="flex gap-2 w-fit">
-							{content.tags.map(tag => (
-								<Tag page={page} text={tag} />
-							))}
-						</div>
-					</div>
+				<dl class="mb-8">
+					<ContentHeader page={page} title={content.title} pronounciation={content.pronounciation} tags={content.tags} />
 					{content.sens.map(sens => (
 						<div class="flex flex-col mb-16 gap-y-6">
-							<p class="text-light-definition-primary dark:text-dark-definition-primary text-paragraph">{sens.definition}</p>
+							<dd class="text-light-definition-primary dark:text-dark-definition-primary text-paragraph">{sens.definition}</dd>
 							<div class="relative p-4 pr-8 rounded border-l-4 border-light-definition-ternary text-light-definition-secondary bg-light-definition-background">
 								<h3 class="text-lg font-bold pb-2"> Exemple </h3>
 								<p class="italic tracking-tight">{sens.example}</p>
@@ -61,7 +46,7 @@ const contents = [
 							</div>
 						</div>
 					))}
-				</section>
+				</dl>
 			))
 		}
 	</Content>
