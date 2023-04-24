@@ -134,12 +134,10 @@ module.exports = {
 					lineHeight: '3rem',
 					fontWeight: '600'
 				}],
-				'index-letter': ['8rem', {
-					lineHeight: '12rem',
+				'lexicon-letter': ['8rem', {
 					fontWeight: '600'
 				}],
-				'index-word': ['4rem', {
-					lineHeight: '6rem',
+				'lexicon-word': ['3rem', {
 					fontWeight: '600'
 				}]
 			},
