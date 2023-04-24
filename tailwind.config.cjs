@@ -34,21 +34,21 @@ module.exports = {
 						hover: 'var(--color-light-lore-hover)',
 						background: 'var(--color-light-lore-background)',
 					},
-					examples: {
-						primary: 'var(--color-light-examples-primary)',
-						secondary: 'var(--color-light-examples-secondary)',
-						ternary: 'var(--color-light-examples-ternary)',
-						border: 'var(--color-light-examples-border)',
-						hover: 'var(--color-light-examples-hover)',
-						background: 'var(--color-light-examples-background)',
+					explication: {
+						primary: 'var(--color-light-explication-primary)',
+						secondary: 'var(--color-light-explication-secondary)',
+						ternary: 'var(--color-light-explication-ternary)',
+						border: 'var(--color-light-explication-border)',
+						hover: 'var(--color-light-explication-hover)',
+						background: 'var(--color-light-explication-background)',
 					},
-					statistics: {
-						primary: 'var(--color-light-statistics-primary)',
-						secondary: 'var(--color-light-statistics-secondary)',
-						ternary: 'var(--color-light-statistics-ternary)',
-						border: 'var(--color-light-statistics-border)',
-						hover: 'var(--color-light-statistics-hover)',
-						background: 'var(--color-light-statistics-background)',
+					statistic: {
+						primary: 'var(--color-light-statistic-primary)',
+						secondary: 'var(--color-light-statistic-secondary)',
+						ternary: 'var(--color-light-statistic-ternary)',
+						border: 'var(--color-light-statistic-border)',
+						hover: 'var(--color-light-statistic-hover)',
+						background: 'var(--color-light-statistic-background)',
 					}
 				},
 				dark: {
@@ -74,21 +74,21 @@ module.exports = {
 						hover: 'var(--color-dark-lore-hover)',
 						background: 'var(--color-dark-lore-background)',
 					},
-					examples: {
-						primary: 'var(--color-dark-examples-primary)',
-						secondary: 'var(--color-dark-examples-secondary)',
-						ternary: 'var(--color-dark-examples-ternary)',
-						border: 'var(--color-dark-examples-border)',
-						hover: 'var(--color-dark-examples-hover)',
-						background: 'var(--color-dark-examples-background)',
+					explication: {
+						primary: 'var(--color-dark-explication-primary)',
+						secondary: 'var(--color-dark-explication-secondary)',
+						ternary: 'var(--color-dark-explication-ternary)',
+						border: 'var(--color-dark-explication-border)',
+						hover: 'var(--color-dark-explication-hover)',
+						background: 'var(--color-dark-explication-background)',
 					},
-					statistics: {
-						primary: 'var(--color-dark-statistics-primary)',
-						secondary: 'var(--color-dark-statistics-secondary)',
-						ternary: 'var(--color-dark-statistics-ternary)',
-						border: 'var(--color-dark-statistics-border)',
-						hover: 'var(--color-dark-statistics-hover)',
-						background: 'var(--color-dark-statistics-background)',
+					statistic: {
+						primary: 'var(--color-dark-statistic-primary)',
+						secondary: 'var(--color-dark-statistic-secondary)',
+						ternary: 'var(--color-dark-statistic-ternary)',
+						border: 'var(--color-dark-statistic-border)',
+						hover: 'var(--color-dark-statistic-hover)',
+						background: 'var(--color-dark-statistic-background)',
 					}
 				},
 			},
@@ -222,7 +222,7 @@ module.exports = {
 	},
 	safelist: [
 		{
-			pattern: /(bg|text|border|fill)-(light|dark)-(definition|lore|examples|statistics)-(primary|secondary|ternary|border|hover|background)/,
+			pattern: /(bg|text|border|fill)-(light|dark)-(definition|lore|explication|statistic)-(primary|secondary|ternary|border|hover|background)/,
 			variants: ['sm','md','lg','xl','hover','dark']
 		}
 	],

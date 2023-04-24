@@ -22,7 +22,7 @@ const { homepage } = Astro.props;
 	<div class="relative flex w-[250px] h-full items-center justify-end gap-8 px-8">
 		{
 			homepage ? (
-				<Icon name="fi-sr-bookmark" class="absolute left-0 top-0 h-[75px]" />
+				<Icon name="-bookmark" class="absolute left-0 top-0 h-[75px]" />
 			) : (
 				<a
 					href="/lexique"
@@ -33,7 +33,7 @@ const { homepage } = Astro.props;
 		}
 
 		<button class:list={[homepage ? "hover:bg-dark-hover" : "hover:bg-light-hover dark:hover:bg-dark-hover", " transition-colors duration-300 p-2 rounded-full"]}>
-			<Icon name="fi-rr-menu-dots-vertical" class:list={[homepage ? "fill-light-background" : "fill-light-primary dark:fill-dark-primary", "w-6 h-6"]} />
+			<Icon name="menu-dots-vertical" class:list={[homepage ? "fill-light-background" : "fill-light-primary dark:fill-dark-primary", "w-6 h-6"]} />
 		</button>
 	</div>
 </header>

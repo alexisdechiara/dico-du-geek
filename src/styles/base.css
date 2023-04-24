@@ -59,35 +59,35 @@
         --color-dark-lore-background: var(--color-dark-background);
 
 
-        --color-light-examples-primary: var(--color-light-background);
-        --color-light-examples-secondary: var(--color-light-secondary);
-        --color-light-examples-ternary: var(--color-light-ternary);
-        --color-light-examples-border: var(--color-light-border);
-        --color-light-examples-hover: var(--color-light-hover);
-        --color-light-examples-background: var(--color-light-background);
+        --color-light-explication-primary: var(--color-light-background);
+        --color-light-explication-secondary: var(--color-light-secondary);
+        --color-light-explication-ternary: var(--color-light-ternary);
+        --color-light-explication-border: var(--color-light-border);
+        --color-light-explication-hover: var(--color-light-hover);
+        --color-light-explication-background: var(--color-light-background);
 
-        --color-dark-examples-primary: var(--color-dark-background);
-        --color-dark-examples-secondary: var(--color-dark-secondary);
-        --color-dark-examples-ternary: var(--color-dark-ternary);
-        --color-dark-examples-border: var(--color-dark-border);
-        --color-dark-examples-hover: var(--color-dark-hover);
-        --color-dark-examples-background: var(--color-dark-background);
-
-
-        --color-light-statistics-primary: var(--color-light-background);
-        --color-light-statistics-secondary: var(--color-light-secondary);
-        --color-light-statistics-ternary: var(--color-light-ternary);
-        --color-light-statistics-border: var(--color-light-border);
-        --color-light-statistics-hover: var(--color-light-hover);
-        --color-light-statistics-background: var(--color-light-background);
+        --color-dark-explication-primary: var(--color-dark-background);
+        --color-dark-explication-secondary: var(--color-dark-secondary);
+        --color-dark-explication-ternary: var(--color-dark-ternary);
+        --color-dark-explication-border: var(--color-dark-border);
+        --color-dark-explication-hover: var(--color-dark-hover);
+        --color-dark-explication-background: var(--color-dark-background);
 
 
-        --color-dark-statistics-primary: var(--color-dark-background);
-        --color-dark-statistics-secondary: var(--color-dark-secondary);
-        --color-dark-statistics-ternary: var(--color-dark-ternary);
-        --color-dark-statistics-border: var(--color-dark-border);
-        --color-dark-statistics-hover: var(--color-dark-hover);
-        --color-dark-statistics-background: var(--color-dark-background);
+        --color-light-statistic-primary: var(--color-light-background);
+        --color-light-statistic-secondary: var(--color-light-secondary);
+        --color-light-statistic-ternary: var(--color-light-ternary);
+        --color-light-statistic-border: var(--color-light-border);
+        --color-light-statistic-hover: var(--color-light-hover);
+        --color-light-statistic-background: var(--color-light-background);
+
+
+        --color-dark-statistic-primary: var(--color-dark-background);
+        --color-dark-statistic-secondary: var(--color-dark-secondary);
+        --color-dark-statistic-ternary: var(--color-dark-ternary);
+        --color-dark-statistic-border: var(--color-dark-border);
+        --color-dark-statistic-hover: var(--color-dark-hover);
+        --color-dark-statistic-background: var(--color-dark-background);
     }
 
     [data-theme='polychrome'] {
@@ -120,34 +120,34 @@
         --color-dark-lore-background: #022C22;
 
 
-        --color-light-examples-primary: #4C0519;
-        --color-light-examples-secondary: #881337;
-        --color-light-examples-ternary: #BE123C;
-        --color-light-examples-border: #FFE4E6;
-        --color-light-examples-hover: #FFE4E6;
-        --color-light-examples-background: #FFF1F2;
+        --color-light-explication-primary: #4C0519;
+        --color-light-explication-secondary: #881337;
+        --color-light-explication-ternary: #BE123C;
+        --color-light-explication-border: #FFE4E6;
+        --color-light-explication-hover: #FFE4E6;
+        --color-light-explication-background: #FFF1F2;
 
-        --color-dark-examples-primary: #FFF1F2;
-        --color-dark-examples-secondary: #FFE4E6;
-        --color-dark-examples-ternary: #F43F5E;
-        --color-dark-examples-border: #4C0519;
-        --color-dark-examples-hover: #4C0519;
-        --color-dark-examples-background: #4C0519;
+        --color-dark-explication-primary: #FFF1F2;
+        --color-dark-explication-secondary: #FFE4E6;
+        --color-dark-explication-ternary: #F43F5E;
+        --color-dark-explication-border: #4C0519;
+        --color-dark-explication-hover: #4C0519;
+        --color-dark-explication-background: #4C0519;
         
 
-        --color-light-statistics-primary: #422006;
-        --color-light-statistics-secondary: #713F12;
-        --color-light-statistics-ternary: #EAB308;
-        --color-light-statistics-border: #FEF9C3;
-        --color-light-statistics-hover: #FEF9C3;
-        --color-light-statistics-background: #FEFCE8;
+        --color-light-statistic-primary: #422006;
+        --color-light-statistic-secondary: #713F12;
+        --color-light-statistic-ternary: #EAB308;
+        --color-light-statistic-border: #FEF9C3;
+        --color-light-statistic-hover: #FEF9C3;
+        --color-light-statistic-background: #FEFCE8;
 
 
-        --color-dark-statistics-primary: #FEFCE8;
-        --color-dark-statistics-secondary: #FEF9C3;
-        --color-dark-statistics-ternary: #EAB308;
-        --color-dark-statistics-border: #422006;
-        --color-dark-statistics-hover: #422006;
-        --color-dark-statistics-background: #422006;
+        --color-dark-statistic-primary: #FEFCE8;
+        --color-dark-statistic-secondary: #FEF9C3;
+        --color-dark-statistic-ternary: #EAB308;
+        --color-dark-statistic-border: #422006;
+        --color-dark-statistic-hover: #422006;
+        --color-dark-statistic-background: #422006;
     }
 }
