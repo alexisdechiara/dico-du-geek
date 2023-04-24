@@ -1,0 +1,44 @@
+---
+import Lexicon from "../../layouts/Lexicon.astro";
+const { slug } = Astro.params;
+
+const words = [
+	{
+		text: "Lorem ipsum",
+		link: "",
+	},
+	{
+		text: "Dolor sit amet",
+		link: "",
+	},
+	{
+		text: "Adipiscing",
+		link: "",
+	},
+	{
+		text: "Donec",
+		link: "",
+	},
+	{
+		text: "Faucibus",
+		link: "",
+	},
+	{
+		text: "Ligula at",
+		link: "",
+	},
+];
+---
+
+<Lexicon>
+	<div class="flex flex-col justify-start items-start text-light-primary dark:text-dark-primary">
+		<h2 class="text-lexicon-letter uppercase -mt-8">{slug}</h2>
+		{
+			words.map(word => (
+				<a href={word.link} class="text-lexicon-word hover:text-light-ternary">
+					{word.text}
+				</a>
+			))
+		}
+	</div>
+</Lexicon>

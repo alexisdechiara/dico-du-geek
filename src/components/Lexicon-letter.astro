@@ -1,0 +1,13 @@
+---
+export interface Props {
+	letter: string;
+}
+
+const { letter } = Astro.props;
+---
+
+<a
+	href={`/lexique/${letter}`}
+	class="flex justify-center items-center text-lexicon-word uppercase hover:bg-light-secondary hover:text-light-background rounded-lg transition-colors duration-500 px-4"
+	>{letter}</a
+>
