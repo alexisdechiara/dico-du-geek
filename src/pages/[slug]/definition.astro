@@ -5,38 +5,85 @@ import Layout from "../../layouts/Layout.astro";
 import Content from "../../layouts/Content.astro";
 import ContentHeader from "../../components/Content/ContentHeader.astro";
 import { Icon } from "astro-icon";
+import { Markdown } from "astro-remote";
 
+const response = await fetch("http://localhost:8055/graphql", {
+	method: "POST",
+	headers: { "Content-Type": "application/json" },
+	body: JSON.stringify({
+		query: `
+			query getDefinitionPage($slug: String){
+				page (filter: {articles: {slug: { _eq: $slug }}}) {
+					titre
+					articles (filter: {status: {_eq: "published"}}) {
+						entree
+						abreviation
+						phonetique
+						classe_gramaticale
+						sens {
+							sens_id (filter: {status: {_eq: "published"}}) {
+								definition
+								exemple
+								synonymes {
+									article_id(filter: {slug: { _neq: $slug }, status: {_eq: "published"}}) {
+										entree
+										abreviation
+										slug
+									}
+								}
+								antonymes {
+									article_id(filter: {slug: { _neq: $slug }, status: {_eq: "published"}}) {
+										entree
+										abreviation
+										slug
+									}
+								}
+								associes {
+									article_id(filter: {slug: { _neq: $slug }, status: {_eq: "published"}}) {
+										entree
+										abreviation
+										slug
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+        `,
+		variables: {
+			slug: slug,
+		},
+	}),
+});
+
+const json = await response.json();
+const data = json.data;
 const page = "definition";
-
-const contents = [
-	{
-		title: "Geek",
-		tags: ["Nom commun", "Masculin", "Angliscisme"],
-		pronounciation: "gik",
-		sens: [
-			{
-				definition:
-					"Personne passionnée par les nouvelles technologies (informatique, jeux vidéo, robotique, intelligence artificielle, etc.), les sciences et les univers imaginaires (BD, comics, manga, anime, séries, films, jeux de rôle, etc.), principalement autour de la science-fiction et de la culture pop, que l'on pourrait regrouper sous le nom de culture geek.",
-				example:
-					"Mon ami est un véritable geek. Il passe des heures à jouer à toutes sortes de jeux, depuis les classiques de l'enfance jusqu'aux dernières sorties en réalité virtuelle.",
-			},
-		],
-	},
-];
 ---
 
-<Layout title={"Le dico du geek | " + slug}>
+<Layout title={"Le dico du geek | " + data.page[0].titre}>
 	<Content page={page}>
+		<h1 class="sr-only">{data.page[0].titre}</h1>
 		{
-			contents.map(content => (
+			data.page[0].articles.map(article => (
 				<dl class="mb-8">
-					<ContentHeader page={page} title={content.title} pronounciation={content.pronounciation} tags={content.tags} />
-					{content.sens.map(sens => (
+					<ContentHeader
+						page={page}
+						title={article.abreviation ? `${article.entree} (${article.abreviation})` : article.entree}
+						pronounciation={article.phonetique}
+						tags={article.classe_gramaticale}
+					/>
+					{article.sens.map(sens => (
 						<div class="flex flex-col mb-16 gap-y-6">
-							<dd class="text-light-definition-primary dark:text-dark-definition-primary text-paragraph">{sens.definition}</dd>
+							<dd class="contents prose prose-definition text-light-definition-primary dark:text-dark-definition-primary text-paragraph">
+								<Markdown content={sens.sens_id.definition} />
+							</dd>
 							<div class="relative p-4 pr-8 rounded border-l-4 border-light-definition-ternary text-light-definition-secondary bg-light-definition-background">
-								<h3 class="text-lg font-bold pb-2"> Exemple </h3>
-								<p class="italic tracking-tight">{sens.example}</p>
+								<h2 class="text-lg font-bold pb-2"> Exemple </h2>
+								<span class="inline italic tracking-tight">
+									<Markdown content={sens.sens_id.exemple} />
+								</span>
 								<a
 									href="./explication"
 									class="flex w-fit items-center ml-auto justify-end gap-x-2 font-semibold cursor-pointer hover:text-light-definition-primary transition-colors duration-300 group">

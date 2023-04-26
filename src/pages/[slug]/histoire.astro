@@ -4,37 +4,52 @@ const { slug } = Astro.params;
 import Layout from "../../layouts/Layout.astro";
 import Content from "../../layouts/Content.astro";
 import ContentHeader from "../../components/Content/ContentHeader.astro";
+import { Markdown } from "astro-remote";
 
+const response = await fetch("http://localhost:8055/graphql", {
+	method: "POST",
+	headers: { "Content-Type": "application/json" },
+	body: JSON.stringify({
+		query: `
+			query getDefinitionPage($slug: String){
+				page (filter: {articles: {slug: { _eq: $slug }}}) {
+					titre
+					articles (filter: {status: {_eq: "published"}}) {
+						entree
+						abreviation
+						phonetique
+						sens {
+							sens_id (filter: {status: {_eq: "published"}}) {
+								etymologie
+							}
+						}
+					}
+				}
+			}
+        `,
+		variables: {
+			slug: slug,
+		},
+	}),
+});
+
+const json = await response.json();
+const data = json.data;
 const page = "lore";
-
-const contents = [
-	{
-		title: "Geek",
-		tags: ["1960", "USA"],
-		sens: [
-			{
-				lore:
-					"Le mot viendrait de l'allemand ancien Geck, qui désigne un fou ou un espiègle, et du néerlandais gek qui désigne quelque chose de fou (ik ben gek, littéralement je suis fou). Dans l'ancien empire Austro-Hongrois, Gecken était une bête de foire dans les cirques nomades et dans le nord/nord-est de la France, le gicque désigne aussi un fou de carnaval. Ainsi, lors des bals du carnaval de Dunkerque, des rondes de gicques sont effectuées. Mais aux États-Unis, le terme qui dérive du mot freak (signifiant monstre humain en anglais) s'applique à des personnes décalées et bizarres, qui ne s'intègrent pas dans la société. C'est avec cette définition que le mot va se démocratiser au XXe siècle d'abord aux États-Unis, pays habitué aux harcèlements scolaires et terre de nouvelles technologies permettant la démocratisation de l'informatique. C'est ainsi que dans les années 1960, suite à l'arrivée des calculatrices et des ordinateurs, le terme est utilisé pour railler une personne compétente en mathématiques ou en technologie qui ne partage pas les intérêts de ses amis en matière de loisirs. David Peyron l'explique dans sa thèse en sociologie sur la culture geek." +
-					"\n C'est donc de là que viendrait la corrélation avec la culture geek, que l'on peut qualifier de culture de l'imaginaire. La passion pour les ordinateurs et la technologie provient alors du fait que ces moyens permettent l'expression intrinsèque de l'imaginaire dans la réalité grâce, entre autres, à la programmation, liée à la fascination pour les nouvelles innovations et découvertes, ainsi que pour la manière dont ces technologies peuvent améliorer notre vie quotidienne." +
-					"\n Le mot a ensuite été introduit en France dans les années 1980. En effet, c'est en 1981 que le journal Libération publie un feuilleton écrit par Jérôme Charyn et Michel Martens intitulé Arnold, le Geek de New York. Le terme de geek est alors employé comme synonyme de monstre (freak) et avec une définition assez similaire à sa signification originale, pour décrire les personnes très intéressées par les ordinateurs, les jeux vidéo et d'autres aspects de la technologie." +
-					"\n Durant plus de 2 décennies, c'est notamment grâce à l'émergence de geeks riches comme Bill Gates que la désignation de geek a été acceptée en France, alors qu'aux États-Unis elle est restée principalement négative et le terme nerd a été préféré. Cependant, en France, le terme geek est encore peu utilisé dans le domaine courant et n'est utilisé que par les personnes ayant des passions similaires à celles d'un geek. Je ne sais pas exactement pourquoi le mot a mis si longtemps à être démocratisé en France, mais je pense que l'utilisation massive du minitel dans notre pays a pu y contribuer. Selon les données de Google Trends, la recherche geek a été 4 fois moins utilisée en France en 2004 qu'en 2010, alors qu'elle a été 2 fois plus utilisée aux États-Unis en 2004 qu'en 2010." +
-					"\n À partir du XXIe siècle, le sens du mot geek va évoluer et il est maintenant souvent utilisé de manière plus large pour décrire toute personne passionnée par un domaine spécifique et en connaissant beaucoup sur le sujet. Le mot nerd, souvent vu comme un synonyme aux États-Unis, n'a jamais connu un grand succès et reste un mot de niche. Cependant, depuis 2016, il existe un autre terme qui a dépassé geek et nerd en popularité : gamer. Ce terme est devenu populaire en France grâce, entre autres, à l'avènement de Twitch et à l'apparition d'un événement caritatif qui a réussi à se faire parler dans les médias traditionnels, je parle bien sûr du Zevent. Alors que gamer reste autant utilisé que nerd aux États-Unis, dans le reste du monde et en France, il devient un mot courant, facilité par le fait qu'il est plus facile d'être un  gamer (il suffit simplement de jouer souvent aux jeux vidéo et de s'y intéresser) qu'un geek.",
-			},
-		],
-	},
-];
 ---
 
-<Layout title={"Le dico du geek | " + slug}>
+<Layout title={"Le dico du geek | " + data.page[0].titre}>
 	<Content page="lore">
+		<h1 class="sr-only">{data.page[0].titre}</h1>
 		{
-			contents.map(content => (
+			data.page[0].articles.map(article => (
 				<div class="mb-8">
-					<ContentHeader page={page} title={content.title} tags={content.tags} />
-					{content.sens.map(sens => (
+					<ContentHeader page={page} title={article.entree} tags={[]} />
+					{article.sens.map(sens => (
+						<h2 class="sr-only">Histoire</h2>
 						<div class="mb-16 gap-y-6">
 							<article class="inline prose prose-lore prose-headings:text-4xl prose-h3:font-bold prose-h4:text-2xl prose-h4:font-semibold text-paragraph text-justify">
-								{sens.lore}
+								<Markdown content={sens.sens_id.etymologie} components={{ h1: "h3", h2: "h4" }} />
 							</article>
 						</div>
 					))}

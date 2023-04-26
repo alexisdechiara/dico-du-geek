@@ -9,15 +9,19 @@ interface Props {
 	tags?: string[];
 }
 const { page, title, pronounciation, tags } = Astro.props;
-
-const Element = page === "definition" ? "dt" : "h2";
 ---
 
 <div class="flex flex-col gap-y-6 py-6">
 	<div class="flex gap-x-4 items-center">
-		<Element class={`text-entry font-header text-light-${page}-ternary`}>{title}</Element>
 		{
-			pronounciation && (
+			page == "definition" ? (
+				<dt class={`text-entry font-header text-light-${page}-ternary`}>{title}</dt>
+			) : (
+				<span class={`text-entry font-header text-light-${page}-ternary`}>{title}</span>
+			)
+		}
+		{
+			pronounciation != null && (
 				<div class="flex gap-2 items-center">
 					<span class={`p-2 bg-light-${page}-background rounded-full hover:bg-light-${page}-hover transition-colors duration-300`}>
 						<Icon name="volume" class={`w-5 h-5 fill-light-${page}-secondary`} />

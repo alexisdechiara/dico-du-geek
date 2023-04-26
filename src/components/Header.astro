@@ -14,26 +14,32 @@ const { homepage } = Astro.props;
 ---
 
 <header class:list={[homepage ? "bg-light-primary dark:bg-dark-primary" : "bg-base dark:bg-dark-base", "flex w-full h-[75px] items-center justify-between text-lg"]}>
-	<div class="flex w-[250px] h-full items-center justify-center">
+	<a href="/" class="flex w-[250px] h-full items-center justify-center">
 		{homepage ? <Image src={darkLogo} alt="" fit="contain" /> : <Image src={lightLogo} alt="" fit="contain" />}
-	</div>
+	</a>
 	{!homepage && <Searchbar />}
 
 	<div class="relative flex w-[250px] h-full items-center justify-end gap-8 px-8">
-		{
-			homepage ? (
-				<Icon name="-bookmark" class="absolute left-0 top-0 h-[75px]" />
-			) : (
-				<a
-					href="/lexique"
-					class="px-2 py-2 uppercase text-header rounded-md transition-colors duration-300 text-light-primary dark:text-dark-primary hover:bg-light-hover dark:hover:bg-dark-hover">
-					Lexique
-				</a>
-			)
-		}
+		{homepage && <Icon name="bookmark" class="absolute left-0 top-0 h-[75px]" />}
+		<a
+			href="/lexique"
+			class:list={[
+				homepage ? "text-dark-primary hover:bg-dark-hover" : "text-light-primary dark:text-dark-primary hover:bg-light-hover dark:hover:bg-dark-hover",
+				"px-2 py-2 uppercase text-header rounded-md transition-colors duration-300",
+			]}>
+			Lexique
+		</a>
 
-		<button class:list={[homepage ? "hover:bg-dark-hover" : "hover:bg-light-hover dark:hover:bg-dark-hover", " transition-colors duration-300 p-2 rounded-full"]}>
-			<Icon name="menu-dots-vertical" class:list={[homepage ? "fill-light-background" : "fill-light-primary dark:fill-dark-primary", "w-6 h-6"]} />
-		</button>
+		<!-- <div class="flex gap-x-2">
+			<a href="#" class:list={[homepage ? "hover:bg-dark-hover" : "hover:bg-light-hover dark:hover:bg-dark-hover", "transition-colors duration-300 p-2 rounded-full"]}>
+				<Icon name="paper-plane" class:list={[homepage ? "fill-light-background" : "fill-light-primary dark:fill-dark-primary", "w-6 h-6"]} />
+			</a>
+			<a
+				href="https://github.com/alexisdechiara/dico-du-geek"
+				target="_blank"
+				class:list={[homepage ? "hover:bg-dark-hover" : "hover:bg-light-hover dark:hover:bg-dark-hover", " transition-colors duration-300 p-2 rounded-full"]}>
+				<Icon name="github-filled" class:list={[homepage ? "fill-light-background" : "fill-light-primary dark:fill-dark-primary", "w-6 h-6"]} />
+			</a>
+		</div> -->
 	</div>
 </header>
