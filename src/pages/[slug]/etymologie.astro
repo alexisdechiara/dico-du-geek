@@ -1,0 +1,33 @@
+---
+const { slug } = Astro.params;
+
+import Layout from "../../layouts/Layout.astro";
+import Content from "../../layouts/Content.astro";
+import ContentHeader from "../../components/Content/ContentHeader.astro";
+import { Markdown } from "astro-remote";
+import { fetchEtymology } from "../../utils/fetchEtymology";
+
+const data = await fetchEtymology(slug);
+const page = "etymology";
+---
+
+<Layout title={"Le dico du geek | " + data.page[0].titre}>
+	<Content page="etymology">
+		<h1 class="sr-only">{data.page[0].titre}</h1>
+		{
+			data.page[0].articles.map(article => (
+				<div class="mb-8">
+					<ContentHeader page={page} title={article.entree} tags={[]} />
+					{article.sens.map(sens => (
+						<h2 class="sr-only">Étymologie</h2>
+						<div class="mb-16 gap-y-6">
+							<article class="inline prose prose-etymology prose-headings:text-4xl prose-h3:font-bold prose-h4:text-2xl prose-h4:font-semibold text-paragraph text-justify">
+								<Markdown content={sens.sens_id.etymologie} components={{ h1: "h3", h2: "h4" }} />
+							</article>
+						</div>
+					))}
+				</div>
+			))
+		}
+	</Content>
+</Layout>

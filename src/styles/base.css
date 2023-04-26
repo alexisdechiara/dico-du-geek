@@ -44,19 +44,19 @@
         --color-dark-definition-hover: var(--color-dark-hover);
         --color-dark-definition-background: var(--color-dark-background);
 
-        --color-light-lore-primary: var(--color-light-background);
-        --color-light-lore-secondary: var(--color-light-secondary);
-        --color-light-lore-ternary: var(--color-light-ternary);
-        --color-light-lore-border: var(--color-light-border);
-        --color-light-lore-hover: var(--color-light-hover);
-        --color-light-lore-background: var(--color-light-background);
+        --color-light-etymology-primary: var(--color-light-background);
+        --color-light-etymology-secondary: var(--color-light-secondary);
+        --color-light-etymology-ternary: var(--color-light-ternary);
+        --color-light-etymology-border: var(--color-light-border);
+        --color-light-etymology-hover: var(--color-light-hover);
+        --color-light-etymology-background: var(--color-light-background);
 
-        --color-dark-lore-primary: var(--color-dark-background);
-        --color-dark-lore-secondary: var(--color-dark-secondary);
-        --color-dark-lore-ternary: var(--color-dark-ternary);
-        --color-dark-lore-border: var(--color-dark-border);
-        --color-dark-lore-hover: var(--color-dark-hover);
-        --color-dark-lore-background: var(--color-dark-background);
+        --color-dark-etymology-primary: var(--color-dark-background);
+        --color-dark-etymology-secondary: var(--color-dark-secondary);
+        --color-dark-etymology-ternary: var(--color-dark-ternary);
+        --color-dark-etymology-border: var(--color-dark-border);
+        --color-dark-etymology-hover: var(--color-dark-hover);
+        --color-dark-etymology-background: var(--color-dark-background);
 
 
         --color-light-explication-primary: var(--color-light-background);
@@ -105,19 +105,19 @@
         --color-dark-definition-hover: #172554;
         --color-dark-definition-background: #172554;
 
-        --color-light-lore-primary: #022C22;
-        --color-light-lore-secondary: #064E3B;
-        --color-light-lore-ternary: #047857;
-        --color-light-lore-border: #D1FAE5;
-        --color-light-lore-hover: #D1FAE5;
-        --color-light-lore-background: #ECFDF5;
+        --color-light-etymology-primary: #022C22;
+        --color-light-etymology-secondary: #064E3B;
+        --color-light-etymology-ternary: #047857;
+        --color-light-etymology-border: #D1FAE5;
+        --color-light-etymology-hover: #D1FAE5;
+        --color-light-etymology-background: #ECFDF5;
 
-        --color-dark-lore-primary: #ECFDF5;
-        --color-dark-lore-secondary: #D1FAE5;
-        --color-dark-lore-ternary: #10B981;
-        --color-dark-lore-border: #022C22;
-        --color-dark-lore-hover: #022C22;
-        --color-dark-lore-background: #022C22;
+        --color-dark-etymology-primary: #ECFDF5;
+        --color-dark-etymology-secondary: #D1FAE5;
+        --color-dark-etymology-ternary: #10B981;
+        --color-dark-etymology-border: #022C22;
+        --color-dark-etymology-hover: #022C22;
+        --color-dark-etymology-background: #022C22;
 
 
         --color-light-explication-primary: #4C0519;

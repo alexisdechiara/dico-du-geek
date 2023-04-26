@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 const defaultTheme = require('tailwindcss/defaultTheme')
+const colors = require('tailwindcss/colors')
 
 module.exports = {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
@@ -18,6 +19,7 @@ module.exports = {
 					border: 'var(--color-light-border)',
 					hover: 'var(--color-light-hover)',
 					background: 'var(--color-light-background)',
+					base: colors.white,
 					definition: {
 						primary: 'var(--color-light-definition-primary)',
 						secondary: 'var(--color-light-definition-secondary)',
@@ -26,13 +28,13 @@ module.exports = {
 						hover: 'var(--color-light-definition-hover)',
 						background: 'var(--color-light-definition-background)',
 					},
-					lore: {
-						primary: 'var(--color-light-lore-primary)',
-						secondary: 'var(--color-light-lore-secondary)',
-						ternary: 'var(--color-light-lore-ternary)',
-						border: 'var(--color-light-lore-border)',
-						hover: 'var(--color-light-lore-hover)',
-						background: 'var(--color-light-lore-background)',
+					etymology: {
+						primary: 'var(--color-light-etymology-primary)',
+						secondary: 'var(--color-light-etymology-secondary)',
+						ternary: 'var(--color-light-etymology-ternary)',
+						border: 'var(--color-light-etymology-border)',
+						hover: 'var(--color-light-etymology-hover)',
+						background: 'var(--color-light-etymology-background)',
 					},
 					explication: {
 						primary: 'var(--color-light-explication-primary)',
@@ -58,6 +60,7 @@ module.exports = {
 					border: 'var(--color-dark-border)',
 					hover: 'var(--color-dark-hover)',
 					background: 'var(--color-dark-background)',
+					base: colors.neutral[900],
 					definition: {
 						primary: 'var(--color-dark-definition-primary)',
 						secondary: 'var(--color-dark-definition-secondary)',
@@ -66,13 +69,13 @@ module.exports = {
 						hover: 'var(--color-dark-definition-hover)',
 						background: 'var(--color-dark-definition-background)',
 					},
-					lore: {
-						primary: 'var(--color-dark-lore-primary)',
-						secondary: 'var(--color-dark-lore-secondary)',
-						ternary: 'var(--color-dark-lore-ternary)',
-						border: 'var(--color-dark-lore-border)',
-						hover: 'var(--color-dark-lore-hover)',
-						background: 'var(--color-dark-lore-background)',
+					etymology: {
+						primary: 'var(--color-dark-etymology-primary)',
+						secondary: 'var(--color-dark-etymology-secondary)',
+						ternary: 'var(--color-dark-etymology-ternary)',
+						border: 'var(--color-dark-etymology-border)',
+						hover: 'var(--color-dark-etymology-hover)',
+						background: 'var(--color-dark-etymology-background)',
 					},
 					explication: {
 						primary: 'var(--color-dark-explication-primary)',
@@ -180,24 +183,24 @@ module.exports = {
 						
 					},
 				},
-				lore: {
+				etymology: {
 					css: {
-						'--tw-prose-body': theme('colors.light.lore[primary]'),
-						'--tw-prose-headings': theme('colors.light.lore[ternary]'),
-						'--tw-prose-lead': theme('colors.light.lore[ternary]'),
-						'--tw-prose-links': theme('colors.light.lore[ternary]'),
-						'--tw-prose-bold': theme('colors.light.lore[secondary]'),
-						'--tw-prose-counters': theme('colors.light.lore[secondary]'),
-						'--tw-prose-bullets': theme('colors.light.lore[secondary]'),
-						'--tw-prose-hr': theme('colors.light.lore[border]'),
-						'--tw-prose-quotes': theme('colors.light.lore[primary]'),
-						'--tw-prose-quote-borders': theme('colors.light.lore[ternary]'),
-						'--tw-prose-captions': theme('colors.light.lore[ternary]'),
-						'--tw-prose-code': theme('colors.light.lore[primary]'),
-						'--tw-prose-pre-code': theme('colors.light.lore[background]'),
-						'--tw-prose-pre-bg': theme('colors.light.lore[primary]'),
-						'--tw-prose-th-borders': theme('colors.light.lore[border]'),
-						'--tw-prose-td-borders': theme('colors.light.lore[background]'),
+						'--tw-prose-body': theme('colors.light.etymology[primary]'),
+						'--tw-prose-headings': theme('colors.light.etymology[ternary]'),
+						'--tw-prose-lead': theme('colors.light.etymology[ternary]'),
+						'--tw-prose-links': theme('colors.light.etymology[ternary]'),
+						'--tw-prose-bold': theme('colors.light.etymology[secondary]'),
+						'--tw-prose-counters': theme('colors.light.etymology[secondary]'),
+						'--tw-prose-bullets': theme('colors.light.etymology[secondary]'),
+						'--tw-prose-hr': theme('colors.light.etymology[border]'),
+						'--tw-prose-quotes': theme('colors.light.etymology[primary]'),
+						'--tw-prose-quote-borders': theme('colors.light.etymology[ternary]'),
+						'--tw-prose-captions': theme('colors.light.etymology[ternary]'),
+						'--tw-prose-code': theme('colors.light.etymology[primary]'),
+						'--tw-prose-pre-code': theme('colors.light.etymology[background]'),
+						'--tw-prose-pre-bg': theme('colors.light.etymology[primary]'),
+						'--tw-prose-th-borders': theme('colors.light.etymology[border]'),
+						'--tw-prose-td-borders': theme('colors.light.etymology[background]'),
 
 						'--tw-prose-invert-body':theme('colors.dark[primary]'),
 						'--tw-prose-invert-headings': theme('colors.dark[ternary]'),
@@ -222,7 +225,7 @@ module.exports = {
 	},
 	safelist: [
 		{
-			pattern: /(bg|text|border|fill)-(light|dark)-(definition|lore|explication|statistic)-(primary|secondary|ternary|border|hover|background)/,
+			pattern: /(bg|text|border|fill)-(light|dark)-(definition|etymology|explication|statistic)-(primary|secondary|ternary|border|hover|background)/,
 			variants: ['sm','md','lg','xl','hover','dark']
 		}
 	],
