@@ -59,19 +59,19 @@
         --color-dark-etymology-background: var(--color-dark-background);
 
 
-        --color-light-explication-primary: var(--color-light-background);
-        --color-light-explication-secondary: var(--color-light-secondary);
-        --color-light-explication-ternary: var(--color-light-ternary);
-        --color-light-explication-border: var(--color-light-border);
-        --color-light-explication-hover: var(--color-light-hover);
-        --color-light-explication-background: var(--color-light-background);
+        --color-light-explanation-primary: var(--color-light-background);
+        --color-light-explanation-secondary: var(--color-light-secondary);
+        --color-light-explanation-ternary: var(--color-light-ternary);
+        --color-light-explanation-border: var(--color-light-border);
+        --color-light-explanation-hover: var(--color-light-hover);
+        --color-light-explanation-background: var(--color-light-background);
 
-        --color-dark-explication-primary: var(--color-dark-background);
-        --color-dark-explication-secondary: var(--color-dark-secondary);
-        --color-dark-explication-ternary: var(--color-dark-ternary);
-        --color-dark-explication-border: var(--color-dark-border);
-        --color-dark-explication-hover: var(--color-dark-hover);
-        --color-dark-explication-background: var(--color-dark-background);
+        --color-dark-explanation-primary: var(--color-dark-background);
+        --color-dark-explanation-secondary: var(--color-dark-secondary);
+        --color-dark-explanation-ternary: var(--color-dark-ternary);
+        --color-dark-explanation-border: var(--color-dark-border);
+        --color-dark-explanation-hover: var(--color-dark-hover);
+        --color-dark-explanation-background: var(--color-dark-background);
 
 
         --color-light-statistic-primary: var(--color-light-background);
@@ -120,19 +120,19 @@
         --color-dark-etymology-background: #022C22;
 
 
-        --color-light-explication-primary: #4C0519;
-        --color-light-explication-secondary: #881337;
-        --color-light-explication-ternary: #BE123C;
-        --color-light-explication-border: #FFE4E6;
-        --color-light-explication-hover: #FFE4E6;
-        --color-light-explication-background: #FFF1F2;
+        --color-light-explanation-primary: #4C0519;
+        --color-light-explanation-secondary: #881337;
+        --color-light-explanation-ternary: #BE123C;
+        --color-light-explanation-border: #FFE4E6;
+        --color-light-explanation-hover: #FFE4E6;
+        --color-light-explanation-background: #FFF1F2;
 
-        --color-dark-explication-primary: #FFF1F2;
-        --color-dark-explication-secondary: #FFE4E6;
-        --color-dark-explication-ternary: #F43F5E;
-        --color-dark-explication-border: #4C0519;
-        --color-dark-explication-hover: #4C0519;
-        --color-dark-explication-background: #4C0519;
+        --color-dark-explanation-primary: #FFF1F2;
+        --color-dark-explanation-secondary: #FFE4E6;
+        --color-dark-explanation-ternary: #F43F5E;
+        --color-dark-explanation-border: #4C0519;
+        --color-dark-explanation-hover: #4C0519;
+        --color-dark-explanation-background: #4C0519;
         
 
         --color-light-statistic-primary: #422006;
