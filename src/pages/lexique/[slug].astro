@@ -1,33 +1,16 @@
 ---
 import Lexicon from "../../layouts/Lexicon.astro";
+import { FetchAll } from "../../utils/fetchAll";
+
+const alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
 const { slug } = Astro.params;
 
-const words = [
-	{
-		text: "Lorem ipsum",
-		link: "",
-	},
-	{
-		text: "Dolor sit amet",
-		link: "",
-	},
-	{
-		text: "Adipiscing",
-		link: "",
-	},
-	{
-		text: "Donec",
-		link: "",
-	},
-	{
-		text: "Faucibus",
-		link: "",
-	},
-	{
-		text: "Ligula at",
-		link: "",
-	},
-];
+if (!alphabet.some(letter => letter.includes(slug.toLowerCase()))) {
+	return Astro.redirect("/lexique");
+}
+
+const articles = await FetchAll(slug);
+const words = articles.filter((article, index, array) => article.entree.toLowerCase().startsWith(slug) && array.findIndex(a => a.entree === article.entree) === index);
 ---
 
 <Lexicon>
@@ -35,8 +18,8 @@ const words = [
 		<h2 class="text-lexicon-letter uppercase -mt-8">{slug}</h2>
 		{
 			words.map(word => (
-				<a href={word.link} class="text-lexicon-word hover:text-light-ternary">
-					{word.text}
+				<a href={`/${word.slug}/definition`} class="text-lexicon-word hover:text-light-ternary">
+					{word.abreviation ? word.abreviation + " (" + word.entree + ") " : word.entree}
 				</a>
 			))
 		}

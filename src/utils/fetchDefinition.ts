@@ -1,5 +1,5 @@
 export async function fetchDefinition(slug: string) {
-    const response = await fetch("http://localhost:8055/graphql", {
+    const response = await fetch(import.meta.env.DIRECTUS_API, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
