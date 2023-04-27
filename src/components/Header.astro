@@ -4,7 +4,7 @@ import { Icon } from "astro-icon";
 
 import lightLogo from "../assets/images/logo-dico-du-geek-light.png";
 import darkLogo from "../assets/images/logo-dico-du-geek-dark.png";
-import Searchbar from "./Searchbar.astro";
+import Searchbar from "./Searchbar.svelte";
 
 export interface Props {
 	homepage?: boolean;
@@ -17,7 +17,7 @@ const { homepage } = Astro.props;
 	<a href="/" class="flex w-[250px] h-full items-center justify-center">
 		{homepage ? <Image src={darkLogo} alt="" fit="contain" /> : <Image src={lightLogo} alt="" fit="contain" />}
 	</a>
-	{!homepage && <Searchbar />}
+	{!homepage && <Searchbar client:load />}
 
 	<div class="relative flex w-[250px] h-full items-center justify-end gap-8 px-8">
 		{homepage && <Icon name="bookmark" class="absolute left-0 top-0 h-[75px]" />}
