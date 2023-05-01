@@ -1,11 +1,11 @@
-export async function fetchAll(letter: string) {
+export async function fetchAll(value: string) {
     const response = await fetch("http://localhost:8055/graphql", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
             query: `
-                query getAll($letter: String){
-                    article (search: $letter, sort: ["entree", "abreviation"], filter: {status: {_eq: "published"}}) {
+                query getAll($value: String){
+                    article (search: $value, sort: "entree", filter: {status: {_eq: "published"}}) {
                         entree
                         abreviation
                         slug
@@ -13,7 +13,7 @@ export async function fetchAll(letter: string) {
                 }
             `,
             variables: {
-                letter: letter
+                value: value
             },
         }),
     });

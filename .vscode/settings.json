@@ -1,4 +1,11 @@
 {
     "editor.defaultFormatter": "astro-build.astro-vscode",
-    "nuxt.isNuxtApp": false
+    "nuxt.isNuxtApp": false,
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[svelte]": {
+        "editor.defaultFormatter": "svelte.svelte-vscode"
+    },
+    "vue.codeActions.enabled": false
 }
