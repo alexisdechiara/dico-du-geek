@@ -12,7 +12,7 @@ const page = "etymology";
 ---
 
 <Layout title={"Le dico du geek | " + data.page[0].titre}>
-	<Content page="etymology">
+	<Content page={page}>
 		<h1 class="sr-only">{data.page[0].titre}</h1>
 		{
 			data.page[0].articles.map(article => (
