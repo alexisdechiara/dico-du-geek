@@ -14,9 +14,17 @@ const { page, selected, text, icon, link } = Astro.props;
 <a
 	href={link}
 	class:list={[
-		selected ? `bg-light-${page}-ternary text-light-${page}-background` : ` text-light-${page}-primary hover:bg-light-${page}-hover`,
-		"text-select flex gap-4 items-center w-[218px] py-3 px-4 rounded-2xl cursor-pointer transition duration-300",
+		selected
+			? `bg-light-${page}-ternary dark:bg-dark-${page}-ternary text-light-${page}-background dark:text-dark-${page}-background`
+			: ` text-light-${page}-primary dark:text-dark-${page}-primary hover:bg-light-${page}-hover hover:dark:bg-dark-${page}-hover`,
+		"text-select flex gap-4 items-center w-full py-3 px-4 rounded-2xl cursor-pointer transition duration-300",
 	]}>
-	{selected ? <Icon name={`${icon}-filled`} class:list={`fill-light-${page}-background h-6 w-6`} /> : <Icon name={icon} class:list={`fill-light-${page}-primary h-6 w-6`} />}
+	{
+		selected ? (
+			<Icon name={`${icon}-filled`} class:list={`fill-light-${page}-background dark:fill-dark-${page}-background h-6 w-6`} />
+		) : (
+			<Icon name={icon} class:list={`fill-light-${page}-primary dark:fill-dark-${page}-primary h-6 w-6`} />
+		)
+	}
 	<span class={!selected ? `opacity-75` : ` `}> {text}</span>
 </a>

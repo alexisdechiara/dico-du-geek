@@ -29,16 +29,19 @@ const page = "definition";
 							<dd class="contents prose prose-definition text-light-definition-primary dark:text-dark-definition-primary text-paragraph">
 								<Markdown content={sens.sens_id.definition} />
 							</dd>
-							<div class="relative p-4 pr-8 rounded border-l-4 border-light-definition-ternary text-light-definition-secondary bg-light-definition-background">
+							<div class="relative p-4 pr-8 rounded border-l-4 border-light-definition-ternary dark:border-dark-definition-ternary text-light-definition-secondary dark:text-dark-definition-secondary bg-light-definition-background dark:bg-dark-definition-background">
 								<h2 class="text-lg font-bold pb-2"> Exemple </h2>
 								<span class="inline italic tracking-tight">
 									<Markdown content={sens.sens_id.exemple} />
 								</span>
 								<a
 									href="./explanation"
-									class="flex w-fit items-center ml-auto justify-end gap-x-2 font-semibold cursor-pointer hover:text-light-definition-primary transition-colors duration-300 group">
+									class="flex w-fit items-center ml-auto justify-end gap-x-2 font-semibold cursor-pointer hover:text-light-definition-primary hover:dark:text-dark-definition-primary transition-colors duration-300 group">
 									Voir plus
-									<Icon name="arrow-right" class="w-4 h-4 fill-light-definition-secondary group-hover:fill-light-definition-primary" />
+									<Icon
+										name="arrow-right"
+										class="w-4 h-4 fill-light-definition-secondary dark:fill-dark-definition-secondary group-hover:fill-light-definition-primary group-hover:dark:fill-dark-definition-primary"
+									/>
 								</a>
 							</div>
 						</div>

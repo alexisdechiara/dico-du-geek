@@ -10,13 +10,20 @@ import "../styles/base.css";
 <!DOCTYPE html>
 <html lang="fr" data-theme="polychrome">
 	<head>
+		<script is:inline>
+			if (localStorage.theme === "dark" || (("theme" in localStorage || localStorage.theme === "auto") && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+				document.documentElement.classList.add("dark");
+			} else {
+				document.documentElement.classList.remove("dark");
+			}
+		</script>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="flex flex-col min-h-screen">
+	<body class="flex flex-col min-h-screen bg-light-base dark:bg-dark-base">
 		<slot />
 	</body>
 </html>

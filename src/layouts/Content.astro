@@ -3,6 +3,8 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Nav from "../components/Nav.astro";
 
+import DarkModeComponent from "../components/Settings/DarkModeComponent.astro";
+
 export interface Props {
 	page: string;
 }
@@ -12,12 +14,15 @@ const { page } = Astro.props;
 
 <Header />
 <main class={`flex border-t border-light-${page}-border dark:border-dark-${page}-border w-full h-full grow`}>
-	<aside class={`flex flex-col w-[250px] border-r border-light-${page}-border dark:border-dark-${page}-border items-center pt-8 px-4`}>
-		<div class="flex flex-col gap-y-4 grow">
+	<aside class={`flex flex-col w-[280px] border-r border-light-${page}-border dark:border-dark-${page}-border items-center pt-8 px-4 py-4 justify-between`}>
+		<div class="flex flex-col gap-y-4 grow w-full">
 			<Nav text="Définition" link="./definition" icon="search-alt" page={page} selected={page === "definition"} />
 			<Nav text="Étymologie" link="./etymologie" icon="hourglass-end" page={page} selected={page === "etymology"} />
 			<Nav text="Explication" link="./explication" icon="edit" page={page} selected={page === "explanation"} />
-			<Nav text="Statistique" link="./statistique" icon="stats" page={page} selected={page === "statistic"} />
+			<!-- <Nav text="Statistique" link="./statistique" icon="stats" page={page} selected={page === "statistic"} /> -->
+		</div>
+		<div class="flex flex-col w-max">
+			<DarkModeComponent page={page} />
 		</div>
 	</aside>
 	<div class="flex flex-col grow">

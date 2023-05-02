@@ -1,0 +1,33 @@
+---
+import SwitchButton from "./SwitchButton.astro";
+export interface Props {
+	page: string;
+}
+
+const { page } = Astro.props;
+---
+
+<div class={`grid grid-cols-3 w-full rounded-lg bg-light-${page}-background dark:bg-dark-${page}-background py-1.5 px-2`}>
+	<SwitchButton page={page} label="Clair" icon="darkmode/sun" value="light" name="darkmode" />
+	<SwitchButton page={page} label="Auto" icon="darkmode/auto" value="auto" name="darkmode" />
+	<SwitchButton page={page} label="Sombre" icon="darkmode/moon" value="dark" name="darkmode" />
+</div>
+
+<script>
+	let switches = document.getElementsByName("darkmode") as NodeListOf<HTMLInputElement>;
+	switches.forEach(e => {
+		if (localStorage.theme === e.value) {
+			e.checked = true;
+		} else if (!("theme" in localStorage) && e.value === "auto") {
+			e.checked = true;
+		}
+		e.addEventListener("click", function () {
+			localStorage.theme = e.value;
+			if (localStorage.theme === "dark" || (("theme" in localStorage || localStorage.theme === "auto") && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+				document.documentElement.classList.add("dark");
+			} else {
+				document.documentElement.classList.remove("dark");
+			}
+		});
+	});
+</script>
