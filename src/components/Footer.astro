@@ -6,13 +6,7 @@ export interface Props {
 const { page } = Astro.props;
 ---
 
-<footer
-	class:list={[
-		page
-			? `text-light-${page}-primary dark:text-dark-${page}-primary border-light-${page}-border dark:border-dark-${page}-border`
-			: "text-light-primary dark:text-dark-primary border-light-border dark:border-dark-border",
-		"flex w-full justify-between items-center text-footer px-4 h-8 border-t",
-	]}>
+<footer class:list={[page ? `text-${page}-primary border-${page}-border` : "text-primary border-border", "flex w-full justify-between items-center text-footer px-4 h-8 border-t"]}>
 	<span>Site sous licence MIT</span>
 	<a href="/mentions-legales" class="underline">Mentions légales</a>
 	<span>Réalisé par Alexis De Chiara</span>

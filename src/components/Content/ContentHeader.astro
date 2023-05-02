@@ -13,21 +13,14 @@ const { page, title, pronounciation, tags } = Astro.props;
 
 <div class="flex flex-col gap-y-6 py-6">
 	<div class="flex gap-x-4 items-center">
-		{
-			page == "definition" ? (
-				<dt class={`text-entry font-header text-light-${page}-ternary dark:text-dark-${page}-ternary`}>{title}</dt>
-			) : (
-				<span class={`text-entry font-header text-light-${page}-ternary dark:text-dark-${page}-ternary`}>{title}</span>
-			)
-		}
+		{page == "definition" ? <dt class={`text-entry font-header text-${page}-ternary`}>{title}</dt> : <span class={`text-entry font-header text-${page}-ternary`}>{title}</span>}
 		{
 			pronounciation != null && (
 				<div class="flex gap-2 items-center">
-					<span
-						class={`p-2 bg-light-${page}-background dark:bg-dark-${page}-background rounded-full hover:bg-light-${page}-hover dark:hover:bg-dark-${page}-hover transition-colors duration-300`}>
-						<Icon name="volume" class={`w-5 h-5 fill-light-${page}-secondary dark:fill-dark-${page}-secondary`} />
+					<span class={`p-2 bg-${page}-background rounded-full hover:bg-${page}-hover transition-colors duration-300`}>
+						<Icon name="volume" class={`w-5 h-5 fill-${page}-secondary`} />
 					</span>
-					<span class={`text-light-${page}-ternary dark:text-dark-${page}-ternary text-tag`}>/{pronounciation}/</span>
+					<span class={`text-${page}-ternary text-tag`}>/{pronounciation}/</span>
 				</div>
 			)
 		}

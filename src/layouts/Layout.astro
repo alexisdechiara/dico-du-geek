@@ -8,13 +8,13 @@ import "../styles/base.css";
 ---
 
 <!DOCTYPE html>
-<html lang="fr" data-theme="polychrome">
+<html lang="fr" data-theme="polychrome" data-mode="dark">
 	<head>
 		<script is:inline>
 			if (localStorage.theme === "dark" || (("theme" in localStorage || localStorage.theme === "auto") && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-				document.documentElement.classList.add("dark");
+				document.documentElement.setAttribute("data-mode", "dark");
 			} else {
-				document.documentElement.classList.remove("dark");
+				document.documentElement.setAttribute("data-mode", "light");
 			}
 		</script>
 		<meta charset="UTF-8" />
@@ -23,7 +23,7 @@ import "../styles/base.css";
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="flex flex-col min-h-screen bg-light-base dark:bg-dark-base">
+	<body class="flex flex-col min-h-screen bg-base">
 		<slot />
 	</body>
 </html>

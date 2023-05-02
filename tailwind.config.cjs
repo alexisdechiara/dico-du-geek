@@ -1,100 +1,57 @@
 /** @type {import('tailwindcss').Config} */
 const defaultTheme = require('tailwindcss/defaultTheme')
-const colors = require('tailwindcss/colors')
 
 module.exports = {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-	darkMode: 'class',
+darkMode: ['class', '[data-mode="dark"]'],
 	theme: {
 		fontFamily: {
 			sans: ["Work Sans", ...defaultTheme.fontFamily.sans],
 			serif: ["Source Serif 4", ...defaultTheme.fontFamily.sans],
-			header: ["Poppins"]
+			header: ["Poppins"],
+			pacifico: ["Pacifico"]
 		},
 		extend: {
 			colors: {
-				light: {
-					primary: 'var(--color-light-primary)',
-					secondary: 'var(--color-light-secondary)',
-					ternary: 'var(--color-light-ternary)',
-					border: 'var(--color-light-border)',
-					hover: 'var(--color-light-hover)',
-					background: 'var(--color-light-background)',
-					base: colors.white,
-					definition: {
-						primary: 'var(--color-light-definition-primary)',
-						secondary: 'var(--color-light-definition-secondary)',
-						ternary: 'var(--color-light-definition-ternary)',
-						border: 'var(--color-light-definition-border)',
-						hover: 'var(--color-light-definition-hover)',
-						background: 'var(--color-light-definition-background)',
-					},
-					etymology: {
-						primary: 'var(--color-light-etymology-primary)',
-						secondary: 'var(--color-light-etymology-secondary)',
-						ternary: 'var(--color-light-etymology-ternary)',
-						border: 'var(--color-light-etymology-border)',
-						hover: 'var(--color-light-etymology-hover)',
-						background: 'var(--color-light-etymology-background)',
-					},
-					explanation: {
-						primary: 'var(--color-light-explanation-primary)',
-						secondary: 'var(--color-light-explanation-secondary)',
-						ternary: 'var(--color-light-explanation-ternary)',
-						border: 'var(--color-light-explanation-border)',
-						hover: 'var(--color-light-explanation-hover)',
-						background: 'var(--color-light-explanation-background)',
-					},
-					statistic: {
-						primary: 'var(--color-light-statistic-primary)',
-						secondary: 'var(--color-light-statistic-secondary)',
-						ternary: 'var(--color-light-statistic-ternary)',
-						border: 'var(--color-light-statistic-border)',
-						hover: 'var(--color-light-statistic-hover)',
-						background: 'var(--color-light-statistic-background)',
-					}
+				primary: 'var(--color-primary)',
+				secondary: 'var(--color-secondary)',
+				ternary: 'var(--color-ternary)',
+				border: 'var(--color-border)',
+				hover: 'var(--color-hover)',
+				background: 'var(--color-background)',
+				base: 'var(--color-base)',
+				definition: {
+					primary: 'var(--color-definition-primary)',
+					secondary: 'var(--color-definition-secondary)',
+					ternary: 'var(--color-definition-ternary)',
+					border: 'var(--color-definition-border)',
+					hover: 'var(--color-definition-hover)',
+					background: 'var(--color-definition-background)',
 				},
-				dark: {
-					primary: 'var(--color-dark-primary)',
-					secondary: 'var(--color-dark-secondary)',
-					ternary: 'var(--color-dark-ternary)',
-					border: 'var(--color-dark-border)',
-					hover: 'var(--color-dark-hover)',
-					background: 'var(--color-dark-background)',
-					base: colors.neutral[900],
-					definition: {
-						primary: 'var(--color-dark-definition-primary)',
-						secondary: 'var(--color-dark-definition-secondary)',
-						ternary: 'var(--color-dark-definition-ternary)',
-						border: 'var(--color-dark-definition-border)',
-						hover: 'var(--color-dark-definition-hover)',
-						background: 'var(--color-dark-definition-background)',
-					},
-					etymology: {
-						primary: 'var(--color-dark-etymology-primary)',
-						secondary: 'var(--color-dark-etymology-secondary)',
-						ternary: 'var(--color-dark-etymology-ternary)',
-						border: 'var(--color-dark-etymology-border)',
-						hover: 'var(--color-dark-etymology-hover)',
-						background: 'var(--color-dark-etymology-background)',
-					},
-					explanation: {
-						primary: 'var(--color-dark-explanation-primary)',
-						secondary: 'var(--color-dark-explanation-secondary)',
-						ternary: 'var(--color-dark-explanation-ternary)',
-						border: 'var(--color-dark-explanation-border)',
-						hover: 'var(--color-dark-explanation-hover)',
-						background: 'var(--color-dark-explanation-background)',
-					},
-					statistic: {
-						primary: 'var(--color-dark-statistic-primary)',
-						secondary: 'var(--color-dark-statistic-secondary)',
-						ternary: 'var(--color-dark-statistic-ternary)',
-						border: 'var(--color-dark-statistic-border)',
-						hover: 'var(--color-dark-statistic-hover)',
-						background: 'var(--color-dark-statistic-background)',
-					}
+				etymology: {
+					primary: 'var(--color-etymology-primary)',
+					secondary: 'var(--color-etymology-secondary)',
+					ternary: 'var(--color-etymology-ternary)',
+					border: 'var(--color-etymology-border)',
+					hover: 'var(--color-etymology-hover)',
+					background: 'var(--color-etymology-background)',
 				},
+				explanation: {
+					primary: 'var(--color-explanation-primary)',
+					secondary: 'var(--color-explanation-secondary)',
+					ternary: 'var(--color-explanation-ternary)',
+					border: 'var(--color-explanation-border)',
+					hover: 'var(--color-explanation-hover)',
+					background: 'var(--color-explanation-background)',
+				},
+				statistic: {
+					primary: 'var(--color-statistic-primary)',
+					secondary: 'var(--color-statistic-secondary)',
+					ternary: 'var(--color-statistic-ternary)',
+					border: 'var(--color-statistic-border)',
+					hover: 'var(--color-statistic-hover)',
+					background: 'var(--color-statistic-background)',
+				}
 			},
 			fontSize: {
 				title: ['1rem', {
@@ -300,7 +257,7 @@ module.exports = {
 	},
 	safelist: [
 		{
-			pattern: /(bg|text|border|fill)-(light|dark)-(definition|etymology|explanation|statistic)-(primary|secondary|ternary|border|hover|background)/,
+			pattern: /(bg|text|border|fill)-(definition|etymology|explanation|statistic)-(primary|secondary|ternary|border|hover|background)/,
 			variants: ['sm','md','lg','xl','hover','dark']
 		}
 	],

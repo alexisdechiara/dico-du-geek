@@ -7,7 +7,7 @@ export interface Props {
 const { page } = Astro.props;
 ---
 
-<div class={`grid grid-cols-3 w-full rounded-lg bg-light-${page}-background dark:bg-dark-${page}-background py-1.5 px-2`}>
+<div class={`grid grid-cols-3 w-full rounded-lg bg-${page}-background py-1.5 px-2`}>
 	<SwitchButton page={page} label="Clair" icon="darkmode/sun" value="light" name="darkmode" />
 	<SwitchButton page={page} label="Auto" icon="darkmode/auto" value="auto" name="darkmode" />
 	<SwitchButton page={page} label="Sombre" icon="darkmode/moon" value="dark" name="darkmode" />
@@ -24,9 +24,9 @@ const { page } = Astro.props;
 		e.addEventListener("click", function () {
 			localStorage.theme = e.value;
 			if (localStorage.theme === "dark" || (("theme" in localStorage || localStorage.theme === "auto") && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-				document.documentElement.classList.add("dark");
+				document.documentElement.setAttribute("data-mode", "dark");
 			} else {
-				document.documentElement.classList.remove("dark");
+				document.documentElement.setAttribute("data-mode", "light");
 			}
 		});
 	});

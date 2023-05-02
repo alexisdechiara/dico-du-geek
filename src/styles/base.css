@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,200..900;1,200..900&display=swap');  
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -13,141 +14,138 @@
     }
     :root {
 
-        --color-light-primary: #121C40;
-        --color-light-secondary: #172554;
-        --color-light-ternary: #1E3A8A;
-        --color-light-border: #E2E8F0;
-        --color-light-hover: #E2E8F0;
-        --color-light-background: #F1F5F9;
-        --color-light-base: #FFFFFF;
+        --color-primary: #121C40;
+        --color-secondary: #172554;
+        --color-ternary: #1E3A8A;
+        --color-border: #E2E8F0;
+        --color-hover: #E2E8F0;
+        --color-background: #F1F5F9;
+        --color-base: #FFFFFF;
 
-        --color-dark-primary: #F1F5F9;
-        --color-dark-secondary: #E2E8F0;
-        --color-dark-ternary: #CBD5E1;
-        --color-dark-border: #1E293B;
-        --color-dark-hover: #1E293B;
-        --color-dark-background: #0F172A;
-        --color-dark-base: #171717;
+        --color-definition-primary: var(--color-primary);
+        --color-definition-secondary: var(--color-secondary);
+        --color-definition-ternary: var(--color-ternary);
+        --color-definition-border: var(--color-border);
+        --color-definition-hover: var(--color-hover);
+        --color-definition-background: var(--color-background);
 
+        --color-etymology-primary: var(--color-primary);
+        --color-etymology-secondary: var(--color-secondary);
+        --color-etymology-ternary: var(--color-ternary);
+        --color-etymology-border: var(--color-border);
+        --color-etymology-hover: var(--color-hover);
+        --color-etymology-background: var(--color-background);
 
-        --color-light-definition-primary: var(--color-light-background);
-        --color-light-definition-secondary: var(--color-light-secondary);
-        --color-light-definition-ternary: var(--color-light-ternary);
-        --color-light-definition-border: var(--color-light-border);
-        --color-light-definition-hover: var(--color-light-hover);
-        --color-light-definition-background: var(--color-light-background);
+        --color-explanation-primary: var(--color-primary);
+        --color-explanation-secondary: var(--color-secondary);
+        --color-explanation-ternary: var(--color-ternary);
+        --color-explanation-border: var(--color-border);
+        --color-explanation-hover: var(--color-hover);
+        --color-explanation-background: var(--color-background);
 
-        --color-dark-definition-primary: var(--color-dark-background);
-        --color-dark-definition-secondary: var(--color-dark-secondary);
-        --color-dark-definition-ternary: var(--color-dark-ternary);
-        --color-dark-definition-border: var(--color-dark-border);
-        --color-dark-definition-hover: var(--color-dark-hover);
-        --color-dark-definition-background: var(--color-dark-background);
-
-        --color-light-etymology-primary: var(--color-light-background);
-        --color-light-etymology-secondary: var(--color-light-secondary);
-        --color-light-etymology-ternary: var(--color-light-ternary);
-        --color-light-etymology-border: var(--color-light-border);
-        --color-light-etymology-hover: var(--color-light-hover);
-        --color-light-etymology-background: var(--color-light-background);
-
-        --color-dark-etymology-primary: var(--color-dark-background);
-        --color-dark-etymology-secondary: var(--color-dark-secondary);
-        --color-dark-etymology-ternary: var(--color-dark-ternary);
-        --color-dark-etymology-border: var(--color-dark-border);
-        --color-dark-etymology-hover: var(--color-dark-hover);
-        --color-dark-etymology-background: var(--color-dark-background);
-
-
-        --color-light-explanation-primary: var(--color-light-background);
-        --color-light-explanation-secondary: var(--color-light-secondary);
-        --color-light-explanation-ternary: var(--color-light-ternary);
-        --color-light-explanation-border: var(--color-light-border);
-        --color-light-explanation-hover: var(--color-light-hover);
-        --color-light-explanation-background: var(--color-light-background);
-
-        --color-dark-explanation-primary: var(--color-dark-background);
-        --color-dark-explanation-secondary: var(--color-dark-secondary);
-        --color-dark-explanation-ternary: var(--color-dark-ternary);
-        --color-dark-explanation-border: var(--color-dark-border);
-        --color-dark-explanation-hover: var(--color-dark-hover);
-        --color-dark-explanation-background: var(--color-dark-background);
-
-
-        --color-light-statistic-primary: var(--color-light-background);
-        --color-light-statistic-secondary: var(--color-light-secondary);
-        --color-light-statistic-ternary: var(--color-light-ternary);
-        --color-light-statistic-border: var(--color-light-border);
-        --color-light-statistic-hover: var(--color-light-hover);
-        --color-light-statistic-background: var(--color-light-background);
-
-
-        --color-dark-statistic-primary: var(--color-dark-background);
-        --color-dark-statistic-secondary: var(--color-dark-secondary);
-        --color-dark-statistic-ternary: var(--color-dark-ternary);
-        --color-dark-statistic-border: var(--color-dark-border);
-        --color-dark-statistic-hover: var(--color-dark-hover);
-        --color-dark-statistic-background: var(--color-dark-background);
+        --color-statistic-primary: var(--color-primary);
+        --color-statistic-secondary: var(--color-secondary);
+        --color-statistic-ternary: var(--color-ternary);
+        --color-statistic-border: var(--color-border);
+        --color-statistic-hover: var(--color-hover);
+        --color-statistic-background: var(--color-background);
     }
 
-    [data-theme='polychrome'] {
-        --color-light-definition-primary: #172554;
-        --color-light-definition-secondary: #1E3A8A;
-        --color-light-definition-ternary: #1D4ED8;
-        --color-light-definition-border: #DBEAFE;
-        --color-light-definition-hover: #DBEAFE;
-        --color-light-definition-background: #EFF6FF;
+    html[data-mode='dark'] {
+        --color-primary: #F1F5F9;
+        --color-secondary: #E2E8F0;
+        --color-ternary: #94a3b8;
+        --color-border: #1E293B;
+        --color-hover: #1E293B;
+        --color-background: #0F172A;
+        --color-base: #171717;
 
-        --color-dark-definition-primary: #DBEAFE;
-        --color-dark-definition-secondary: #BFDBFE;
-        --color-dark-definition-ternary: #3B82F6;
-        --color-dark-definition-border: #172554;
-        --color-dark-definition-hover: #172554;
-        --color-dark-definition-background: #172554;
+        --color-definition-primary: var(--color-primary);
+        --color-definition-secondary: var(--color-secondary);
+        --color-definition-ternary: var(--color-ternary);
+        --color-definition-border: var(--color-border);
+        --color-definition-hover: var(--color-hover);
+        --color-definition-background: var(--color-background);
 
-        --color-light-etymology-primary: #022C22;
-        --color-light-etymology-secondary: #064E3B;
-        --color-light-etymology-ternary: #047857;
-        --color-light-etymology-border: #D1FAE5;
-        --color-light-etymology-hover: #D1FAE5;
-        --color-light-etymology-background: #ECFDF5;
+        --color-etymology-primary: var(--color-primary);
+        --color-etymology-secondary: var(--color-secondary);
+        --color-etymology-ternary: var(--color-ternary);
+        --color-etymology-border: var(--color-border);
+        --color-etymology-hover: var(--color-hover);
+        --color-etymology-background: var(--color-background);
 
-        --color-dark-etymology-primary: #ECFDF5;
-        --color-dark-etymology-secondary: #D1FAE5;
-        --color-dark-etymology-ternary: #10B981;
-        --color-dark-etymology-border: #022C22;
-        --color-dark-etymology-hover: #022C22;
-        --color-dark-etymology-background: #022C22;
+        --color-explanation-primary: var(--color-primary);
+        --color-explanation-secondary: var(--color-secondary);
+        --color-explanation-ternary: var(--color-ternary);
+        --color-explanation-border: var(--color-border);
+        --color-explanation-hover: var(--color-hover);
+        --color-explanation-background: var(--color-background);
 
+        --color-statistic-primary: var(--color-primary);
+        --color-statistic-secondary: var(--color-secondary);
+        --color-statistic-ternary: var(--color-ternary);
+        --color-statistic-border: var(--color-border);
+        --color-statistic-hover: var(--color-hover);
+        --color-statistic-background: var(--color-background);
+    }
 
-        --color-light-explanation-primary: #4C0519;
-        --color-light-explanation-secondary: #881337;
-        --color-light-explanation-ternary: #BE123C;
-        --color-light-explanation-border: #FFE4E6;
-        --color-light-explanation-hover: #FFE4E6;
-        --color-light-explanation-background: #FFF1F2;
+    html[data-theme='polychrome'] {
+        --color-definition-primary: #172554;
+        --color-definition-secondary: #1E3A8A;
+        --color-definition-ternary: #1D4ED8;
+        --color-definition-border: #DBEAFE;
+        --color-definition-hover: #DBEAFE;
+        --color-definition-background: #EFF6FF;
 
-        --color-dark-explanation-primary: #FFF1F2;
-        --color-dark-explanation-secondary: #FFE4E6;
-        --color-dark-explanation-ternary: #F43F5E;
-        --color-dark-explanation-border: #4C0519;
-        --color-dark-explanation-hover: #4C0519;
-        --color-dark-explanation-background: #4C0519;
-        
+        --color-etymology-primary: #022C22;
+        --color-etymology-secondary: #064E3B;
+        --color-etymology-ternary: #047857;
+        --color-etymology-border: #D1FAE5;
+        --color-etymology-hover: #D1FAE5;
+        --color-etymology-background: #ECFDF5;
 
-        --color-light-statistic-primary: #422006;
-        --color-light-statistic-secondary: #713F12;
-        --color-light-statistic-ternary: #EAB308;
-        --color-light-statistic-border: #FEF9C3;
-        --color-light-statistic-hover: #FEF9C3;
-        --color-light-statistic-background: #FEFCE8;
+        --color-explanation-primary: #4C0519;
+        --color-explanation-secondary: #881337;
+        --color-explanation-ternary: #BE123C;
+        --color-explanation-border: #FFE4E6;
+        --color-explanation-hover: #FFE4E6;
+        --color-explanation-background: #FFF1F2;
 
+        --color-statistic-primary: #422006;
+        --color-statistic-secondary: #713F12;
+        --color-statistic-ternary: #EAB308;
+        --color-statistic-border: #FEF9C3;
+        --color-statistic-hover: #FEF9C3;
+        --color-statistic-background: #FEFCE8;
+    }
 
-        --color-dark-statistic-primary: #FEFCE8;
-        --color-dark-statistic-secondary: #FEF9C3;
-        --color-dark-statistic-ternary: #EAB308;
-        --color-dark-statistic-border: #422006;
-        --color-dark-statistic-hover: #422006;
-        --color-dark-statistic-background: #422006;
+    html[data-theme='polychrome'][data-mode='dark'] {
+        --color-definition-primary: #DBEAFE;
+        --color-definition-secondary: #BFDBFE;
+        --color-definition-ternary: #3B82F6;
+        --color-definition-border: #172554;
+        --color-definition-hover: #172554;
+        --color-definition-background: #172554;
+
+        --color-etymology-primary: #ECFDF5;
+        --color-etymology-secondary: #D1FAE5;
+        --color-etymology-ternary: #10B981;
+        --color-etymology-border: #022C22;
+        --color-etymology-hover: #022C22;
+        --color-etymology-background: #022C22;
+
+        --color-explanation-primary: #FFF1F2;
+        --color-explanation-secondary: #FFE4E6;
+        --color-explanation-ternary: #F43F5E;
+        --color-explanation-border: #4C0519;
+        --color-explanation-hover: #4C0519;
+        --color-explanation-background: #4C0519;
+
+        --color-statistic-primary: #FEFCE8;
+        --color-statistic-secondary: #FEF9C3;
+        --color-statistic-ternary: #EAB308;
+        --color-statistic-border: #422006;
+        --color-statistic-hover: #422006;
+        --color-statistic-background: #422006;
     }
 }

@@ -17,8 +17,8 @@ const { page, label, name, value, isChecked, icon } = Astro.props;
 	<input type="radio" name={name} id={value} value={value} class="peer hidden" checked={isChecked} />
 	<label
 		for={value}
-		class={`cursor-pointer flex justify-center gap-1 px-2 py-1 text-light-${page}-primary dark:text-dark-${page}-primary peer-checked:bg-light-base peer-checked:dark:bg-dark-base rounded-md peer-checked:shadow-sm font-medium text-xs`}>
-		{icon != null && <Icon name={icon} class={`w-3.5 fill-light-${page}-primary dark:fill-dark-${page}-primary`} />}
+		class={`cursor-pointer flex justify-center gap-1 px-2 py-1 text-${page}-primary peer-checked:bg-base rounded-md peer-checked:shadow-sm font-medium text-xs`}>
+		{icon != null && <Icon name={icon} class={`w-3.5 fill-${page}-primary`} />}
 		{label}
 	</label>
 </div>

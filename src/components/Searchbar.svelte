@@ -45,10 +45,10 @@
 </script>
 
 <div class="relative {size === 'lg' ? 'w-11/12 sm:w-3/4 md:w-2/3 lg:w-1/2' : 'w-1/3'}">
-	<label for="searchInput" class="mb-2 text-sm font-medium text-light-primary sr-only dark:text-dark-primary"> Rechercher dans le dictionnaire</label>
+	<label for="searchInput" class="mb-2 text-sm font-medium text-primary sr-only"> Rechercher dans le dictionnaire</label>
 	<form
 		on:submit|preventDefault={handleClickLink}
-		class="flex justify-between items-center bg-light-base dark:bg-dark-background border border-light-border dark:border-dark-border text-light-primary dark:text-dark-primary {formClass}"
+		class="flex justify-between items-center bg-base border border-border text-primary {formClass}"
 	>
 		<input
 			type="text"
@@ -65,21 +65,21 @@
 		<button
 			type="submit"
 			aria-label="rechercher"
-			class="flex aspect-[3/2] justify-center items-center text-light-background dark:text-dark-background bg-light-ternary hover:bg-light-secondary dark:bg-light-bacground dark:hover:bg-light-ternary/75 transition-colors duration-200 {buttonClass}"
+			class="flex aspect-[3/2] justify-center items-center text-background bg-ternary hover:bg-secondary transition-colors duration-200 {buttonClass}"
 			on:click={handleClickLink}
 		>
-			<svg xmlns="http://www.w3.org/2000/svg" fill="inherit" id="Outline" viewBox="0 0 24 24" class="fill-light-background {iconClass}"
+			<svg xmlns="http://www.w3.org/2000/svg" fill="inherit" id="Outline" viewBox="0 0 24 24" class="fill-background {iconClass}"
 				><path d="M23.707,22.293l-5.969-5.969a10.016,10.016,0,1,0-1.414,1.414l5.969,5.969a1,1,0,0,0,1.414-1.414ZM10,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,10,18Z" /></svg
 			>
 		</button>
 	</form>
 	{#if words.length > 0 && words != null && isVisible}
-		<ul class="absolute bg-light-base dark:bg-dark-base flex flex-col w-full p-2 shadow-sm border border-light-border dark:border-dark-border {listClass}">
+		<ul class="absolute bg-base flex flex-col w-full p-2 shadow-sm border border-border {listClass}">
 			{#each words as word}
 				<li>
 					<a
 						href={`/${word.slug}/definition`}
-						class="flex text-light-primary dark:text-dark-primary hover:bg-light-background hover:dark:bg-dark-background hover:text-light-secondary hover:dark-text-dark-secondary rounded {linkClass}"
+						class="flex text-primary hover:bg-background hover:text-secondary hover:dark-text-dark-secondary rounded {linkClass}"
 						>{word.abreviation ? word.abreviation + " (" + word.entree + ") " : word.entree}</a
 					>
 				</li>

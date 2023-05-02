@@ -6,8 +6,6 @@ export interface Props {
 const { letter } = Astro.props;
 ---
 
-<a
-	href={`/lexique/${letter}`}
-	class="flex justify-center items-center text-lexicon-word uppercase hover:bg-light-secondary hover:text-light-background rounded-lg transition-colors duration-500 px-4"
+<a href={`/lexique/${letter}`} class="flex justify-center items-center text-lexicon-word uppercase hover:bg-secondary hover:text-background rounded-lg transition-colors px-4"
 	>{letter}</a
 >
