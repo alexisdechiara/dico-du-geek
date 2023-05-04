@@ -65,7 +65,7 @@
 		<button
 			type="submit"
 			aria-label="rechercher"
-			class="flex aspect-[3/2] justify-center items-center text-background bg-ternary hover:bg-secondary transition-colors duration-200 {buttonClass}"
+			class="flex aspect-[3/2] justify-center items-center text-background bg-ternary hover:bg-secondary transition-colors {buttonClass}"
 			on:click={handleClickLink}
 		>
 			<svg xmlns="http://www.w3.org/2000/svg" fill="inherit" id="Outline" viewBox="0 0 24 24" class="fill-background {iconClass}"

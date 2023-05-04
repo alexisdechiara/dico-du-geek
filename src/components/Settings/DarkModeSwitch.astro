@@ -16,14 +16,17 @@ const { page } = Astro.props;
 <script>
 	let switches = document.getElementsByName("darkmode") as NodeListOf<HTMLInputElement>;
 	switches.forEach(e => {
-		if (localStorage.theme === e.value) {
+		if (localStorage.darkmode === e.value) {
 			e.checked = true;
-		} else if (!("theme" in localStorage) && e.value === "auto") {
+		} else if (!("darkmode" in localStorage) && e.value === "auto") {
 			e.checked = true;
 		}
 		e.addEventListener("click", function () {
-			localStorage.theme = e.value;
-			if (localStorage.theme === "dark" || (("theme" in localStorage || localStorage.theme === "auto") && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+			localStorage.darkmode = e.value;
+			if (
+				localStorage.darkmode === "dark" ||
+				(("darkmode" in localStorage || localStorage.darkmode === "auto") && window.matchMedia("(prefers-color-scheme: dark)").matches)
+			) {
 				document.documentElement.setAttribute("data-mode", "dark");
 			} else {
 				document.documentElement.setAttribute("data-mode", "light");

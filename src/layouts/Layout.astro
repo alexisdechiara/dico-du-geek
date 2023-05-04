@@ -11,7 +11,20 @@ import "../styles/base.css";
 <html lang="fr" data-theme="polychrome" data-mode="dark">
 	<head>
 		<script is:inline>
-			if (localStorage.theme === "dark" || (("theme" in localStorage || localStorage.theme === "auto") && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+			if (!("theme" in localStorage) || localStorage.theme === "polychrome") {
+				document.documentElement.setAttribute("data-theme", "polychrome");
+			} else {
+				document.documentElement.setAttribute("data-theme", "monochrome");
+			}
+			if (!("font" in localStorage) || localStorage.font === "sans") {
+				document.documentElement.setAttribute("data-font", "sans");
+			} else {
+				document.documentElement.setAttribute("data-font", "serif");
+			}
+			if (
+				localStorage.darkmode === "dark" ||
+				(("darkmode" in localStorage || localStorage.darkmode === "auto") && window.matchMedia("(prefers-color-scheme: dark)").matches)
+			) {
 				document.documentElement.setAttribute("data-mode", "dark");
 			} else {
 				document.documentElement.setAttribute("data-mode", "light");

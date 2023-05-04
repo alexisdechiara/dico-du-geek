@@ -3,7 +3,9 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Nav from "../components/Nav.astro";
 
-import DarkModeComponent from "../components/Settings/DarkModeComponent.astro";
+import DarkModeSwitch from "../components/Settings/DarkModeSwitch.astro";
+import ThemeSwitch from "../components/Settings/ThemeSwitch.astro";
+import TextSettings from "../components/Settings/TextSettings.astro";
 
 export interface Props {
 	page: string;
@@ -21,12 +23,14 @@ const { page } = Astro.props;
 			<Nav text="Explication" link="./explication" icon="edit" page={page} selected={page === "explanation"} />
 			<!-- <Nav text="Statistique" link="./statistique" icon="stats" page={page} selected={page === "statistic"} /> -->
 		</div>
-		<div class="flex flex-col w-max">
-			<DarkModeComponent page={page} />
+		<div class="flex flex-col items-center w-max gap-y-1 relative font-sans">
+			<TextSettings page={page} />
+			<ThemeSwitch page={page} />
+			<DarkModeSwitch page={page} />
 		</div>
 	</aside>
 	<div class="flex flex-col grow">
-		<section class="flex flex-col grow p-16 pt-4 h-full w-full">
+		<section id="content" class="flex flex-col grow p-16 pt-4 h-full w-full">
 			<slot />
 		</section>
 		<Footer page={page} />

@@ -7,7 +7,7 @@ darkMode: ['class', '[data-mode="dark"]'],
 	theme: {
 		fontFamily: {
 			sans: ["Work Sans", ...defaultTheme.fontFamily.sans],
-			serif: ["Source Serif 4", ...defaultTheme.fontFamily.sans],
+			serif: ["Source Serif 4", ...defaultTheme.fontFamily.serif],
 			header: ["Poppins"],
 			pacifico: ["Pacifico"]
 		},
@@ -258,7 +258,7 @@ darkMode: ['class', '[data-mode="dark"]'],
 	safelist: [
 		{
 			pattern: /(bg|text|border|fill)-(definition|etymology|explanation|statistic)-(primary|secondary|ternary|border|hover|background)/,
-			variants: ['sm','md','lg','xl','hover','dark']
+			variants: ['sm','md','lg','xl','hover','dark','peer-checked:dark', 'group-checked:dark']
 		}
 	],
 	plugins: [

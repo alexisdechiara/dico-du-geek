@@ -15,14 +15,8 @@ const { page, selected, text, icon, link } = Astro.props;
 	href={link}
 	class:list={[
 		selected ? `bg-${page}-ternary text-${page}-background` : ` text-${page}-primary hover:bg-${page}-hover`,
-		"text-select flex gap-4 items-center w-full py-3 px-4 rounded-2xl cursor-pointer transition duration-300",
+		"text-select flex gap-4 items-center w-full py-3 px-4 rounded-2xl cursor-pointer transition ",
 	]}>
-	{
-		selected ? (
-			<Icon name={`${icon}-filled`} class:list={`fill-${page}-background h-6 w-6`} />
-		) : (
-			<Icon name={icon} class:list={`fill-${page}-primary h-6 w-6`} />
-		)
-	}
+	{selected ? <Icon name={`${icon}-filled`} class:list={`fill-${page}-background h-6 w-6`} /> : <Icon name={icon} class:list={`fill-${page}-primary h-6 w-6`} />}
 	<span class={!selected ? `opacity-75` : ` `}> {text}</span>
 </a>
