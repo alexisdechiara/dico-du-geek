@@ -1,5 +1,6 @@
 <script>
 	import { fetchAll } from "../utils/fetchAll";
+	import { clickOutside } from "../utils/clickOutside.ts";
 	export let size = "md";
 
 	let searchValue = "";
@@ -36,20 +37,60 @@
 		}
 	}
 
-	const showResult = () => (isVisible = true);
-	const HideResult = () =>
-		setTimeout(() => {
-			isVisible = false;
-		}, 100);
+	const showScrollBar = () => {
+		document.body.classList.remove("overflow-y-hidden");
+		if (document.body.scrollHeight > document.body.clientHeight) {
+			document.body.classList.remove("mr-[15px]");
+		}
+	};
+
+	const hideScrollBar = () => {
+		document.body.classList.add("overflow-y-hidden");
+		if (document.body.scrollHeight > document.body.clientHeight) {
+			document.body.classList.add("mr-[15px]");
+		}
+	};
+
+	const showResult = () => {
+		isVisible = true;
+	};
+	const HideResult = () => {
+		isVisible = false;
+	};
+
 	const handleClickLink = () => window.location.replace("/" + words[0].slug + "/definition");
+
+	const handleSearchFocus = () => {
+		showResult();
+		showScrollBar();
+	};
+
+	let selectedLink = -1;
+	function handleKeydown(event) {
+		if (isVisible && words && words.length > 0) {
+			let links = document.getElementsByClassName("searchbar-link");
+			if (event.key === "ArrowDown") {
+				hideScrollBar();
+				selectedLink = selectedLink < links.length - 1 ? selectedLink + 1 : 0;
+				links[selectedLink].focus();
+			} else if (event.key === "ArrowUp") {
+				hideScrollBar();
+				selectedLink = selectedLink > 0 ? selectedLink - 1 : links.length - 1;
+				links[selectedLink].focus();
+			} else {
+				showScrollBar();
+			}
+		}
+		if (event.key !== "ArrowDown" && event.key !== "ArrowUp" && event.key !== "ArrowDown" && event.key != "Enter" && event.key !== "Tab") {
+			window.document.getElementById("searchInput").focus();
+		}
+	}
 </script>
 
-<div class="relative {size === 'lg' ? 'w-11/12 sm:w-3/4 md:w-2/3 lg:w-1/2' : 'w-1/3'}">
+<svelte:window on:keydown={handleKeydown} />
+<div use:clickOutside on:click_outside={HideResult} class="relative {size === 'lg' ? 'w-11/12 sm:w-3/4 md:w-2/3 lg:w-1/2' : 'w-1/3'}">
 	<label for="searchInput" class="mb-2 text-sm font-medium text-primary sr-only"> Rechercher dans le dictionnaire</label>
-	<form
-		on:submit|preventDefault={handleClickLink}
-		class="flex justify-between items-center bg-base border border-border text-primary {formClass}"
-	>
+	<form on:submit|preventDefault={handleClickLink} class="flex justify-between items-center bg-base border border-border text-primary {formClass}">
 		<input
 			type="text"
 			id="searchInput"
@@ -58,8 +99,7 @@
 			required
 			bind:value={searchValue}
 			on:input={handleSearch}
-			on:focus={showResult}
-			on:blur={HideResult}
+			on:focus={handleSearchFocus}
 		/>
 
 		<button
@@ -73,13 +113,13 @@
 			>
 		</button>
 	</form>
-	{#if words.length > 0 && words != null && isVisible}
+	{#if isVisible && words && words.length > 0}
 		<ul class="absolute bg-base flex flex-col w-full p-2 shadow-sm border border-border {listClass}">
 			{#each words as word}
 				<li>
 					<a
 						href={`/${word.slug}/definition`}
-						class="flex text-primary hover:bg-background hover:text-secondary hover:dark-text-dark-secondary rounded {linkClass}"
+						class="searchbar-link flex text-primary focus:bg-background focus:text-secondary focus:dark-text-dark-secondary hover:bg-background hover:text-secondary hover:dark-text-dark-secondary rounded-md {linkClass}"
 						>{word.abreviation ? word.abreviation + " (" + word.entree + ") " : word.entree}</a
 					>
 				</li>
