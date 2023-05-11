@@ -44,13 +44,13 @@ darkMode: ['class', '[data-mode="dark"]'],
 					hover: 'var(--color-explanation-hover)',
 					background: 'var(--color-explanation-background)',
 				},
-				statistic: {
-					primary: 'var(--color-statistic-primary)',
-					secondary: 'var(--color-statistic-secondary)',
-					ternary: 'var(--color-statistic-ternary)',
-					border: 'var(--color-statistic-border)',
-					hover: 'var(--color-statistic-hover)',
-					background: 'var(--color-statistic-background)',
+				relation: {
+					primary: 'var(--color-relation-primary)',
+					secondary: 'var(--color-relation-secondary)',
+					ternary: 'var(--color-relation-ternary)',
+					border: 'var(--color-relation-border)',
+					hover: 'var(--color-relation-hover)',
+					background: 'var(--color-relation-background)',
 				}
 			},
 			fontSize: {
@@ -257,7 +257,7 @@ darkMode: ['class', '[data-mode="dark"]'],
 	},
 	safelist: [
 		{
-			pattern: /(bg|text|border|fill)-(definition|etymology|explanation|statistic)-(primary|secondary|ternary|border|hover|background)/,
+			pattern: /(bg|text|border|fill)-(definition|etymology|explanation|relation)-(primary|secondary|ternary|border|hover|background)/,
 			variants: ['sm','md','lg','xl','hover','dark','peer-checked:dark', 'group-checked:dark']
 		}
 	],

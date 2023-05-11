@@ -21,7 +21,7 @@ const { page } = Astro.props;
 			<Nav text="Définition" link="./definition" icon="search-alt" page={page} selected={page === "definition"} />
 			<Nav text="Étymologie" link="./etymologie" icon="hourglass-end" page={page} selected={page === "etymology"} />
 			<Nav text="Explication" link="./explication" icon="edit" page={page} selected={page === "explanation"} />
-			<Nav text="Relation" link="./relation" icon="link" page={page} selected={page === "statistic"} />
+			<Nav text="Relation" link="./relation" icon="link" page={page} selected={page === "relation"} />
 		</div>
 		<div class="flex flex-col items-center w-max gap-y-1 relative font-sans">
 			<TextSettings page={page} />

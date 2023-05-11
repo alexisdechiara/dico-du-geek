@@ -8,7 +8,7 @@ import ContentAccordion from "../../components/Content/ContentAccordion.astro";
 import { fetchRelation } from "../../utils/fetchRelation";
 
 const data = await fetchRelation(slug);
-const page = "statistic";
+const page = "relation";
 ---
 
 <Layout title={"Le dico du geek | " + data.page[0].titre}>
