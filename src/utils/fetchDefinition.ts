@@ -16,27 +16,6 @@ export async function fetchDefinition(slug: string) {
                                 sens_id (filter: {status: {_eq: "published"}}) {
                                     definition
                                     exemple
-                                    synonymes {
-                                        article_id(filter: {slug: { _neq: $slug }, status: {_eq: "published"}}) {
-                                            entree
-                                            abreviation
-                                            slug
-                                        }
-                                    }
-                                    antonymes {
-                                        article_id(filter: {slug: { _neq: $slug }, status: {_eq: "published"}}) {
-                                            entree
-                                            abreviation
-                                            slug
-                                        }
-                                    }
-                                    associes {
-                                        article_id(filter: {slug: { _neq: $slug }, status: {_eq: "published"}}) {
-                                            entree
-                                            abreviation
-                                            slug
-                                        }
-                                    }
                                 }
                             }
                         }

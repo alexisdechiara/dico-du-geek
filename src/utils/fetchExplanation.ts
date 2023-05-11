@@ -26,6 +26,6 @@ export async function fetchExplanation(slug: string) {
         }),
     });
 
-    const json = await response.json();        
+    const json = await response.json();
     return json.data;
 }

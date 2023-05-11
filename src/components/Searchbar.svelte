@@ -8,32 +8,42 @@
 	let isVisible = true;
 	let formClass, inputClass, buttonClass, linkClass, listClass, iconClass;
 
-	if (size === "lg") {
-		formClass = "pr-3 rounded-xl";
-		inputClass = "pl-3 py-4 font-medium text-lg md:text-xl lg:text-2xl rounded-xl";
-		buttonClass = "px-6 rounded-[11px]";
-		linkClass = "text-2xl leading-10 py-2 px-3";
-		listClass = "top-20 rounded-xl";
-		iconClass = "h-6";
-	} else if (size === "sm") {
-		formClass = "pr-2 rounded-lg";
-		inputClass = "pl-3 py-2 font-medium text-sm md:text-md lg:text-lg rounded-lg";
-		buttonClass = "px-4 w-12 h-8 rounded-md";
-		linkClass = "text-lg leading-8 px-2";
+	const sizeClasses = {
+		lg: {
+			formClass: "pr-3 rounded-xl",
+			inputClass: "pl-3 py-4 font-medium text-lg md:text-xl lg:text-2xl rounded-xl",
+			buttonClass: "px-6 rounded-[11px]",
+			linkClass: "text-2xl leading-10 py-2 px-3",
+			listClass: "top-20 rounded-xl",
+			iconClass: "h-6",
+		},
+		sm: {
+			formClass: "pr-2 rounded-lg",
+			inputClass: "pl-3 py-2 font-medium text-sm md:text-md lg:text-lg rounded-lg",
+			buttonClass: "px-4 w-12 h-8 rounded-md",
+			linkClass: "text-lg leading-8 px-2",
+		},
+		default: {
+			formClass: "pr-2 rounded-lg",
+			inputClass: "pl-3 py-2 font-medium text-sm md:text-md lg:text-lg rounded-lg",
+			buttonClass: "h-8 rounded-md",
+			linkClass: "text-lg leading-8 px-2",
+			listClass: "top-14 rounded-lg",
+			iconClass: "h-4",
+		},
+	};
+
+	if (sizeClasses.hasOwnProperty(size)) {
+		({ formClass, inputClass, buttonClass, linkClass, listClass, iconClass } = sizeClasses[size]);
 	} else {
-		formClass = "pr-2 rounded-lg";
-		inputClass = "pl-3 py-2 font-medium text-sm md:text-md lg:text-lg rounded-lg";
-		buttonClass = "h-8 rounded-md";
-		linkClass = "text-lg leading-8 px-2";
-		listClass = "top-14 rounded-lg";
-		iconClass = "h-4";
+		({ formClass, inputClass, buttonClass, linkClass, listClass, iconClass } = sizeClasses.default);
 	}
 
 	async function handleSearch() {
-		if (searchValue != "") {
+		if (searchValue !== "") {
 			words = await fetchAll(searchValue);
 		} else {
-			words = "";
+			words = [];
 		}
 	}
 
@@ -54,11 +64,12 @@
 	const showResult = () => {
 		isVisible = true;
 	};
+
 	const HideResult = () => {
 		isVisible = false;
 	};
 
-	const handleClickLink = () => window.location.replace("/" + words[0].slug + "/definition");
+	const handleClickLink = () => window.location.replace(`/${words[0].slug}/definition`);
 
 	const handleSearchFocus = () => {
 		showResult();
@@ -66,6 +77,7 @@
 	};
 
 	let selectedLink = -1;
+
 	function handleKeydown(event) {
 		if (isVisible && words && words.length > 0) {
 			let links = document.getElementsByClassName("searchbar-link");
@@ -81,7 +93,7 @@
 				showScrollBar();
 			}
 		}
-		if (event.key !== "ArrowDown" && event.key !== "ArrowUp" && event.key !== "ArrowDown" && event.key != "Enter" && event.key !== "Tab") {
+		if (event.key !== "ArrowDown" && event.key !== "ArrowUp" && event.key !== "Enter" && event.key !== "Tab") {
 			window.document.getElementById("searchInput").focus();
 		}
 	}

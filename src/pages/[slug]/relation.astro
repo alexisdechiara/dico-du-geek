@@ -1,0 +1,28 @@
+---
+const { slug } = Astro.params;
+
+import Layout from "../../layouts/Layout.astro";
+import Content from "../../layouts/Content.astro";
+import ContentHeader from "../../components/Content/ContentHeader.astro";
+import ContentAccordion from "../../components/Content/ContentAccordion.astro";
+import { fetchRelation } from "../../utils/fetchRelation";
+
+const data = await fetchRelation(slug);
+const page = "statistic";
+---
+
+<Layout title={"Le dico du geek | " + data.page[0].titre}>
+	<Content page={page}>
+		<h1 class="sr-only">{data.page[0].titre}</h1>
+		{
+			data.page[0].articles.map(article => (
+				<div class="flex flex-col mb-8 gap-y-4 ">
+					<ContentHeader page={page} title={article.entree} tags={[]} />
+					{article.relations.map(relation => (
+						<ContentAccordion entree={relation.article.entree} type={relation.type} slug={relation.article.slug} definitions={relation.article.sens} />
+					))}
+				</div>
+			))
+		}
+	</Content>
+</Layout>
