@@ -10,40 +10,68 @@ import { fetchDefinition } from "../../utils/fetchDefinition";
 
 const data = await fetchDefinition(slug);
 const page = "definition";
+const uniqueArticle = data.articles == null || data.articles.length === 1;
 ---
 
-<Layout title={"Le dico du geek | " + data.page[0].titre}>
+<Layout title={"Le dico du geek | " + data.title}>
 	<Content page={page}>
-		<h1 class="sr-only">{data.page[0].titre}</h1>
+		<h1 class="sr-only">{data.title}</h1>
 		{
-			data.page[0].articles.map(article => (
-				<dl class="mb-8">
+			uniqueArticle ? (
+				<ContentHeader
+					page={page}
+					title={data.articles[0].abbreviation ? `${data.articles[0].entry} (${data.articles[0].abbreviation})` : data.articles[0].entry}
+					pronounciation={data.articles[0].phonetic}
+					tags={data.articles[0].grammatical_class}
+				/>
+			) : (
+				<ContentHeader page={page} title={data.title} />
+			)
+		}
+		{
+			data.articles.map(article => (
+				<article class="mb-6">
 					<ContentHeader
+						hidden={uniqueArticle}
+						subtitle
 						page={page}
-						title={article.abreviation ? `${article.entree} (${article.abreviation})` : article.entree}
-						pronounciation={article.phonetique}
-						tags={article.classe_gramaticale}
+						title={article.abbreviation ? `${article.entry} (${article.abbreviation})` : article.entry}
+						pronounciation={article.phonetic}
+						tags={article.grammatical_class}
 					/>
-					{article.sens.map(sens => (
-						<div class="flex flex-col mb-16 gap-y-6">
-							<dd class="contents prose prose-definition text-definition-primary text-paragraph">
-								<Markdown content={sens.sens_id.definition} />
-							</dd>
-							<div class="relative p-4 pr-8 rounded border-l-4 border-definition-ternary text-definition-secondary bg-definition-background">
-								<h2 class="text-lg font-bold pb-2"> Exemple </h2>
-								<span class="inline italic tracking-tight">
-									<Markdown content={sens.sens_id.exemple} />
+					<div class="flex flex-col mb-16 gap-y-6">
+						<dl class="flex flex-col gap-y-2">
+							<dt class="sr-only">{article.entry}</dt>
+							{article.definitions.map(definition => (
+								<dd
+									class:list={[
+										{ "list-item list-decimal list-inside": article.definitions.length > 1 },
+										"prose prose-definition text-definition-primary text-paragraph prose-p:inline",
+									]}>
+									<Markdown content={definition as string} />
+								</dd>
+							))}
+						</dl>
+						<div class="relative p-4 pr-8 rounded border-l-4 border-definition-ternary text-definition-secondary bg-definition-background">
+							<h2 class="text-lg font-bold pb-2"> Exemple </h2>
+							{article.examples.map(examples => (
+								<span
+									class:list={[
+										{ "list-item list-decimal list-inside": article.definitions.length > 1 },
+										"prose prose-definition italic tracking-tight prose-p:inline",
+									]}>
+									<Markdown content={examples as string} />
 								</span>
-								<a
-									href="./explication"
-									class="flex w-fit items-center ml-auto justify-end gap-x-2 font-semibold cursor-pointer hover:text-definition-primary transition-colors  group">
-									Voir plus
-									<Icon name="arrow-right" class="w-4 h-4 fill-definition-secondary group-hover:fill-definition-primary" />
-								</a>
-							</div>
+							))}
+							<a
+								href="./explication"
+								class="flex w-fit items-center ml-auto justify-end gap-x-2 font-semibold cursor-pointer hover:text-definition-primary transition-colors  group">
+								Voir plus
+								<Icon name="arrow-right" class="w-4 h-4 fill-definition-secondary group-hover:fill-definition-primary" />
+							</a>
 						</div>
-					))}
-				</dl>
+					</div>
+				</article>
 			))
 		}
 	</Content>

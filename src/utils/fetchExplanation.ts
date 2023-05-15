@@ -26,6 +26,33 @@ export async function fetchExplanation(slug: string) {
         }),
     });
 
+    interface Page {
+        title: string;
+        articles: Array<Article>;
+    }
+
+    interface Article {
+        entry: string;
+        abbreviation: string;
+        explanations: Array<String>;
+    }
+
     const json = await response.json();
-    return json.data;
+    const data = json.data;
+    let res: Page = { title: data.page[0].titre, articles: Array<Article>() }
+    data.page[0].articles.forEach(article => {
+        let a: Article = {
+            entry: article.entree,
+            abbreviation: article.abreviation,
+            explanations: Array<String>()
+        };
+        article.sens.forEach(sens => {
+            if (sens.sens_id != null) {
+                a.explanations.push(sens.sens_id.explication ? sens.sens_id.explication : '	');
+            }
+        });
+        res.articles.push(a);
+    });
+
+    return res;
 }

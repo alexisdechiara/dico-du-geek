@@ -2,33 +2,36 @@
 import { Markdown } from "astro-remote";
 import { Icon } from "astro-icon";
 
-interface definition {
-	sens_id: { definition: string };
-}
-
 interface Props {
-	entree: string;
+	entry: string;
 	type: string;
 	slug: string;
-	definitions?: definition[];
+	definitions?: Array<String>;
 }
-const { entree, type, definitions, slug } = Astro.props;
+const { entry, type, definitions, slug } = Astro.props;
 ---
 
 <details
 	class=`flex w-full justify-between items-center bg-relation-background text-relation-secondary rounded-2xl ${definitions.length > 0 ? 'cursor-pointer' : 'cursor-default'}`>
 	<summary class="flex items-center justify-between p-4 group">
 		<div class="inline-flex items-center gap-x-2">
-			<span class="font-semibold text-select">{entree}</span>
+			<span class="font-semibold text-select">{entry}</span>
 			<span class="px-2 py-1 text-xs font-medium rounded-lg bg-relation-border">{type}</span>
 		</div>
-		<a
-			href=`/${slug}`
-			class="flex items-center justify-end p-2 pr-2 ml-auto font-semibold transition-colors duration-300 rounded-lg cursor-pointer hover:bg-relation-hover w-fit hover:text-relation-primary group">
-			<Icon name="arrow-up-right-from-square" class="w-4 h-4 fill-relation-secondary group-hover:fill-relation-primary" />
-		</a>
+		{ slug &&
+			<a
+				href=`/${slug}`
+				class="flex items-center justify-end p-2 pr-2 ml-auto font-semibold transition-colors duration-300 rounded-lg cursor-pointer hover:bg-relation-hover w-fit hover:text-relation-primary group">
+				<Icon name="arrow-up-right-from-square" class="w-4 h-4 fill-relation-secondary group-hover:fill-relation-primary" />
+			</a>
+		}
 	</summary>
-	<div class="contents prose prose-p:px-4 prose-p:last-of-type:pb-4 prose-p:my-0">
-		{definitions && definitions.map(content => <Markdown content={content.sens_id.definition} />)}
-	</div>
+	{
+		definitions &&
+			definitions.map(definition => (
+				<div class:list={[{ "list-item list-decimal list-inside": definitions.length > 1 }, "cursor-default prose prose-relation px-4 pb-4 my-0 prose-p:inline"]}>
+					<Markdown content={definition as string} />
+				</div>
+			))
+	}
 </details>

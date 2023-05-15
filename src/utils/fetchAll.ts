@@ -5,7 +5,7 @@ export async function fetchAll(value: string) {
         body: JSON.stringify({
             query: `
                 query getAll($value: String){
-                    article (search: $value, sort: "entree", filter: {status: {_eq: "published"}}) {
+                    article (search: $value, sort: "entree", filter: {status: {_eq: "published"}, slug: {_nnull:true}}) {
                         entree
                         abreviation
                         slug
@@ -18,7 +18,23 @@ export async function fetchAll(value: string) {
         }),
     });
 
+    interface Article {
+        entry: string;
+        abbreviation: string;
+        slug: string;
+    }
+
     const json = await response.json();
     const data = json.data;
-    return data.article;
+    let res: Array<Article> = Array<Article>();
+    data.article.forEach(article => {
+        let a: Article = {
+            entry: article.entree,
+            abbreviation: article.abreviation,
+            slug: article.slug
+        };
+        res.push(a);
+    });
+
+    return res;
 }

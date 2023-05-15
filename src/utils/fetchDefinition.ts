@@ -28,6 +28,40 @@ export async function fetchDefinition(slug: string) {
         }),
     });
 
+    interface Page {
+        title: string;
+        articles: Array<Article>;
+    }
+
+    interface Article {
+        entry: string;
+        phonetic: string;
+        abbreviation: string;
+        grammatical_class: Array<String>
+        definitions: Array<String>
+        examples: Array<String>
+    }
+
     const json = await response.json();
-    return json.data;
+    const data = json.data;
+    let res: Page = { title: data.page[0].titre, articles: Array<Article>() }
+    data.page[0].articles.forEach(article => {
+        let a: Article = {
+            entry: article.entree,
+            phonetic: article.phonetique,
+            abbreviation: article.abreviation,
+            grammatical_class: article.classe_gramaticale,
+            definitions: Array<String>(),
+            examples: Array<String>()
+        };
+        article.sens.forEach(sens => {
+            if (sens.sens_id != null) {
+                a.definitions.push(sens.sens_id.definition);
+                a.examples.push(sens.sens_id.exemple ? sens.sens_id.exemple : '	');
+            }
+        });
+        res.articles.push(a);
+    });
+
+    return res;
 }

@@ -132,7 +132,7 @@
 					<a
 						href={`/${word.slug}/definition`}
 						class="searchbar-link flex text-primary focus:bg-background focus:text-secondary focus:dark-text-dark-secondary hover:bg-background hover:text-secondary hover:dark-text-dark-secondary rounded-md {linkClass}"
-						>{word.abreviation ? word.abreviation + " (" + word.entree + ") " : word.entree}</a
+						>{word.abbreviation ? word.abbreviation + " (" + word.entry + ") " : word.entry}</a
 					>
 				</li>
 			{/each}

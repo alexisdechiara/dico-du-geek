@@ -10,16 +10,16 @@ if (!alphabet.some(letter => letter.includes(slug.toLowerCase()))) {
 }
 
 const articles = await fetchAll(slug);
-const words = articles.filter((article, index, array) => article.entree.toLowerCase().startsWith(slug) && array.findIndex(a => a.entree === article.entree) === index);
+const words = articles.filter((article, index, array) => article.entry.toLowerCase().startsWith(slug) && array.findIndex(a => a.entry === article.entry) === index);
 ---
 
 <Lexicon>
-	<div class="flex flex-col justify-start items-start text-primary">
+	<div class="flex flex-col justify-start items-start text-primary min-w-[50%]">
 		<h2 class="text-lexicon-letter uppercase -mt-8">{slug}</h2>
 		{
 			words.map(word => (
 				<a href={`/${word.slug}/definition`} class="text-lexicon-word hover:text-ternary">
-					{word.abreviation ? word.abreviation + " (" + word.entree + ") " : word.entree}
+					{word.abbreviation ? word.abbreviation + " (" + word.entry + ") " : word.entry}
 				</a>
 			))
 		}
