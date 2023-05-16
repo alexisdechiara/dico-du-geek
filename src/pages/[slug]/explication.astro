@@ -8,7 +8,13 @@ import { Markdown } from "astro-remote";
 import { fetchExplanation } from "../../utils/fetchExplanation";
 import Tag from "../../components/Tag.astro";
 
-const data = await fetchExplanation(slug);
+let data;
+
+try {
+	data = await fetchExplanation(slug);
+} catch (error) {
+	return Astro.redirect('/404');
+}
 const page = "explanation";
 const uniqueArticle = data.articles == null || data.articles.length === 1;
 ---

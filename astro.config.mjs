@@ -11,5 +11,5 @@ export default defineConfig({
       applyBaseStyles: false
     }
   }), image(), svelte()],
-  output: "server"
+  output: "server",
 });

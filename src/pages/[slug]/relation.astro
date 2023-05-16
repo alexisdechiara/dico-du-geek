@@ -7,7 +7,13 @@ import ContentHeader from "../../components/Content/ContentHeader.astro";
 import ContentAccordion from "../../components/Content/ContentAccordion.astro";
 import { fetchRelation } from "../../utils/fetchRelation";
 
-const data = await fetchRelation(slug);
+let data;
+
+try {
+	data = await fetchRelation(slug);
+} catch (error) {
+	return Astro.redirect('/404');
+}
 const page = "relation";
 const uniqueArticle = data.articles == null || data.articles.length === 1;
 ---

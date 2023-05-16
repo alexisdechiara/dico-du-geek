@@ -8,7 +8,13 @@ import { Markdown } from "astro-remote";
 import { fetchEtymology } from "../../utils/fetchEtymology";
 import Tag from "../../components/Tag.astro";
 
-const data = await fetchEtymology(slug);
+let data;
+
+try {
+	data = await fetchEtymology(slug);
+} catch (error) {
+	return Astro.redirect('/404');
+}
 const page = "etymology";
 const uniqueArticle = data.articles == null || data.articles.length === 1;
 ---

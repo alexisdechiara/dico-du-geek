@@ -8,7 +8,14 @@ import { Icon } from "astro-icon";
 import { Markdown } from "astro-remote";
 import { fetchDefinition } from "../../utils/fetchDefinition";
 
-const data = await fetchDefinition(slug);
+let data;
+
+try {
+	data = await fetchDefinition(slug);
+} catch (error) {
+	return Astro.redirect('/404');
+}
+
 const page = "definition";
 const uniqueArticle = data.articles == null || data.articles.length === 1;
 ---
