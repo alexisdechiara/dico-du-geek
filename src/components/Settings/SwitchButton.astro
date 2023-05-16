@@ -9,9 +9,10 @@ export interface Props {
 	icon?: string;
 	isChecked?: boolean;
 	serif?: boolean;
+	size?: string;
 }
 
-const { page, label, name, value, isChecked, icon, serif } = Astro.props;
+const { page, label, name, value, isChecked, icon, serif, size = "md" } = Astro.props;
 ---
 
 <div>
@@ -19,10 +20,11 @@ const { page, label, name, value, isChecked, icon, serif } = Astro.props;
 	<label
 		for={value}
 		class:list={[
+			size === "lg" ? "rounded-lg gap-2 px-4 py-2 text-lg" : "rounded-md gap-1 px-2 py-1 text-xs",
 			serif ? "font-serif" : "font-sans",
-			`cursor-pointer flex justify-center gap-1 px-2 py-1 fill-${page}-primary peer-checked:dark:fill-${page}-background text-${page}-primary peer-checked:bg-base peer-checked:dark:bg-${page}-primary peer-checked:dark:text-${page}-background rounded-md peer-checked:shadow-sm font-medium text-xs`,
+			`cursor-pointer flex justify-center  fill-${page}-primary peer-checked:dark:fill-${page}-background text-${page}-primary peer-checked:bg-base peer-checked:dark:bg-${page}-primary peer-checked:dark:text-${page}-background peer-checked:shadow-sm font-medium `,
 		]}>
-		{icon != null && <Icon name={icon} class="w-3.5" />}
+		{icon != null && <Icon name={icon} class={size === "lg" ? "w-7" : "w-3.5"} />}
 		{label}
 	</label>
 </div>

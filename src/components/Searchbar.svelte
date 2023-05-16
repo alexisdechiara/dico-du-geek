@@ -11,7 +11,7 @@
 	const sizeClasses = {
 		lg: {
 			formClass: "pr-3 rounded-xl",
-			inputClass: "pl-3 py-4 font-medium text-lg md:text-xl lg:text-2xl rounded-xl",
+			inputClass: "pl-4 py-4 font-medium text-lg md:text-xl lg:text-2xl rounded-xl placeholder:font-medium",
 			buttonClass: "px-6 rounded-[11px]",
 			linkClass: "text-2xl leading-10 py-2 px-3",
 			listClass: "top-20 rounded-xl",

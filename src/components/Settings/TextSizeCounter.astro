@@ -1,19 +1,26 @@
 ---
 export interface Props {
+	size?: string;
 	page: string;
 }
 
-const { page } = Astro.props;
+const { page, size = "md" } = Astro.props;
 ---
 
-<div class={`flex w-full rounded-lg bg-${page}-background py-1.5 px-2 h-9`}>
+<div class={`flex w-full rounded-lg bg-${page}-background ${size === "lg" ? "py-3 px-4 h-[4.5rem]" : "py-1.5 px-2 h-9"}`}>
 	<button
-		class={`cursor-pointer flex grow justify-center items-center align-middle gap-1 px-2 text-${page}-primary dark:text-${page}-background bg-base dark:bg-${page}-primary rounded-md shadow-sm text-lg font-bold active:shadow-none`}
+		class={`${
+			size === "lg" ? "gap-2 px-4 text-xl rounded-lg" : "gap-1 px-2 text-lg rounded-md"
+		} cursor-pointer flex grow justify-center items-center align-middle text-${page}-primary dark:text-${page}-background bg-base dark:bg-${page}-primary shadow-sm font-bold font-sans active:shadow-none`}
 		id="decrement">-</button
 	>
-	<span class=`flex px-4 text-${page}-primary font-semibold align-middle justify-center items-center w-16` id="textSizeDisplayed">1</span>
+	<span class=` ${size === "lg w-32" ? "px-8" : "px-4 w-16"} flex text-${page}-primary font-semibold align-middle justify-center items-center font-sans` id="textSizeDisplayed"
+		>1</span
+	>
 	<button
-		class={`cursor-pointer flex grow justify-center items-center align-middle gap-1 px-2 text-${page}-primary dark:text-${page}-background bg-base dark:bg-${page}-primary rounded-md shadow-sm text-lg font-bold active:shadow-none`}
+		class={` ${
+			size === "lg" ? "gap-2 px-4 text-xl rounded-lg" : "gap-1 px-2 text-lg rounded-md"
+		} cursor-pointer flex grow justify-center items-center align-middle text-${page}-primary dark:text-${page}-background bg-base dark:bg-${page}-primary shadow-sm font-bold font-sans active:shadow-none`}
 		id="increment">+</button
 	>
 </div>

@@ -8,8 +8,9 @@ darkMode: ['class', '[data-mode="dark"]'],
 		fontFamily: {
 			sans: ["Work Sans", ...defaultTheme.fontFamily.sans],
 			serif: ["Source Serif 4", ...defaultTheme.fontFamily.serif],
-			header: ["Poppins"],
-			pacifico: ["Pacifico"]
+			header: ["var(--font-header)", ...defaultTheme.fontFamily.sans],
+			pacifico: ["Pacifico"],
+			marker: ["Permanent Marker"]
 		},
 		extend: {
 			colors: {
@@ -87,12 +88,12 @@ darkMode: ['class', '[data-mode="dark"]'],
 					fontWeight: '500',
 					letterSpacing: '-0.8px',
 				}],
-				'presentation-header': ['4rem', {
-					lineHeight: '6rem',
+				'presentation-header': ['3rem', {
+					lineHeight: '5rem',
 					fontWeight: '700'
 				}],
-				'presentation-paragraph': ['2rem', {
-					lineHeight: '3rem',
+				'presentation-paragraph': ['1.5rem', {
+					lineHeight: '2.5rem',
 					fontWeight: '600'
 				}],
 				'lexicon-letter': ['8rem', {

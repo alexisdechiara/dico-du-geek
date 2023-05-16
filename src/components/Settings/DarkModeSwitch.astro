@@ -1,16 +1,17 @@
 ---
 import SwitchButton from "./SwitchButton.astro";
 export interface Props {
+	size?: string;
 	page: string;
 }
 
-const { page } = Astro.props;
+const { page, size = "md" } = Astro.props;
 ---
 
-<div class={`grid grid-cols-3 w-full rounded-lg bg-${page}-background py-1.5 px-2`}>
-	<SwitchButton page={page} label="Clair" icon="darkmode/sun" value="light" name="darkmode" />
-	<SwitchButton page={page} label="Auto" icon="darkmode/auto" value="auto" name="darkmode" />
-	<SwitchButton page={page} label="Sombre" icon="darkmode/moon" value="dark" name="darkmode" />
+<div class={`grid grid-cols-3 w-full rounded-lg bg-${page}-background ${size === "lg" ? "py-3 px-4" : "py-1.5 px-2"}`}>
+	<SwitchButton page={page} label="Clair" icon="darkmode/sun" value="light" name="darkmode" size={size} />
+	<SwitchButton page={page} label="Auto" icon="darkmode/auto" value="auto" name="darkmode" size={size} />
+	<SwitchButton page={page} label="Sombre" icon="darkmode/moon" value="dark" name="darkmode" size={size} />
 </div>
 
 <script>

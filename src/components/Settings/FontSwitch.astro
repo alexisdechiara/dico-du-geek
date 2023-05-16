@@ -1,15 +1,16 @@
 ---
 import SwitchButton from "./SwitchButton.astro";
 export interface Props {
+	size?: string;
 	page: string;
 }
 
-const { page } = Astro.props;
+const { page, size = "md" } = Astro.props;
 ---
 
-<div class={`grid grid-cols-2 w-full rounded-lg bg-${page}-background py-1.5 px-2`}>
-	<SwitchButton page={page} label="Sans" value="sans" name="fontMode" />
-	<SwitchButton page={page} label="Serif" value="serif" name="fontMode" serif />
+<div class={`grid grid-cols-2 w-full rounded-lg bg-${page}-background ${size === "lg" ? "py-3 px-4" : "py-1.5 px-2"}`}>
+	<SwitchButton page={page} label="Sans" value="sans" name="fontMode" size={size} />
+	<SwitchButton page={page} label="Serif" value="serif" name="fontMode" serif size={size} />
 </div>
 
 <script>
