@@ -88,8 +88,8 @@ darkMode: ['class', '[data-mode="dark"]'],
 					fontWeight: '500',
 					letterSpacing: '-0.8px',
 				}],
-				'presentation-header': ['3rem', {
-					lineHeight: '5rem',
+				'presentation-header': ['5rem', {
+					lineHeight: '7rem',
 					fontWeight: '700'
 				}],
 				'presentation-paragraph': ['1.5rem', {

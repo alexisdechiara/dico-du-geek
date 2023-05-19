@@ -10,8 +10,8 @@
 
 	const sizeClasses = {
 		lg: {
-			formClass: "pr-3 rounded-xl",
-			inputClass: "pl-4 py-4 font-medium text-lg md:text-xl lg:text-2xl rounded-xl placeholder:font-medium",
+			formClass: "pr-3 py-1 rounded-xl",
+			inputClass: "px-4 py-4 font-medium text-lg md:text-xl lg:text-2xl rounded-xl placeholder:font-medium",
 			buttonClass: "px-6 rounded-[11px]",
 			linkClass: "text-2xl leading-10 py-2 px-3",
 			listClass: "top-20 rounded-xl",
@@ -24,7 +24,7 @@
 			linkClass: "text-lg leading-8 px-2",
 		},
 		default: {
-			formClass: "pr-2 rounded-lg",
+			formClass: "pr-2 py-1 rounded-lg",
 			inputClass: "pl-3 py-2 font-medium text-sm md:text-md lg:text-lg rounded-lg",
 			buttonClass: "h-8 rounded-md",
 			linkClass: "text-lg leading-8 px-2",
@@ -100,13 +100,17 @@
 </script>
 
 <svelte:window on:keydown={handleKeydown} />
-<div use:clickOutside on:click_outside={HideResult} class="relative {size === 'lg' ? 'w-11/12 sm:w-3/4 md:w-2/3 lg:w-1/2' : 'w-1/3'}">
+<div
+	use:clickOutside
+	on:click_outside={HideResult}
+	class="relative grow max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl {size === 'lg' ? 'w-3/4 md:w-2/3 lg:w-1/2' : 'w-1/3'}"
+>
 	<label for="searchInput" class="mb-2 text-sm font-medium text-primary sr-only"> Rechercher dans le dictionnaire</label>
 	<form on:submit|preventDefault={handleClickLink} class="flex justify-between items-center bg-base border border-border text-primary {formClass}">
 		<input
 			type="text"
 			id="searchInput"
-			class="w-full placeholder:font-normal border-0 ring-0 outline-0 bg-inherit text-inherit {inputClass}"
+			class="w-full placeholder:font-normal border-0 ring-0 outline-0 bg-inherit text-inherit text-ellipsis {inputClass}"
 			placeholder="Rechercher dans le dictionnaire …"
 			required
 			bind:value={searchValue}
@@ -126,11 +130,11 @@
 		</button>
 	</form>
 	{#if isVisible && words && words.length > 0}
-		<ul class="absolute bg-base flex flex-col w-full p-2 shadow-sm border border-border {listClass}">
+		<ul class="absolute z-50 bg-base flex flex-col w-full p-2 shadow-sm border border-border {listClass}">
 			{#each words as word}
 				<li>
 					<a
-						href={`/${word.slug}/definition`}
+						href={`/${word.slug}`}
 						class="searchbar-link flex text-primary focus:bg-background focus:text-secondary focus:dark-text-dark-secondary hover:bg-background hover:text-secondary hover:dark-text-dark-secondary rounded-md {linkClass}"
 						>{word.abbreviation ? word.abbreviation + " (" + word.entry + ") " : word.entry}</a
 					>

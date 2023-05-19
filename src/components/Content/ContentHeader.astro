@@ -13,13 +13,13 @@ interface Props {
 const { page, title, pronounciation, tags, subtitle, hidden } = Astro.props;
 ---
 
-<div class={`flex flex-col mb-6 ${hidden && " sr-only"}`}>
+<div class={`flex flex-col mb-4 md:mb-6 ${hidden && "sr-only"}`}>
 	<div class="flex gap-x-4 items-center">
 		{
 			subtitle == null || subtitle === false ? (
-				<h1 class={`text-entry font-header text-${page}-ternary transition-colors`}>{title}</h1>
+				<h1 class={`whitespace-pre shrink text-4xl md:text-entry font-header text-${page}-ternary transition-colors`}>{title}</h1>
 			) : (
-				<h2 class={`text-4xl font-header text-${page}-ternary transition-colors`}>{title}</h2>
+				<h2 class={`whitespace-pre text-2xl md:text-4xl font-header text-${page}-ternary transition-colors`}>{title}</h2>
 			)
 		}
 		{
@@ -35,7 +35,7 @@ const { page, title, pronounciation, tags, subtitle, hidden } = Astro.props;
 	</div>
 	{
 		tags != null && tags && (
-			<div class="flex gap-2 w-fit mt-4">
+			<div class="flex gap-2 w-fit mt-2 md:mt-4">
 				{tags.map(tag => (
 					<Tag page={page} text={tag} />
 				))}

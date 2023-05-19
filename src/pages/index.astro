@@ -23,7 +23,7 @@ export const prerender = true;
 		<div class="snap-y snap-mandatory h-screen overflow-x-hidden scrollbar-hide">
 			<Presentation
 				page="definition"
-				icon="search-alt"
+				icon="search-alt-bold"
 				header="Définition"
 				paragraph={`Plongez dans l'univers des termes liés à la culture geek et à l'univers numérique en consultant notre dictionnaire en ligne, qui vous propose des définitions
 				claires et concises sur tout ce qui concerne les jeux vidéo, les films, les séries, les technologies, les mèmes, les réseaux sociaux, internet et bien plus encore.`}
@@ -31,42 +31,47 @@ export const prerender = true;
 			/>
 			<Presentation
 				page="etymology"
-				icon="hourglass-end"
+				icon="hourglass-end-bold"
 				header="Étymologie"
 				paragraph={`La section d'histoire des mots vous permet d'explorer l'évolution des termes d’internet. Découvrez les origines, les significations antérieures et les changements de sens qui ont eu lieu au fil du temps. De la racine latine ou grecque d'un mot à son utilisation contemporaine, explorez l'histoire linguistique de chaque terme.`}
 				counter={2}
 			/>
 			<Presentation
 				page="explanation"
-				icon="edit"
+				icon="edit-bold"
 				header="Explication"
 				paragraph={`Découvrez comment chaque mot peut être utilisé dans des contextes variés grâce à la section d'exemples concrets, pour une compréhension complète de leur signification et une immersion dans leur utilisation.`}
 				counter={3}
 			/>
 			<Presentation
 				page="relation"
-				icon="link"
+				icon="link-bold"
 				header="Relation"
 				paragraph={`Plongez-vous dans un voyage à travers les connexions qui façonnent la culture geek et laissez-vous surprendre par les associations inattendues qui vous attendent.`}
 				counter={4}
 			/>
 		</div>
-		<div class="relative h-[1664px]">
+		<div class="relative h-[1464px] md:h-[2164px] lg:h-[1664px]">
 			<span
-				class="absolute text-relation-primary dark:text-relation-secondary top-[500px] left-20 font-marker text-6xl before:block before:absolute before:h-2/3 before:-inset-1 before:top-8 before:-rotate-[3deg] before:bg-relation-border before:-z-10"
+				class="absolute text-relation-primary dark:text-relation-secondary top-32 md:top-64 lg:top-[500px] left-14 md:left-28 lg:left-20 font-marker text-6xl before:block before:absolute before:h-2/3 before:-inset-1 before:top-8 before:-rotate-[3deg] before:bg-relation-border before:-z-10"
 				>Changez de thème</span
 			>
-			<Icon name="homepage/arrow" class="absolute w-[480px] z-10 top-[450px] left-1/3 -rotate-6 fill-relation-primary dark:fill-relation-secondary" />
-			<div class="absolute -right-16 w-[896px] top-0">
+			<Icon
+				name="homepage/arrow"
+				class="absolute hidden md:block md:w-[360px] lg:w-[480px] z-10 md:top-[350px] lg:top-[450px] md:right-4 lg:left-1/3 md:rotate-90 transform md:-scale-y-150 lg:scale-y-100 lg:-rotate-6 fill-relation-primary dark:fill-relation-secondary"
+			/>
+			<div
+				class="absolute lg:-right-16 w-[1000px] -translate-x-1/2 md:translate-x-0 -translate-y-16 md:translate-y-0 md:left-auto left-1/2 md:w-[896px] top-0 md:top-60 lg:top-0">
 				<div class="relative">
-					<Icon name="homepage/blob-themes" class="fill-relation-background -z-10 rotate-180" />
-					<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[512px] z-50">
+					<Icon name="homepage/blob-themes" class="fill-relation-background -z-10 rotate-180 transform scale-y-50 md:scale-y-100" />
+					<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-sm md:max-w-lg z-40">
 						<ThemeSwitch page="relation" size="lg" />
 						<DarkModeSwitch page="relation" size="lg" />
 					</div>
 				</div>
 			</div>
-			<div class="flex flex-col gap-6 absolute text-etymology-primary dark:text-etymology-secondary bottom-[512px] right-20 font-marker text-6xl rotate-3">
+			<div
+				class="flex flex-col gap-6 absolute text-etymology-primary dark:text-etymology-secondary bottom-[600px] md:bottom-[800px] lg:bottom-[512px] left-8 md:left-auto md:right-20 font-marker text-4xl md:text-6xl rotate-3">
 				<span
 					class="relative before:block before:absolute before:h-2/3 before:top-4 before:-left-4 before:right-8 before:-skew-x-6 before:-rotate-1 before:bg-etymology-border before:-z-10"
 					>Personnalisez la</span
@@ -75,18 +80,21 @@ export const prerender = true;
 					>police d'écriture</span
 				>
 			</div>
-			<Icon name="homepage/arrow" class="absolute w-[480px] z-10 bottom-[200px] right-1/4 fill-etymology-primary dark:fill-etymology-secondary -scale-x-100 -rotate-12" />
-			<div class="absolute bottom-0 -left-24 w-[896px]">
+			<Icon
+				name="homepage/arrow"
+				class="absolute hidden md:block transform -scale-y-150 lg:scale-y-100 md:-rotate-90 md:w-[360px] lg:w-[480px] z-10 bottom-[550px] lg:bottom-[200px] md:left-16 lg:left-auto lg:right-1/4 fill-etymology-primary dark:fill-etymology-secondary -scale-x-100 lg:-rotate-12"
+			/>
+			<div class="absolute -bottom-32 md:bottom-0 md:-right-24 md:left-auto left-1/2 lg:right-auto lg:-left-24 w-[1000px] md:w-[896px] -translate-x-1/2 md:translate-x-0">
 				<div class="relative">
-					<Icon name="homepage/blob-fonts" class="fill-etymology-background -z-10" />
-					<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[512px] z-50">
+					<Icon name="homepage/blob-fonts" class="fill-etymology-background -z-10 md:rotate-180 lg:rotate-0 transform scale-y-50 md:scale-y-100" />
+					<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-xs w-full md:max-w-none md:w-[512px] z-40">
 						<TextSizeCounter page="etymology" size="lg" />
 						<FontSwitch page="etymology" size="lg" />
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="flex flex-col w-1/2 items-center rounded-lg shadow-sm relative left-1/2 -translate-x-1/2 p-8 border border-slate-200 mb-32">
+		<div class="flex flex-col max-w-min items-center rounded-lg shadow-sm relative left-1/2 -translate-x-1/2 p-8 border border-slate-200 mb-32">
 			<ContentHeader page="definition" title="Lorem Ipsum" pronounciation="lɔʁɛm‿ ipsɔm" tags={["Essayez", "par", "vous", "même"]} />
 			<article class="prose text-primary text-paragraph">
 				<p>

@@ -45,7 +45,7 @@ const uniqueArticle = data.articles == null || data.articles.length === 1;
 								)
 							}
 						</>
-						<article class="mb-16 prose prose-explanation prose-p:mt-0 prose-p:mb-2 prose-blockquote:mb-0 text-paragraph text-justify">
+						<article class="mb-16 prose prose-explanation prose-p:mt-0 prose-p:mb-2 prose-blockquote:mb-0 prose-pre:overflow-auto prose-pre:max-w-xs sm:prose-pre:max-w-none text-paragraph text-justify">
 							<Markdown content={explanation as string} components={{ h1: "h3", h2: "h4" }} />
 						</article>
 					))}

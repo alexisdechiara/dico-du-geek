@@ -13,17 +13,17 @@ const { page, icon, header, paragraph, counter } = Astro.props;
 ---
 
 <div class=`relative h-screen w-screen bg-${page}-background flex justify-center items-center snap-center` id={page}>
-	<nav class="absolute h-1/3 right-16 grid">
+	<nav class="absolute h-1/3 right-2 md:right-16 grid">
 		<a href="#definition" class:list={[counter >= 1 ? `bg-${page}-primary` : `bg-${page}-border`, "cursor-pointer list-none w-4 h-4 rounded-full"]}></a>
 		<a href="#etymology" class:list={[counter >= 2 ? `bg-${page}-primary` : `bg-${page}-border`, "cursor-pointer list-none w-4 h-4 rounded-full"]}></a>
 		<a href="#explanation" class:list={[counter >= 3 ? `bg-${page}-primary` : `bg-${page}-border`, "cursor-pointer list-none w-4 h-4 rounded-full"]}></a>
 		<a href="#relation" class:list={[counter >= 4 ? `bg-${page}-primary` : `bg-${page}-border`, "cursor-pointer list-none w-4 h-4 rounded-full"]}></a>
 	</nav>
-	<div class="flex justify-center items-end gap-16 -ml-16">
-		<Icon name={icon} class={`w-64 fill-${page}-primary`} />
-		<div class={`flex flex-col text-${page}-primary w-1/2`}>
-			<h2 class="text-presentation-header font-header">{header}</h2>
-			<p class="text-presentation-paragraph text-justify h-64 flex items-center">{paragraph}</p>
+	<div class="flex flex-col justify-center gap-2 md:gap-6 -ml-2 md:-ml-16 max-w-min">
+		<div class={`flex text-${page}-primary w-fit gap-4 items-center`}>
+			<Icon name={icon} class={`w-7 md:w-20 fill-${page}-primary`} />
+			<h2 class="text-4xl md:text-8xl font-header">{header}</h2>
 		</div>
+		<p class="text-lg font-semibold md:text-presentation-paragraph text-justify flex items-center w-full">{paragraph}</p>
 	</div>
 </div>

@@ -9,6 +9,6 @@ const { page, text, customClass } = Astro.props;
 ---
 
 <span
-	class={`${customClass} flex w-fit cursor-default transition-colors  items-center align-middle text-${page}-secondary bg-${page}-background hover:bg-${page}-hover rounded-full text-tag h-6 px-4`}>
+	class={`${customClass} flex w-fit cursor-default transition-colors items-center align-middle text-${page}-secondary bg-${page}-background hover:bg-${page}-hover rounded-full px-2 text-tag h-6 md:px-4`}>
 	{text}
 </span>
