@@ -17,14 +17,14 @@ const { page } = Astro.props;
 <Header />
 <main class={`flex border-t border-${page}-border w-full h-full grow relative`}>
 	<aside
-		class={`fixed bottom-0 bg-base z-40 inset-x-0 w-full p-4 lg:relative lg:flex lg:flex-col lg:w-[280px] border-t lg:border-t-0 lg:border-r border-${page}-border items-center lg:pt-8 lg:px-4 justify-between`}>
+		class={`fixed bottom-0 bg-base z-40 inset-x-0 w-full p-4 lg:relative lg:flex lg:flex-col lg:w-min border-t lg:border-t-0 lg:border-r border-${page}-border items-center lg:pt-8 justify-between`}>
 		<nav class="flex lg:flex-col gap-4 grow w-full">
 			<Nav text="Définition" link="./definition" icon="search-alt" page={page} selected={page === "definition"} />
 			<Nav text="Étymologie" link="./etymologie" icon="hourglass-end" page={page} selected={page === "etymology"} />
 			<Nav text="Explication" link="./explication" icon="edit" page={page} selected={page === "explanation"} />
 			<Nav text="Relation" link="./relation" icon="link" page={page} selected={page === "relation"} />
 		</nav>
-		<div class="hidden lg:flex flex-col items-center w-max gap-y-1 relative font-sans">
+		<div class="hidden lg:flex flex-col items-center w-max gap-y-1 sticky bottom-4 inset-x-4">
 			<TextSettings page={page} />
 			<ThemeSwitch page={page} />
 			<DarkModeSwitch page={page} />
@@ -34,6 +34,6 @@ const { page } = Astro.props;
 		<section id="content" class="flex flex-col grow p-4 md:p-8 lg:p-16 lg:pt-8 h-full w-full">
 			<slot />
 		</section>
-		<Footer page={page} />
+		<Footer page={page} customClass="mb-20 md:mb-0" />
 	</div>
 </main>

@@ -14,11 +14,11 @@ const words = articles.filter((article, index, array) => article.entry.toLowerCa
 ---
 
 <Lexicon>
-	<div class="flex flex-col justify-start items-start text-primary min-w-[50%]">
-		<h2 class="text-lexicon-letter uppercase -mt-8">{slug}</h2>
+	<div class="flex flex-col justify-start items-start text-primary min-w-[50%] max-w-screen-lg">
+		<h2 class="text-lexicon-letter uppercase -mt-8 font-header">{slug}</h2>
 		{
 			words.map(word => (
-				<a href={`/${word.slug}/definition`} class="text-lexicon-word hover:text-ternary">
+				<a href={`/${word.slug}/definition`} class="text-lexicon-word hover:text-ternary font-header">
 					{word.abbreviation ? word.abbreviation + " (" + word.entry + ") " : word.entry}
 				</a>
 			))
