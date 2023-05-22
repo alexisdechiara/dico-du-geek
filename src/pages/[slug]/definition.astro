@@ -7,6 +7,7 @@ import ContentHeader from "../../components/Content/ContentHeader.astro";
 import { Icon } from "astro-icon";
 import { Markdown } from "astro-remote";
 import { fetchDefinition } from "../../utils/fetchDefinition";
+import { addPreviousSearch } from "../../utils/previousSearch";
 
 let data;
 
@@ -18,6 +19,7 @@ try {
 
 const page = "definition";
 const uniqueArticle = data.articles == null || data.articles.length === 1;
+addPreviousSearch(data.title, slug);
 ---
 
 <Layout title={"Le dico du geek | " + data.title}>
@@ -27,7 +29,7 @@ const uniqueArticle = data.articles == null || data.articles.length === 1;
 			uniqueArticle ? (
 				<ContentHeader
 					page={page}
-					title={data.articles[0].abbreviation ? `${data.articles[0].entry} (${data.articles[0].abbreviation})` : data.articles[0].entry}
+					title={data.articles[0].abbreviation ? `${data.articles[0].abbreviation} (${data.articles[0].entry})` : data.articles[0].entry}
 					pronounciation={data.articles[0].phonetic}
 					tags={data.articles[0].grammatical_class}
 				/>
@@ -42,7 +44,7 @@ const uniqueArticle = data.articles == null || data.articles.length === 1;
 						hidden={uniqueArticle}
 						subtitle
 						page={page}
-						title={article.abbreviation ? `${article.entry} (${article.abbreviation})` : article.entry}
+						title={article.abbreviation ? `${article.abbreviation} (${article.entry})` : article.entry}
 						pronounciation={article.phonetic}
 						tags={article.grammatical_class}
 					/>
@@ -59,24 +61,26 @@ const uniqueArticle = data.articles == null || data.articles.length === 1;
 								</dd>
 							))}
 						</dl>
-						<div class="relative p-4 pr-8 rounded border-l-4 border-definition-ternary text-definition-secondary bg-definition-background">
-							<h2 class="text-lg font-bold pb-2"> Exemple </h2>
-							{article.examples.map(examples => (
-								<span
-									class:list={[
-										{ "list-item list-decimal list-inside": article.definitions.length > 1 },
-										"prose prose-definition italic tracking-tight prose-p:inline",
-									]}>
-									<Markdown content={examples as string} />
-								</span>
-							))}
-							<a
-								href="./explication"
-								class="flex w-fit items-center ml-auto justify-end gap-x-2 font-semibold cursor-pointer hover:text-definition-primary transition-colors  group">
-								Voir plus
-								<Icon name="arrow-right" class="w-4 h-4 fill-definition-secondary group-hover:fill-definition-primary" />
-							</a>
-						</div>
+						{article.examples.length > 0 && (
+							<div class="relative p-4 pr-8 rounded border-l-4 border-definition-ternary text-definition-secondary bg-definition-background">
+								<h2 class="text-lg font-bold pb-2"> Exemple </h2>
+								{article.examples.map(examples => (
+									<span
+										class:list={[
+											{ "list-item list-decimal list-inside": article.definitions.length > 1 },
+											"prose prose-definition italic tracking-tight prose-p:inline",
+										]}>
+										<Markdown content={examples as string} />
+									</span>
+								))}
+								<a
+									href="./explication#exemples"
+									class="flex w-fit items-center ml-auto justify-end gap-x-2 font-semibold cursor-pointer hover:text-definition-primary transition-colors  group">
+									Voir plus
+									<Icon name="arrow-right" class="w-4 h-4 fill-definition-secondary group-hover:fill-definition-primary" />
+								</a>
+							</div>
+						)}
 					</div>
 				</article>
 			))

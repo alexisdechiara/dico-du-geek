@@ -8,7 +8,7 @@ export interface Props {
 const { page, size = "md" } = Astro.props;
 ---
 
-<div class={`grid grid-cols-2 w-full z-10 rounded-lg bg-${page}-background ${size === "lg" ? "py-3 px-4" : "py-1.5 px-2"}`}>
+<div class={`grid grid-cols-2 w-full rounded-lg bg-${page}-background ${size === "lg" ? "py-3 px-4" : "py-1.5 px-2"}`}>
 	<SwitchButton page={page} label="Sans" value="sans" name="fontMode" size={size} />
 	<SwitchButton page={page} label="Serif" value="serif" name="fontMode" serif size={size} />
 </div>

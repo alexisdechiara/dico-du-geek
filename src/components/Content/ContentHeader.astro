@@ -17,15 +17,15 @@ const { page, title, pronounciation, tags, subtitle, hidden } = Astro.props;
 	<div class="flex gap-x-4 items-center">
 		{
 			subtitle == null || subtitle === false ? (
-				<h1 class={`whitespace-pre shrink text-4xl md:text-entry font-header text-${page}-ternary transition-colors`}>{title}</h1>
+				<h1 class={`text-4xl md:text-entry font-header text-${page}-ternary transition-colors`}>{title}</h1>
 			) : (
-				<h2 class={`whitespace-pre text-2xl md:text-4xl font-header text-${page}-ternary transition-colors`}>{title}</h2>
+				<h2 class={`text-2xl md:text-4xl font-header text-${page}-ternary transition-colors`}>{title}</h2>
 			)
 		}
 		{
 			pronounciation != null && (
 				<div class="flex gap-2 items-center">
-					<span class={`p-2 bg-${page}-background rounded-full hover:bg-${page}-hover transition-colors `}>
+					<span class={`p-2 bg-${page}-background rounded-full`}>
 						<Icon name="volume" class={`w-5 h-5 fill-${page}-secondary`} />
 					</span>
 					<span class={`text-${page}-ternary text-tag`}>/{pronounciation}/</span>

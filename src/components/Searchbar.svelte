@@ -100,11 +100,7 @@
 </script>
 
 <svelte:window on:keydown={handleKeydown} />
-<div
-	use:clickOutside
-	on:click_outside={HideResult}
-	class="relative grow max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl {size === 'lg' ? 'w-3/4 md:w-2/3 lg:w-1/2' : 'w-1/3'}"
->
+<div use:clickOutside on:click_outside={HideResult} class="relative grow {size === 'lg' ? 'w-full' : 'w-1/3 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl'}">
 	<label for="searchInput" class="mb-2 text-sm font-medium text-primary sr-only"> Rechercher dans le dictionnaire</label>
 	<form on:submit|preventDefault={handleClickLink} class="flex justify-between items-center bg-base border border-border text-primary {formClass}">
 		<input

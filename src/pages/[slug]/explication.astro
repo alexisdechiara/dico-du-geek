@@ -6,6 +6,7 @@ import Content from "../../layouts/Content.astro";
 import ContentHeader from "../../components/Content/ContentHeader.astro";
 import { Markdown } from "astro-remote";
 import { fetchExplanation } from "../../utils/fetchExplanation";
+import { addPreviousSearch } from "../../utils/previousSearch";
 import Tag from "../../components/Tag.astro";
 
 let data;
@@ -17,6 +18,7 @@ try {
 }
 const page = "explanation";
 const uniqueArticle = data.articles == null || data.articles.length === 1;
+addPreviousSearch(data.title, slug);
 ---
 
 <Layout title={"Le dico du geek | " + data.title}>
@@ -36,7 +38,7 @@ const uniqueArticle = data.articles == null || data.articles.length === 1;
 		{
 			data.articles.map(article => (
 				<div class="mb-6">
-					<ContentHeader hidden={uniqueArticle} page={page} title={article.entry} subtitle/>
+					<ContentHeader hidden={uniqueArticle} page={page} title={article.abbreviation ? `${article.abbreviation} (${article.entry})` : article.entry} subtitle/>
 					{article.explanations.map((explanation, index) => (
 						<>
 							{

@@ -10,15 +10,23 @@ import FontSwitch from "../components/Settings/FontSwitch.astro";
 import TextSizeCounter from "../components/Settings/TextSizeCounter.astro";
 import ContentHeader from "../components/Content/ContentHeader.astro";
 import Presentation from "../components/presentation.astro";
+import Tag from "../components/Tag.astro";
+import { getPreviousSearch } from "../utils/previousSearch";
 
 export const prerender = true;
+const tags = getPreviousSearch() || [];
 ---
 
 <Layout title="Le dico du geek | Accueil">
 	<Header homepage />
 	<main class="grow overflow-hidden">
 		<div class="flex justify-center pt-24 pb-48 bg-primary dark:bg-background">
-			<Searchbar size="lg" client:load />
+			<div class="flex flex-col gap-y-4 w-3/4 md:w-2/3 lg:w-1/2">
+				<Searchbar size="lg" client:load />
+				<div class="flex gap-2 overflow-x-auto scrollbar-hide touch-pan-x">
+					{tags.map(tag => <Tag text={tag.title} slug={tag.slug} />)}
+				</div>
+			</div>
 		</div>
 		<div class="snap-y snap-mandatory h-screen overflow-x-hidden scrollbar-hide">
 			<Presentation
@@ -64,7 +72,7 @@ export const prerender = true;
 				class="absolute lg:-right-16 w-[1000px] -translate-x-1/2 md:translate-x-0 -translate-y-16 md:translate-y-0 md:left-auto left-1/2 md:w-[896px] top-0 md:top-60 lg:top-0">
 				<div class="relative">
 					<Icon name="homepage/blob-themes" class="fill-relation-background -z-10 rotate-180 transform scale-y-50 md:scale-y-100" />
-					<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-sm md:max-w-lg z-40">
+					<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-sm md:max-w-lg z-50">
 						<ThemeSwitch page="relation" size="lg" />
 						<DarkModeSwitch page="relation" size="lg" />
 					</div>
@@ -87,14 +95,14 @@ export const prerender = true;
 			<div class="absolute -bottom-32 md:bottom-0 md:-right-24 md:left-auto left-1/2 lg:right-auto lg:-left-24 w-[1000px] md:w-[896px] -translate-x-1/2 md:translate-x-0">
 				<div class="relative">
 					<Icon name="homepage/blob-fonts" class="fill-etymology-background -z-10 md:rotate-180 lg:rotate-0 transform scale-y-50 md:scale-y-100" />
-					<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-xs w-full md:max-w-none md:w-[512px] z-40">
+					<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-xs w-full md:max-w-none md:w-[512px] z-50">
 						<TextSizeCounter page="etymology" size="lg" />
 						<FontSwitch page="etymology" size="lg" />
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="flex flex-col max-w-min items-center rounded-lg shadow-sm relative left-1/2 -translate-x-1/2 p-8 border border-slate-200 mb-32">
+		<div class="flex flex-col max-w-min items-center rounded-lg shadow-sm relative left-1/2 -translate-x-1/2 p-8 border border-border mb-32">
 			<ContentHeader page="definition" title="Lorem Ipsum" pronounciation="lɔʁɛm‿ ipsɔm" tags={["Essayez", "par", "vous", "même"]} />
 			<article class="prose text-primary text-paragraph">
 				<p>
@@ -119,6 +127,7 @@ export const prerender = true;
 <style>
 	.scrollbar-hide::-webkit-scrollbar {
 		display: none;
+		-webkit-overflow-scrolling: touch;
 	}
 
 	/* For IE, Edge and Firefox */
