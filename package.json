@@ -21,6 +21,8 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.9",
-    "vite-plugin-browser-sync": "^1.0.3"
+    "@vite-pwa/astro": "^0.0.5",
+    "vite-plugin-browser-sync": "^1.0.3",
+    "vite-plugin-pwa": "^0.15.0"
   }
 }
