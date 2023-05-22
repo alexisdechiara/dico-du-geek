@@ -2,21 +2,35 @@
 import Header from "../components/Header.astro";
 import Layout from "../layouts/Layout.astro";
 import Footer from "../components/Footer.astro";
+import { LicensesReport } from "astro-licenses-report";
 ---
 
 <Layout title="Le dico du geek | Mentions légales">
 	<Header />
 	<main class="grow">
-		<section class="flex flex-col px-16 gap-y-8 text-paragraph text-primary">
+		<section class="flex flex-col px-4 md:px-16 gap-y-8 text-paragraph text-primary">
 			<h1 class="text-4xl font-bold text-center py-8">Mentions légales</h1>
 			<div>
 				<h2 class="text-2xl font-bold pb-4">Créateur du site et licence</h2>
-				<p>Le site "Le dico du Geek" à été réalisé par <b>Alexis De Chiara</b> sous licence <b>MIT</b></p>
+				<p class="prose">
+					Le site "Le dico du Geek" à été réalisé par <b>Alexis De Chiara</b> sous licence <b>MIT</b>, le code source est disponible sur <a
+						href="https://github.com/alexisdechiara/dico-du-geek"
+						target="_blank"
+						rel="noopener noreferrer">Github</a
+					>
+				</p>
 			</div>
 			<div>
 				<h2 class="text-2xl font-bold pb-4">Propriétés intellectuelle</h2>
-				<p>
-					Icons de Uicons réalisé par <a class="underline text-ternary hover:opacity-75" href="https://www.flaticon.com/uicons">Flaticon</a>
+				<p class="prose">
+					Bibliothèque d'icônes "Uicons" réalisé par <a href="https://www.flaticon.com/uicons" title="bibliothèque d'icônes" target="_blank" rel="noopener noreferrer"
+						>Flaticon</a
+					>
+				</p>
+				<p class="prose">
+					Logo du site réalisé par <a href="https://www.flaticon.com/fr/icones-gratuites/reference" title="référence icônes" target="_blank" rel="noopener noreferrer"
+						>Bombasticon Studio - Flaticon</a
+					>
 				</p>
 			</div>
 			<div>
@@ -30,7 +44,44 @@ import Footer from "../components/Footer.astro";
 				<br />
 				<p>OVH SAS est une filiale de la société OVH Groupe SA, société immatriculée au RCS de Lille sous le numéro 537 407 926 sise 2, rue Kellermann, 59100 Roubaix.</p>
 			</div>
+			<h2 class="text-2xl font-bold">Licenses et dépendances</h2>
+			<div class="overflow-auto w-full mb-16 prose">
+				<LicensesReport nameText="Nom" authorText="Auteur" licenseText="License" linkText="URL" />
+			</div>
 		</section>
 	</main>
 	<Footer />
 </Layout>
+
+<style>
+	.table {
+		@apply w-full overflow-hidden border border-border rounded-lg table-auto font-medium;
+	}
+	.thead {
+		@apply table-header-group uppercase bg-primary text-background font-bold leading-[3] text-center;
+	}
+	.tr {
+		@apply py-2 table-row;
+	}
+	.tr:not(:first-of-type) {
+		@apply border-b-2 border-border;
+	}
+	.tr:nth-of-type(2n + 2) {
+		@apply bg-background;
+	}
+	.th {
+		@apply table-cell;
+	}
+	.td {
+		@apply table-cell leading-loose px-2;
+	}
+	.td:nth-of-type(2) {
+		@apply text-center;
+	}
+	.td:nth-of-type(3) {
+		@apply text-center;
+	}
+	.tbody {
+		@apply table-row-group;
+	}
+</style>
