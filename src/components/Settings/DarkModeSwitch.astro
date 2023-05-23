@@ -28,7 +28,7 @@ const { page, size = "md" } = Astro.props;
 				document.documentElement.setAttribute("data-mode", "light");
 			} else if (
 				localStorage.darkmode === "dark" ||
-				(("darkmode" in localStorage || localStorage.darkmode === "auto") && window.matchMedia("(prefers-color-scheme: dark)").matches)
+				("darkmode" in localStorage && localStorage.darkmode === "auto" && window.matchMedia("(prefers-color-scheme: dark)").matches)
 			) {
 				document.documentElement.setAttribute("data-mode", "dark");
 			} else {

@@ -77,8 +77,10 @@
 	};
 
 	let selectedLink = -1;
+	let keysPressed = [];
 
-	function handleKeydown(event) {
+	function handleKeyDown(event) {
+		keysPressed[event.key] = true;
 		if (isVisible && words && words.length > 0) {
 			let links = document.getElementsByClassName("searchbar-link");
 			if (event.key === "ArrowDown") {
@@ -89,17 +91,24 @@
 				hideScrollBar();
 				selectedLink = selectedLink > 0 ? selectedLink - 1 : links.length - 1;
 				links[selectedLink].focus();
-			} else {
+			} else if (event.key !== "Enter" && event.key !== "Tab") {
+				window.document.getElementById("searchInput").focus();
+				selectedLink = -1;
 				showScrollBar();
 			}
+		} else {
+			if ((keysPressed["Control"] && keysPressed["Shift"] && keysPressed["K"]) || event.key === "/") {
+				window.document.getElementById("searchInput").focus();
+			}
 		}
-		if (event.key !== "ArrowDown" && event.key !== "ArrowUp" && event.key !== "Enter" && event.key !== "Tab") {
-			window.document.getElementById("searchInput").focus();
-		}
+	}
+
+	function handleKeyUp(event) {
+		delete keysPressed[event.key];
 	}
 </script>
 
-<svelte:window on:keydown={handleKeydown} />
+<svelte:window on:keydown={handleKeyDown} on:keyup={handleKeyUp} />
 <div use:clickOutside on:click_outside={HideResult} class="relative grow {size === 'lg' ? 'w-full' : 'w-1/3 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl'}">
 	<label for="searchInput" class="mb-2 text-sm font-medium text-primary sr-only"> Rechercher dans le dictionnaire</label>
 	<form on:submit|preventDefault={handleClickLink} class="flex justify-between items-center bg-base border border-border text-primary {formClass}">
@@ -113,7 +122,6 @@
 			on:input={handleSearch}
 			on:focus={handleSearchFocus}
 		/>
-
 		<button
 			type="submit"
 			aria-label="rechercher"
@@ -131,7 +139,7 @@
 				<li>
 					<a
 						href={`/${word.slug}`}
-						class="searchbar-link flex text-primary focus:bg-background focus:text-secondary focus:dark-text-dark-secondary hover:bg-background hover:text-secondary hover:dark-text-dark-secondary rounded-md {linkClass}"
+						class="searchbar-link flex text-primary focus-visible:outline-0 focus:bg-background focus:text-secondary focus:dark-text-dark-secondary hover:bg-background hover:text-secondary hover:dark-text-dark-secondary rounded-md {linkClass}"
 						>{word.abbreviation ? word.abbreviation + " (" + word.entry + ") " : word.entry}</a
 					>
 				</li>

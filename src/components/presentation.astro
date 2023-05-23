@@ -24,6 +24,6 @@ const { page, icon, header, paragraph, counter } = Astro.props;
 			<Icon name={icon} class={`w-7 md:w-20 fill-${page}-primary`} />
 			<h2 class="text-4xl md:text-8xl font-header">{header}</h2>
 		</div>
-		<p class="text-lg font-semibold md:text-presentation-paragraph text-justify flex items-center w-full">{paragraph}</p>
+		<p class={`text-lg font-semibold md:text-presentation-paragraph text-justify flex items-center w-full text-${page}-primary`}>{paragraph}</p>
 	</div>
 </div>
