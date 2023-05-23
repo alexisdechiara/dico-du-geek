@@ -5,6 +5,7 @@ export interface Props {
 }
 
 const { page, customClass } = Astro.props;
+const linkClass = [page ? `hover:text-${page}-ternary` : "hover:text-ternary", "underline transition-colors"];
 ---
 
 <footer
@@ -13,7 +14,7 @@ const { page, customClass } = Astro.props;
 		page ? `text-${page}-primary border-${page}-border` : "text-primary border-border",
 		"flex w-full justify-between items-center text-footer text-center px-4 h-24 md:h-8 border-t",
 	]}>
-	<span>Site sous licence MIT</span>
-	<a href="/mentions-legales" class="underline">Mentions légales</a>
+	<a href={import.meta.env.FORM_URL} class:list={linkClass}>Formulaire de demande de mot</a>
+	<a href="/mentions-legales" class:list={linkClass}>Mentions légales</a>
 	<span>Réalisé par Alexis De Chiara</span>
 </footer>

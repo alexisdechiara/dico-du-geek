@@ -20,7 +20,7 @@ export const prerender = true;
 					class="rounded-md bg-secondary px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-ternary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors"
 					>Retour à l'accueil</a
 				>
-				<a href="/" class="group inline-flex gap-2 text-sm font-semibold text-secondary hover:text-ternary transition-colors"
+				<a href={import.meta.env.FORM_URL} class="group inline-flex gap-2 text-sm font-semibold text-secondary hover:text-ternary transition-colors"
 					>Demander l'ajout d'un nouveau mot <Icon name="arrow-right" class="w-4 fill-secondary group-hover:fill-ternary" /></a
 				>
 			</div>

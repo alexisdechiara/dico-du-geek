@@ -12,7 +12,7 @@ export interface Props {
 const { page, icon, header, paragraph, counter } = Astro.props;
 ---
 
-<div class=`relative h-screen w-screen bg-${page}-background flex justify-center items-center snap-center` id={page}>
+<div class={`relative h-screen w-screen bg-${page}-background flex justify-center items-center snap-center presentations`} id={page}>
 	<nav class="absolute h-1/3 right-2 md:right-16 grid">
 		<a href="#definition" class:list={[counter >= 1 ? `bg-${page}-primary` : `bg-${page}-border`, "cursor-pointer list-none w-4 h-4 rounded-full"]}></a>
 		<a href="#etymology" class:list={[counter >= 2 ? `bg-${page}-primary` : `bg-${page}-border`, "cursor-pointer list-none w-4 h-4 rounded-full"]}></a>
