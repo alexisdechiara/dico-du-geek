@@ -25,7 +25,7 @@ const { homepage } = Astro.props;
 			</div>
 		</div>
 	</a>
-	{!homepage && <Searchbar client:load />}
+	{!homepage && <Searchbar url={import.meta.env.API_URL} client:load />}
 
 	<div class="relative flex w-fit lg:w-[250px] h-full items-center justify-end gap-8 sm:px-8">
 		{homepage && <Icon name="bookmark" class="absolute left-0 top-0 h-12 sm:h-[75px] hidden sm:block" />}

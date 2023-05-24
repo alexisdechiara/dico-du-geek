@@ -1,6 +1,6 @@
 /// <reference types="astro/client" />
 interface ImportMetaEnv {
-  readonly DIRECTUS_API: string;
+  readonly API_URL: string;
   readonly FORM_URL: string;
   readonly SITE_URL: string;
 }

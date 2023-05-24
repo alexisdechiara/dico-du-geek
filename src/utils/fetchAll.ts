@@ -1,19 +1,37 @@
-export async function fetchAll(value: string) {
-    const response = await fetch("http://localhost:8055/graphql", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            query: `
-                query getAll($value: String){
-                    article (search: $value, sort: "entree", filter: {status: {_eq: "published"}, slug: {_nnull:true}}) {
+export async function fetchAllforLexical(slug: string) {
+    const query = `
+                query getAll($slug: String){
+                    article (search: $slug, sort: "entree", filter: {status: {_eq: "published"}, slug: {_nnull:true}}) {
                         entree
                         abreviation
                         slug
                     }
                 }
-            `,
+            `;
+    return await fetchAll(slug, import.meta.env.API_URL, query);
+}
+
+export async function fetchAllForSearchbar(slug: string, url: string) {
+    const query = `
+                query getAll($slug: String){
+                    article (search: $slug, sort: "entree", filter: {status: {_eq: "published"}, slug: {_nnull:true}}, limit: 5) {
+                        entree
+                        abreviation
+                        slug
+                    }
+                }
+            `;
+    return await fetchAll(slug, url, query);
+}
+
+export async function fetchAll(slug: string, url: string, query: string) {
+    const response = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            query: query,
             variables: {
-                value: value
+                slug: slug,
             },
         }),
     });

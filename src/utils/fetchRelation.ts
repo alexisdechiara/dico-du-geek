@@ -1,7 +1,7 @@
 import { empty } from "svelte/internal";
 
 export async function fetchRelation(slug: string) {
-    const response = await fetch(import.meta.env.DIRECTUS_API, {
+    const response = await fetch(import.meta.env.API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

@@ -1,7 +1,8 @@
 <script>
-	import { fetchAll } from "../utils/fetchAll";
+	import { fetchAllForSearchbar } from "../utils/fetchAll";
 	import { clickOutside } from "../utils/clickOutside.ts";
 	export let size = "md";
+	export let url;
 
 	let searchValue = "";
 	let words = [];
@@ -41,7 +42,7 @@
 
 	async function handleSearch() {
 		if (searchValue !== "") {
-			words = await fetchAll(searchValue);
+			words = await fetchAllForSearchbar(searchValue, url);
 		} else {
 			words = [];
 		}

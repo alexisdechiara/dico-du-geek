@@ -1,6 +1,6 @@
 ---
 import Lexicon from "../../layouts/Lexicon.astro";
-import { fetchAll } from "../../utils/fetchAll";
+import { fetchAllforLexical } from "../../utils/fetchAll";
 
 const alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
 const { slug } = Astro.params;
@@ -9,7 +9,7 @@ if (!alphabet.some(letter => letter.includes(slug.toLowerCase()))) {
 	return Astro.redirect("/lexique");
 }
 
-const articles = await fetchAll(slug);
+const articles = await fetchAllforLexical(slug);
 const words = articles.filter((article, index, array) => article.entry.toLowerCase().startsWith(slug) && array.findIndex(a => a.entry === article.entry) === index);
 ---
 

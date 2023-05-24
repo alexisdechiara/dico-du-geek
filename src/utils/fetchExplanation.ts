@@ -1,5 +1,5 @@
 export async function fetchExplanation(slug: string) {
-    const response = await fetch(import.meta.env.DIRECTUS_API, {
+    const response = await fetch(import.meta.env.API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
