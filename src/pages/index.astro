@@ -28,37 +28,31 @@ const tags = getPreviousSearch() || [];
 				</div>
 			</div>
 		</div>
-		<div class="snap-y snap-mandatory presentation-container">
-			<Presentation
-				page="definition"
-				icon="search-alt-bold"
-				header="Définition"
-				paragraph={`Plongez dans l'univers des termes liés à la culture geek et à l'univers numérique en consultant notre dictionnaire en ligne, qui vous propose des définitions
+		<Presentation
+			page="definition"
+			icon="search-alt-bold"
+			header="Définition"
+			paragraph={`Plongez dans l'univers des termes liés à la culture geek et à l'univers numérique en consultant notre dictionnaire en ligne, qui vous propose des définitions
 				claires et concises sur tout ce qui concerne les jeux vidéo, les films, les séries, les technologies, les mèmes, les réseaux sociaux, internet et bien plus encore.`}
-				counter={1}
-			/>
-			<Presentation
-				page="etymology"
-				icon="hourglass-end-bold"
-				header="Étymologie"
-				paragraph={`La section d'histoire des mots vous permet d'explorer l'évolution des termes d’internet. Découvrez les origines, les significations antérieures et les changements de sens qui ont eu lieu au fil du temps. De la racine latine ou grecque d'un mot à son utilisation contemporaine, explorez l'histoire linguistique de chaque terme.`}
-				counter={2}
-			/>
-			<Presentation
-				page="explanation"
-				icon="edit-bold"
-				header="Explication"
-				paragraph={`Découvrez comment chaque mot peut être utilisé dans des contextes variés grâce à la section d'exemples concrets, pour une compréhension complète de leur signification et une immersion dans leur utilisation.`}
-				counter={3}
-			/>
-			<Presentation
-				page="relation"
-				icon="link-bold"
-				header="Relation"
-				paragraph={`Plongez-vous dans un voyage à travers les connexions qui façonnent la culture geek et laissez-vous surprendre par les associations inattendues qui vous attendent.`}
-				counter={4}
-			/>
-		</div>
+		/>
+		<Presentation
+			page="etymology"
+			icon="hourglass-end-bold"
+			header="Étymologie"
+			paragraph={`La section d'histoire des mots vous permet d'explorer l'évolution des termes d’internet. Découvrez les origines, les significations antérieures et les changements de sens qui ont eu lieu au fil du temps. De la racine latine ou grecque d'un mot à son utilisation contemporaine, explorez l'histoire linguistique de chaque terme.`}
+		/>
+		<Presentation
+			page="explanation"
+			icon="edit-bold"
+			header="Explication"
+			paragraph={`Découvrez comment chaque mot peut être utilisé dans des contextes variés grâce à la section d'exemples concrets, pour une compréhension complète de leur signification et une immersion dans leur utilisation.`}
+		/>
+		<Presentation
+			page="relation"
+			icon="link-bold"
+			header="Relation"
+			paragraph={`Plongez-vous dans un voyage à travers les connexions qui façonnent la culture geek et laissez-vous surprendre par les associations inattendues qui vous attendent.`}
+		/>
 		<div class="relative h-[1464px] md:h-[2164px] lg:h-[1664px]">
 			<span
 				class="absolute text-relation-primary dark:text-relation-secondary top-32 md:top-64 lg:top-[500px] left-14 md:left-28 lg:left-20 font-marker text-6xl before:block before:absolute before:h-2/3 before:-inset-1 before:top-8 before:-rotate-[3deg] before:bg-relation-border before:-z-10"
