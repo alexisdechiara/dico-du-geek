@@ -20,7 +20,7 @@ const uniqueArticle = data.articles == null || data.articles.length === 1;
 addPreviousSearch(data.title, slug);
 ---
 
-<Layout title={"Le dico du geek | " + data.title}>
+<Layout title={data.title}>
 	<Content page={page}>
 		<h1 class="sr-only">{data.title}</h1>
 		{

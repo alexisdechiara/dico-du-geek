@@ -1,15 +1,17 @@
 ---
 import { pwaInfo } from "virtual:pwa-info";
+import { SEO } from "astro-seo";
 export interface Props {
 	title: string;
+	isHomepage?: boolean;
 }
 
-const { title } = Astro.props;
+const { title, isHomepage = false } = Astro.props;
 import "../styles/base.css";
 ---
 
 <!DOCTYPE html>
-<html lang="fr" data-theme="polychrome" data-mode="dark" class="scroll-smooth">
+<html lang="fr" data-theme="monochrome" data-mode="light" class="scroll-smooth">
 	<head>
 		<script is:inline>
 			if (!("theme" in localStorage) || localStorage.theme === "polychrome") {
@@ -22,26 +24,51 @@ import "../styles/base.css";
 			} else {
 				document.documentElement.setAttribute("data-font", "serif");
 			}
-			if (localStorage.darkmode === "dark" || ("darkmode" in localStorage && localStorage.darkmode === "auto" && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-				document.documentElement.setAttribute("data-mode", "dark");
-			} else {
-				document.documentElement.setAttribute("data-mode", "light");
-			}
+			const darkMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+			darkMediaQuery.addEventListener("change", event => {
+				if (localStorage.darkmode === "dark" || ("darkmode" in localStorage && localStorage.darkmode === "auto" && event.matches)) {
+					document.documentElement.setAttribute("data-mode", "dark");
+				} else {
+					document.documentElement.setAttribute("data-mode", "light");
+				}
+			});
 		</script>
 
+		<!-- SEO -->
+		<SEO
+			title={`Le dico du geek ${!isHomepage ? " | " + title : ""}`}
+			description="Le dictionnaire de la culture geek et plus"
+			charset="UTF-8"
+			openGraph={{
+				basic: {
+					title: `Le dico du geek ${!isHomepage ? " - " + title : ""}`,
+					type: "website",
+					image: "/img/le-dico-du-geek-logotype-dark.png",
+					url: "ledicodugeek.geekly.blog",
+				},
+				optional: {
+					locale: "fr",
+				},
+			}}
+			twitter={{
+				title: `Le dico du geek ${!isHomepage ? " - " + title : ""}`,
+				description: "Le dictionnaire de la culture geek et plus",
+				card: `${isHomepage ? "summary_large_image" : "summary"}`,
+				image: `${isHomepage ? "/img/le-dico-du-geek-logotype-dark.png" : "/favicon/pwa-icon.png"}`,
+			}}
+		/>
+
 		<!-- PWA -->
-		<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="128x128" />
-		<link rel="mask-icon" href="/mask-icon.svg" color="#1E3A8A" />
+		<link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" sizes="128x128" />
+		<link rel="mask-icon" href="/favicon/pwa-icon.png" color="#121C40" />
 		<meta name="theme-color" content="#121C40" />
 		<!-- <script src="/src/pwa.ts"></script> -->
 		{pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} />}
-		<!-- PWA -->
 
-		<meta charset="UTF-8" />
+		<!-- Other -->
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/favicon/favicon-light.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
 	</head>
 	<body class="flex flex-col min-h-screen bg-base">
 		<slot />
