@@ -8,7 +8,7 @@ export interface Props {
 
 const { page, text, customClass, slug } = Astro.props;
 const tagClass = `${customClass} flex w-fit cursor-default transition-colors items-center align-middle ${
-	page ? `text-${page}-secondary bg-${page}-background hover:bg-${page}-hover` : "text-secondary bg-background hover:bg-hover"
+	page ? `text-${page}-secondary bg-${page}-background hover:bg-${page}-hover` : "text-secondary bg-background dark:bg-border hover:bg-hover dark:hover:bg-ternary"
 } rounded-full px-2 text-tag h-6 md:px-4 w-fit whitespace-nowrap`;
 ---
 

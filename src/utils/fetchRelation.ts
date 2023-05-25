@@ -1,26 +1,26 @@
-import { empty } from "svelte/internal";
-
 export async function fetchRelation(slug: string) {
     const response = await fetch(import.meta.env.API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
             query: `
-                query getRelation($slug: String){
+                query getRelation($slug: String) {
                     page(filter: { articles: { slug: { _eq: $slug } } }) {
                         titre
                         articles(filter: { status: { _eq: "published" } }) {
                             entree
                             abreviation
                             relations {
-                                type
-                                article {
-                                    entree
-                                    abreviation
-                                    slug
-                                    sens {
-                                        sens_id (filter: {status: {_eq: "published"}}) {
-                                            definition
+                                relation_id {
+                                    type
+                                    article {
+                                        entree
+                                        abreviation
+                                        slug
+                                        sens {
+                                            sens_id (filter: {status: {_eq: "published"}}) {
+                                                definition
+                                            }
                                         }
                                     }
                                 }
@@ -62,22 +62,22 @@ export async function fetchRelation(slug: string) {
             relations: Array<Relation>()
         };
         article.relations.forEach(relation => {
-            if (relation.type && relation.article) {
+            if (relation.relation_id != null && (relation.relation_id.type && relation.relation_id.article)) {
                 let relatedArticle: Article = {
-                    entry: relation.article.entree,
-                    slug: relation.article.slug,
-                    abbreviation: relation.article.abreviation,
+                    entry: relation.relation_id.article.entree,
+                    slug: relation.relation_id.article.slug,
+                    abbreviation: relation.relation_id.article.abreviation,
                     definitions: Array<String>()
                 }
 
-                relation.article.sens.forEach(sens => {
+                relation.relation_id.article.sens.forEach(sens => {
                     if (sens.sens_id != null) {
                         relatedArticle.definitions.push(sens.sens_id.definition);
                     }
                 })
 
                 let related: Relation = {
-                    type: relation.type,
+                    type: relation.relation_id.type,
                     article: relatedArticle
                 }
 

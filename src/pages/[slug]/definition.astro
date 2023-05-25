@@ -39,7 +39,7 @@ addPreviousSearch(data.title, slug);
 		}
 		{
 			data.articles.map(article => (
-				<article class="mb-6">
+				<article class="mb-2">
 					<ContentHeader
 						hidden={uniqueArticle}
 						subtitle
@@ -64,18 +64,18 @@ addPreviousSearch(data.title, slug);
 						{article.examples.length > 0 && (
 							<div class="relative p-4 pr-8 rounded border-l-4 border-definition-ternary text-definition-secondary bg-definition-background">
 								<h2 class="text-lg font-bold pb-2"> Exemple </h2>
-								{article.examples.map(examples => (
+								{article.examples.map(example => (
 									<span
 										class:list={[
 											{ "list-item list-decimal list-inside": article.definitions.length > 1 },
-											"prose prose-definition italic tracking-tight prose-p:inline",
+											"prose prose-definition italic tracking-tight prose-p:inline leading-tight mb-2",
 										]}>
-										<Markdown content={examples as string} />
+										<Markdown content={example as string} />
 									</span>
 								))}
 								<a
 									href="./explication#exemples"
-									class="flex w-fit items-center ml-auto justify-end gap-x-2 font-semibold cursor-pointer hover:text-definition-primary transition-colors  group">
+									class="flex w-fit items-center ml-auto justify-end gap-x-2 font-semibold cursor-pointer hover:text-definition-primary transition-colors group">
 									Voir plus
 									<Icon name="arrow-right" class="w-4 h-4 fill-definition-secondary group-hover:fill-definition-primary" />
 								</a>

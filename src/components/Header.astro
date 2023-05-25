@@ -32,8 +32,8 @@ const { homepage } = Astro.props;
 		<a
 			href="/lexique"
 			class:list={[
-				homepage ? "text-background hover:bg-secondary dark:text-primary hover:dark:bg-hover" : "text-primary hover:bg-hover hover:dark:bg-ternary",
-				"px-2 py-2 uppercase text-base text-header rounded-md transition-colors ",
+				homepage ? "text-background hover:bg-hover hover:text-secondary" : "text-primary hover:bg-secondary hover:text-background",
+				"px-2 py-2 uppercase text-base text-header rounded-md transition-colors dark:text-primary hover:dark:bg-secondary hover:dark:text-background",
 			]}>
 			Lexique
 		</a>

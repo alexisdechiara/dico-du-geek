@@ -3,7 +3,7 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-darkMode: ['class', '[data-mode="dark"]'],
+	darkMode: ['class', '[data-mode="dark"]'],
 	theme: {
 		fontFamily: {
 			sans: ["Work Sans", ...defaultTheme.fontFamily.sans],
@@ -107,7 +107,7 @@ darkMode: ['class', '[data-mode="dark"]'],
 				DEFAULT: {
 					css: {
 						p: {
-							display:'inline-block'
+							display: 'inline-block'
 						},
 						maxWidth: 'none',
 						'--tw-prose-body': theme('colors[primary]'),
@@ -127,7 +127,7 @@ darkMode: ['class', '[data-mode="dark"]'],
 						'--tw-prose-th-borders': theme('colors[border]'),
 						'--tw-prose-td-borders': theme('colors[background]'),
 
-						'--tw-prose-invert-body':theme('colors[primary]'),
+						'--tw-prose-invert-body': theme('colors[primary]'),
 						'--tw-prose-invert-headings': theme('colors[ternary]'),
 						'--tw-prose-invert-lead': theme('colors[ternary]'),
 						'--tw-prose-invert-links': theme('colors[ternary]'),
@@ -143,7 +143,7 @@ darkMode: ['class', '[data-mode="dark"]'],
 						'--tw-prose-invert-pre-bg': theme('colors[primary]'),
 						'--tw-prose-invert-th-borders': theme('colors[border]'),
 						'--tw-prose-invert-td-borders': theme('colors[background]'),
-						
+
 					},
 				},
 				definition: {
@@ -165,7 +165,7 @@ darkMode: ['class', '[data-mode="dark"]'],
 						'--tw-prose-th-borders': theme('colors.definition[border]'),
 						'--tw-prose-td-borders': theme('colors.definition[background]'),
 
-						'--tw-prose-invert-body':theme('colors.definition[primary]'),
+						'--tw-prose-invert-body': theme('colors.definition[primary]'),
 						'--tw-prose-invert-headings': theme('colors.definition[ternary]'),
 						'--tw-prose-invert-lead': theme('colors.definition[ternary]'),
 						'--tw-prose-invert-links': theme('colors.definition[ternary]'),
@@ -202,7 +202,7 @@ darkMode: ['class', '[data-mode="dark"]'],
 						'--tw-prose-th-borders': theme('colors.etymology[border]'),
 						'--tw-prose-td-borders': theme('colors.etymology[background]'),
 
-						'--tw-prose-invert-body':theme('colors.etymology[primary]'),
+						'--tw-prose-invert-body': theme('colors.etymology[primary]'),
 						'--tw-prose-invert-headings': theme('colors.etymology[ternary]'),
 						'--tw-prose-invert-lead': theme('colors.etymology[ternary]'),
 						'--tw-prose-invert-links': theme('colors.etymology[ternary]'),
@@ -239,7 +239,7 @@ darkMode: ['class', '[data-mode="dark"]'],
 						'--tw-prose-th-borders': theme('colors.explanation[border]'),
 						'--tw-prose-td-borders': theme('colors.explanation[background]'),
 
-						'--tw-prose-invert-body':theme('colors.explanation[primary]'),
+						'--tw-prose-invert-body': theme('colors.explanation[primary]'),
 						'--tw-prose-invert-headings': theme('colors.explanation[ternary]'),
 						'--tw-prose-invert-lead': theme('colors.explanation[ternary]'),
 						'--tw-prose-invert-links': theme('colors.explanation[ternary]'),
@@ -276,7 +276,7 @@ darkMode: ['class', '[data-mode="dark"]'],
 						'--tw-prose-th-borders': theme('colors.relation[border]'),
 						'--tw-prose-td-borders': theme('colors.relation[background]'),
 
-						'--tw-prose-invert-body':theme('colors.relation[primary]'),
+						'--tw-prose-invert-body': theme('colors.relation[primary]'),
 						'--tw-prose-invert-headings': theme('colors.relation[ternary]'),
 						'--tw-prose-invert-lead': theme('colors.relation[ternary]'),
 						'--tw-prose-invert-links': theme('colors.relation[ternary]'),
@@ -300,10 +300,11 @@ darkMode: ['class', '[data-mode="dark"]'],
 	safelist: [
 		{
 			pattern: /(bg|text|border|fill)-(definition|etymology|explanation|relation)-(primary|secondary|ternary|border|hover|background)/,
-			variants: ['sm','md','lg','xl','hover','dark','peer-checked:dark', 'group-checked:dark']
+			variants: ['sm', 'md', 'lg', 'xl', 'hover', 'dark', 'peer-checked:dark', 'group-checked:dark']
 		}
 	],
 	plugins: [
 		require('@tailwindcss/typography'),
+		require("tailwind-scrollbar")({ nocompatible: true }),
 	],
 }

@@ -11,9 +11,15 @@ import "../styles/base.css";
 ---
 
 <!DOCTYPE html>
-<html lang="fr" data-theme="monochrome" data-mode="light" class="scroll-smooth">
+<html
+	lang="fr"
+	data-theme="monochrome"
+	data-mode="dark"
+	class="scroll-smooth scrollbar scrollbar-thumb-slate-400 hover:scrollbar-thumb-slate-500 scrollbar-track-transparent scrollbar-thumb-rounded-full">
 	<head>
 		<script is:inline>
+			const darkMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+			darkMediaQuery.addEventListener("change", changeDarkmode);
 			if (!("theme" in localStorage) || localStorage.theme === "polychrome") {
 				document.documentElement.setAttribute("data-theme", "polychrome");
 			} else {
@@ -24,14 +30,14 @@ import "../styles/base.css";
 			} else {
 				document.documentElement.setAttribute("data-font", "serif");
 			}
-			const darkMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-			darkMediaQuery.addEventListener("change", event => {
-				if (localStorage.darkmode === "dark" || ("darkmode" in localStorage && localStorage.darkmode === "auto" && event.matches)) {
+			changeDarkmode();
+			function changeDarkmode() {
+				if (localStorage.darkmode === "dark" || ("darkmode" in localStorage && localStorage.darkmode === "auto" && "(prefers-color-scheme: dark)".matches)) {
 					document.documentElement.setAttribute("data-mode", "dark");
 				} else {
 					document.documentElement.setAttribute("data-mode", "light");
 				}
-			});
+			}
 		</script>
 
 		<!-- SEO -->
