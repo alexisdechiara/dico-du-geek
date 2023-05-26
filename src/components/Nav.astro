@@ -1,0 +1,29 @@
+---
+import { Icon } from "astro-icon";
+export interface Props {
+    page: string;
+    selected: boolean;
+    text: string;
+    icon: string;
+    link: string;
+}
+
+const { page, selected, text, icon, link } = Astro.props;
+---
+
+<a
+    href={link}
+    class:list={[
+        selected ? `bg-${page}-ternary text-${page}-background` : ` text-${page}-primary sm:hover:bg-${page}-hover`,
+        "text-select flex gap-4 items-center justify-center lg:justify-start w-full py-3 px-4 rounded-2xl cursor-pointer transition ",
+    ]}
+>
+    {
+        selected ? (
+            <Icon name={`${icon}-filled`} class={`fill-${page}-background h-6 w-6`} />
+        ) : (
+            <Icon name={icon} class={`fill-${page}-primary h-6 w-6`} />
+        )
+    }
+    <span class={`${!selected ? "opacity-75" : ""} hidden md:block`}>{text}</span>
+</a>

@@ -1,0 +1,98 @@
+---
+import Header from "../components/Header.astro";
+import Layout from "../layouts/Layout.astro";
+import Footer from "../components/Footer.astro";
+import { LicensesReport } from "astro-licenses-report";
+export const prerender = true;
+---
+
+<Layout title="Mentions légales">
+    <Header />
+    <main class="grow">
+        <section class="flex flex-col gap-y-8 px-4 text-paragraph text-primary md:px-16">
+            <h1 class="py-8 text-center text-4xl font-bold">Mentions légales</h1>
+            <div>
+                <h2 class="pb-4 text-2xl font-bold">Créateur du site et licence</h2>
+                <p class="prose">
+                    Le site "Le dico du Geek" à été réalisé par <b>Alexis De Chiara</b> sous licence <b>MIT</b>, le code
+                    source est disponible sur <a
+                        href="https://github.com/alexisdechiara/dico-du-geek"
+                        target="_blank"
+                        rel="noopener noreferrer">Github</a
+                    >
+                </p>
+            </div>
+            <div>
+                <h2 class="pb-4 text-2xl font-bold">Propriétés intellectuelle</h2>
+                <p class="prose">
+                    Bibliothèque d'icônes "Uicons" réalisé par <a
+                        href="https://www.flaticon.com/uicons"
+                        title="bibliothèque d'icônes"
+                        target="_blank"
+                        rel="noopener noreferrer">Flaticon</a
+                    >
+                </p>
+                <p class="prose">
+                    Logo du site réalisé par <a
+                        href="https://www.flaticon.com/fr/icones-gratuites/reference"
+                        title="référence icônes"
+                        target="_blank"
+                        rel="noopener noreferrer">Bombasticon Studio - Flaticon</a
+                    >
+                </p>
+            </div>
+            <div>
+                <h2 class="pb-4 text-2xl font-bold">Hébergeur du site</h2>
+                <p>Le site <b>Le dico du Geek</b> est hébergé chez OVH :</p>
+                <br />
+                <p>RCS Lille Métropole 424 761 419 00045</p>
+                <p>Code APE 2620Z</p>
+                <p>N° TVA : FR 22 424 761 419</p>
+                <p>Siège social : 2 rue Kellermann - 59100 Roubaix - France</p>
+                <br />
+                <p>
+                    OVH SAS est une filiale de la société OVH Groupe SA, société immatriculée au RCS de Lille sous le
+                    numéro 537 407 926 sise 2, rue Kellermann, 59100 Roubaix.
+                </p>
+            </div>
+            <h2 class="text-2xl font-bold">Licenses et dépendances</h2>
+            <div class="prose mb-16 w-full overflow-auto">
+                <LicensesReport nameText="Nom" authorText="Auteur" licenseText="License" linkText="URL" />
+            </div>
+        </section>
+    </main>
+    <Footer />
+</Layout>
+
+<style>
+    .table {
+        @apply w-full table-auto overflow-hidden rounded-lg border border-border font-medium;
+    }
+    .thead {
+        @apply table-header-group bg-primary text-center font-bold uppercase leading-[3] text-background;
+    }
+    .tr {
+        @apply table-row py-2;
+    }
+    .tr:not(:first-of-type) {
+        @apply border-b-2 border-border;
+    }
+    .tr:nth-of-type(2n + 2) {
+        @apply bg-background;
+    }
+    .th {
+        @apply table-cell;
+    }
+    .td {
+        @apply table-cell px-2 leading-loose;
+    }
+    .td:nth-of-type(2) {
+        @apply text-center;
+    }
+    .td:nth-of-type(3) {
+        @apply text-center;
+    }
+    .tbody {
+        @apply table-row-group;
+    }
+</style>

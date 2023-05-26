@@ -1,0 +1,45 @@
+---
+import Tag from "../Tag.astro";
+import { Icon } from "astro-icon";
+
+interface Props {
+    page: string;
+    title: string;
+    pronounciation?: string;
+    tags?: Array<String> | string[];
+    subtitle?: boolean;
+    hidden?: boolean;
+}
+const { page, title, pronounciation, tags, subtitle, hidden } = Astro.props;
+---
+
+<div class={`flex flex-col mb-4 md:mb-6 ${hidden && "sr-only"}`}>
+    <div class="flex items-center gap-x-4">
+        {
+            subtitle == null || subtitle === false ? (
+                <h1 class={`font-header text-4xl md:text-entry text-${page}-ternary transition-colors`}>{title}</h1>
+            ) : (
+                <h2 class={`font-header text-2xl md:text-4xl text-${page}-ternary transition-colors`}>{title}</h2>
+            )
+        }
+        {
+            pronounciation != null && (
+                <div class="flex items-center gap-2">
+                    <span class={`p-2 bg-${page}-background rounded-full`}>
+                        <Icon name="volume" class={`h-5 w-5 fill-${page}-secondary`} />
+                    </span>
+                    <span class={`text-${page}-ternary text-tag`}>/{pronounciation}/</span>
+                </div>
+            )
+        }
+    </div>
+    {
+        tags != null && tags && (
+            <div class="mt-2 flex w-fit gap-2 md:mt-4">
+                {tags.map((tag) => (
+                    <Tag page={page} text={tag} />
+                ))}
+            </div>
+        )
+    }
+</div>

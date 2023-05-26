@@ -1,0 +1,30 @@
+---
+import Lexicon from "../../layouts/Lexicon.astro";
+import { fetchAllforLexical } from "../../utils/fetchAll";
+
+const alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
+const { slug } = Astro.params;
+
+if (!alphabet.some((letter) => letter.includes(slug.toLowerCase()))) {
+    return Astro.redirect("/lexique");
+}
+
+const articles = await fetchAllforLexical(slug);
+const words = articles.filter(
+    (article, index, array) =>
+        article.entry.toLowerCase().startsWith(slug) && array.findIndex((a) => a.entry === article.entry) === index
+);
+---
+
+<Lexicon>
+    <div class="flex min-w-[50%] max-w-screen-lg flex-col items-start justify-start text-primary">
+        <h2 class="-mt-8 font-header text-lexicon-letter uppercase">{slug}</h2>
+        {
+            words.map((word) => (
+                <a href={`/${word.slug}/definition`} class="font-header text-lexicon-word hover:text-ternary">
+                    {word.abbreviation ? word.abbreviation + " (" + word.entry + ") " : word.entry}
+                </a>
+            ))
+        }
+    </div>
+</Lexicon>

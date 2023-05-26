@@ -1,0 +1,52 @@
+---
+import { Icon } from "astro-icon";
+import Searchbar from "./Searchbar.svelte";
+
+export interface Props {
+    homepage?: boolean;
+}
+
+const { homepage } = Astro.props;
+---
+
+<header
+    class:list={[
+        homepage ? "bg-primary dark:bg-background" : "bg-base",
+        "flex w-full px-4 gap-2 sm:gap-x-4 md:gap-x-0 sm:px-0 sm:h-[75px] items-center justify-between text-lg font-sans",
+    ]}
+>
+    <a href="/" class="flex h-full w-[100px] items-center justify-center gap-2 font-[poppins] sm:-mt-4 sm:w-[280px]">
+        <Icon name="book" class:list={[homepage ? "fill-background dark:fill-primary" : "fill-primary", "h-12"]} />
+        <div
+            class:list={[
+                homepage ? "text-background dark:text-primary" : "text-primary",
+                "flex flex-col justify-center pt-1 mt-4",
+            ]}
+        >
+            <span class="text-sm font-bold leading-none sm:text-lg md:text-2xl">Le dico du geek</span>
+            <div
+                class="font-headers -ms-2 -mt-1.5 flex w-full justify-end text-[0.5rem] font-bold sm:-ms-0 sm:-mt-1 sm:text-[0.75rem] md:text-[1rem]"
+            >
+                by&nbsp;<span class="text-[#4285F4]">G</span><span class="text-[#DB4437]">E</span><span
+                    class="text-[#F4B400]">E</span
+                ><span class="text-[#0F9D58]">K</span><span class="font-pacifico font-medium">ly</span>
+            </div>
+        </div>
+    </a>
+    {!homepage && <Searchbar url={import.meta.env.API_URL} client:load />}
+
+    <div class="relative flex h-full w-fit items-center justify-end gap-8 sm:px-8 lg:w-[250px]">
+        {homepage && <Icon name="bookmark" class="absolute left-0 top-0 hidden h-12 sm:block sm:h-[75px]" />}
+        <a
+            href="/lexique"
+            class:list={[
+                homepage
+                    ? "text-background hover:bg-hover hover:text-secondary"
+                    : "text-primary hover:bg-secondary hover:text-background",
+                "px-2 py-2 uppercase text-base text-header rounded-md transition-colors dark:text-primary hover:dark:bg-secondary hover:dark:text-background",
+            ]}
+        >
+            Lexique</a
+        >
+    </div>
+</header>

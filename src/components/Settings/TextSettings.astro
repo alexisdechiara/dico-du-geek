@@ -1,0 +1,45 @@
+---
+import { Icon } from "astro-icon";
+import FontSwitch from "./FontSwitch.astro";
+import TextSizeCounter from "./TextSizeCounter.astro";
+
+export interface Props {
+    page: string;
+}
+
+const { page } = Astro.props;
+---
+
+<div
+    class={`absolute -top-5 pt-1 px-2 bg-${page}-background fill-${page}-primary rounded-t-full cursor-pointer`}
+    id="showCarret"
+>
+    <Icon name="carret-down" class="h-4" id="carret" />
+</div>
+<div class="flex w-full flex-col items-center gap-y-1" id="textSettings">
+    <TextSizeCounter page={page} />
+    <FontSwitch page={page} />
+</div>
+
+<script>
+    checkCarret();
+    function checkCarret() {
+        if (!("hideCarret" in localStorage) || localStorage.hideCarret === "false") {
+            document.getElementById("textSettings").classList.remove("hidden");
+            document.getElementById("carret").classList.remove("rotate-180");
+        } else {
+            document.getElementById("textSettings").classList.add("hidden");
+            document.getElementById("carret").classList.add("rotate-180");
+        }
+    }
+
+    document.getElementById("showCarret").addEventListener("click", function () {
+        if (!("hideCarret" in localStorage) || localStorage.hideCarret === "false") {
+            localStorage.hideCarret = "true";
+        } else {
+            localStorage.hideCarret = "false";
+        }
+        document.getElementById("carret").classList.add("duration-100");
+        checkCarret();
+    });
+</script>

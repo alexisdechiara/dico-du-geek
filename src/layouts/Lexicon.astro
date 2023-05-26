@@ -1,0 +1,16 @@
+---
+import Header from "../components/Header.astro";
+import Layout from "../layouts/Layout.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="Lexique">
+    <Header />
+    <main class="grow">
+        <section class="mx-8 mb-16 flex h-full flex-col items-center justify-center gap-8 text-primary md:m-0">
+            <h1 class="pt-8 text-center text-lexicon-word font-bold">Lexique</h1>
+            <slot />
+        </section>
+    </main>
+    <Footer />
+</Layout>

@@ -1,0 +1,35 @@
+---
+import Header from "../components/Header.astro";
+import Layout from "../layouts/Layout.astro";
+import Footer from "../components/Footer.astro";
+import Icon from "astro-icon";
+---
+
+<Layout title="Page introuvable">
+    <Header />
+    <main class="grid min-h-full grow place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
+        <div class="text-center">
+            <span class="font-header text-8xl text-primary">404</span>
+            <h1 class="mt-4 font-header text-3xl tracking-tight text-primary sm:text-5xl">Page introuvable</h1>
+            <p class="mt-6 font-medium leading-7 text-base text-slate-600">
+                Désolé, nous n'avons pas trouvé la page que vous recherchez.
+            </p>
+            <div class="mt-10 flex items-center justify-center gap-x-6">
+                <a
+                    href="/"
+                    class="rounded-md bg-secondary px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-ternary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                    >Retour à l'accueil</a
+                >
+                <a
+                    href={import.meta.env.FORM_URL}
+                    class="group inline-flex gap-2 text-sm font-semibold text-secondary transition-colors hover:text-ternary"
+                    >Demander l'ajout d'un nouveau mot <Icon
+                        name="arrow-right"
+                        class="w-4 fill-secondary group-hover:fill-ternary"
+                    /></a
+                >
+            </div>
+        </div>
+    </main>
+    <Footer />
+</Layout>

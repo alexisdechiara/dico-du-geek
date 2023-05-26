@@ -1,0 +1,47 @@
+---
+import SwitchButton from "./SwitchButton.astro";
+export interface Props {
+    size?: string;
+    page: string;
+}
+
+const { page, size = "md" } = Astro.props;
+---
+
+<div class={`grid grid-cols-2 w-full rounded-lg bg-${page}-background ${size === "lg" ? "py-3 px-4" : "py-1.5 px-2"}`}>
+    <SwitchButton
+        page={page}
+        label="Monochrome"
+        icon="theme/monochrome"
+        value="monochrome"
+        name="themeMode"
+        size={size}
+    />
+    <SwitchButton
+        page={page}
+        label="Polychrome"
+        icon="theme/polychrome"
+        value="polychrome"
+        name="themeMode"
+        size={size}
+    />
+</div>
+
+<script>
+    let switches = document.getElementsByName("themeMode") as NodeListOf<HTMLInputElement>;
+    switches.forEach((e) => {
+        if (localStorage.theme === e.value) {
+            e.checked = true;
+        } else if (!("theme" in localStorage) && e.value === "polychrome") {
+            e.checked = true;
+        }
+        e.addEventListener("click", function () {
+            localStorage.theme = e.value;
+            if (!("theme" in localStorage) || localStorage.theme === "polychrome") {
+                document.documentElement.setAttribute("data-theme", "polychrome");
+            } else {
+                document.documentElement.setAttribute("data-theme", "monochrome");
+            }
+        });
+    });
+</script>

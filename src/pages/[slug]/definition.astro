@@ -1,0 +1,99 @@
+---
+const { slug } = Astro.params;
+
+import Layout from "../../layouts/Layout.astro";
+import Content from "../../layouts/Content.astro";
+import ContentHeader from "../../components/Content/ContentHeader.astro";
+import { Icon } from "astro-icon";
+import { Markdown } from "astro-remote";
+import { fetchDefinition } from "../../utils/fetchDefinition";
+import { addPreviousSearch } from "../../utils/previousSearch";
+
+let data;
+
+try {
+    data = await fetchDefinition(slug);
+} catch (error) {
+    return Astro.redirect("/404");
+}
+
+const page = "definition";
+const uniqueArticle = data.articles == null || data.articles.length === 1;
+addPreviousSearch(data.title, slug);
+---
+
+<Layout title={data.title}>
+    <Content page={page}>
+        <h1 class="sr-only">{data.title}</h1>
+        {
+            uniqueArticle ? (
+                <ContentHeader
+                    page={page}
+                    title={
+                        data.articles[0].abbreviation
+                            ? `${data.articles[0].abbreviation} (${data.articles[0].entry})`
+                            : data.articles[0].entry
+                    }
+                    pronounciation={data.articles[0].phonetic}
+                    tags={data.articles[0].grammatical_class}
+                />
+            ) : (
+                <ContentHeader page={page} title={data.title} />
+            )
+        }
+        {
+            data.articles.map((article) => (
+                <article class="mb-2">
+                    <ContentHeader
+                        hidden={uniqueArticle}
+                        subtitle
+                        page={page}
+                        title={article.abbreviation ? `${article.abbreviation} (${article.entry})` : article.entry}
+                        pronounciation={article.phonetic}
+                        tags={article.grammatical_class}
+                    />
+                    <div class="mb-16 flex flex-col gap-y-6">
+                        <dl class="flex flex-col gap-y-2">
+                            <dt class="sr-only">{article.entry}</dt>
+                            {article.definitions.map((definition) => (
+                                <dd
+                                    class:list={[
+                                        { "list-item list-decimal list-inside": article.definitions.length > 1 },
+                                        "prose prose-definition text-definition-primary text-paragraph prose-p:inline",
+                                    ]}
+                                >
+                                    <Markdown content={definition as string} />
+                                </dd>
+                            ))}
+                        </dl>
+                        {article.examples.length > 0 && (
+                            <div class="relative rounded border-l-4 border-definition-ternary bg-definition-background p-4 pr-8 text-definition-secondary">
+                                <h2 class="pb-2 text-lg font-bold"> Exemple </h2>
+                                {article.examples.map((example) => (
+                                    <span
+                                        class:list={[
+                                            { "list-item list-decimal list-inside": article.definitions.length > 1 },
+                                            "prose prose-definition italic tracking-tight prose-p:inline leading-tight mb-2",
+                                        ]}
+                                    >
+                                        <Markdown content={example as string} />
+                                    </span>
+                                ))}
+                                <a
+                                    href="./explication#exemples"
+                                    class="group ml-auto flex w-fit cursor-pointer items-center justify-end gap-x-2 font-semibold transition-colors hover:text-definition-primary"
+                                >
+                                    Voir plus
+                                    <Icon
+                                        name="arrow-right"
+                                        class="h-4 w-4 fill-definition-secondary group-hover:fill-definition-primary"
+                                    />
+                                </a>
+                            </div>
+                        )}
+                    </div>
+                </article>
+            ))
+        }
+    </Content>
+</Layout>
