@@ -5,12 +5,13 @@ import AstroPWA from "@vite-pwa/astro";
 import svelte from "@astrojs/svelte";
 import partytown from "@astrojs/partytown";
 import compress from "astro-compress";
-
 import sitemap from "@astrojs/sitemap";
+
+import node from "@astrojs/node";
 
 // https://astro.build/config
 export default defineConfig({
-    site: import.meta.env.SITE_URL,
+    site: "https://ledicodugeek.geekly.blog",
     integrations: [
         tailwind({
             config: {
@@ -87,4 +88,7 @@ export default defineConfig({
         sitemap(),
     ],
     output: "server",
+    adapter: node({
+        mode: "standalone",
+    }),
 });

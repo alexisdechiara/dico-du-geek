@@ -36,7 +36,6 @@ const { page, size = "md" } = Astro.props;
     if ("fontSize" in localStorage) {
         changeTextSize(Number(localStorage.fontSize));
     }
-
     function decrement() {
         if (value - 0.125 < 0.5) {
             value = value;
@@ -66,10 +65,10 @@ const { page, size = "md" } = Astro.props;
         changeTextSize(localStorage.fontSize);
     }
 
+    /* eslint-disable */
     function changeTextSize(size: number) {
         document.getElementById("textSizeDisplayed").innerText = String(Number(size));
-        document.querySelectorAll<HTMLElement>;
-        ".prose *".forEach((element) => {
+        document.querySelectorAll<HTMLElement>(".prose *").forEach((element) => {
             element.style.fontSize = size + "rem";
             element.style.lineHeight = Number(0.25) + Number(size) + "rem";
             if (element.nodeName == "H3") {
@@ -79,4 +78,5 @@ const { page, size = "md" } = Astro.props;
             }
         });
     }
+    /* eslint-enable */
 </script>
