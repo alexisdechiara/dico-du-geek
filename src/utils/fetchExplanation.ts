@@ -39,16 +39,16 @@ export async function fetchExplanation(slug: string) {
 
     const json = await response.json();
     const data = json.data;
-    let res: Page = { title: data.page[0].titre, articles: Array<Article>() }
-    data.page[0].articles.forEach(article => {
+    let res: Page = { title: data.page[0].titre, articles: Array<Article>() };
+    data.page[0].articles.forEach((article) => {
         let a: Article = {
             entry: article.entree,
             abbreviation: article.abreviation,
-            explanations: Array<String>()
+            explanations: Array<String>(),
         };
-        article.sens.forEach(sens => {
+        article.sens.forEach((sens) => {
             if (sens.sens_id != null) {
-                a.explanations.push(sens.sens_id.explication ? sens.sens_id.explication : '	');
+                a.explanations.push(sens.sens_id.explication ? sens.sens_id.explication : "	");
             }
         });
         res.articles.push(a);

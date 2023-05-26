@@ -45,11 +45,11 @@ export async function fetchAll(slug: string, url: string, query: string) {
     const json = await response.json();
     const data = json.data;
     let res: Array<Article> = Array<Article>();
-    data.article.forEach(article => {
+    data.article.forEach((article) => {
         let a: Article = {
             entry: article.entree,
             abbreviation: article.abreviation,
-            slug: article.slug
+            slug: article.slug,
         };
         res.push(a);
     });

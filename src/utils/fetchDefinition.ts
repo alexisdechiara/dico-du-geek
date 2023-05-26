@@ -37,27 +37,27 @@ export async function fetchDefinition(slug: string) {
         entry: string;
         phonetic: string;
         abbreviation: string;
-        grammatical_class: Array<String>
-        definitions: Array<String>
-        examples: Array<String>
+        grammatical_class: Array<String>;
+        definitions: Array<String>;
+        examples: Array<String>;
     }
 
     const json = await response.json();
     const data = json.data;
-    let res: Page = { title: data.page[0].titre, articles: Array<Article>() }
-    data.page[0].articles.forEach(article => {
+    let res: Page = { title: data.page[0].titre, articles: Array<Article>() };
+    data.page[0].articles.forEach((article) => {
         let a: Article = {
             entry: article.entree,
             phonetic: article.phonetique,
             abbreviation: article.abreviation,
             grammatical_class: article.classe_gramaticale,
             definitions: Array<String>(),
-            examples: Array<String>()
+            examples: Array<String>(),
         };
-        article.sens.forEach(sens => {
+        article.sens.forEach((sens) => {
             if (sens.sens_id != null) {
                 a.definitions.push(sens.sens_id.definition);
-                a.examples.push(sens.sens_id.exemple ? sens.sens_id.exemple : '	');
+                a.examples.push(sens.sens_id.exemple ? sens.sens_id.exemple : "	");
             }
         });
         res.articles.push(a);

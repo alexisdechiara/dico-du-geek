@@ -2,29 +2,30 @@
 import { Icon } from "astro-icon";
 
 export interface Props {
-	page: string;
-	label: string;
-	name: string;
-	value: string;
-	icon?: string;
-	isChecked?: boolean;
-	serif?: boolean;
-	size?: string;
+    page: string;
+    label: string;
+    name: string;
+    value: string;
+    icon?: string;
+    isChecked?: boolean;
+    serif?: boolean;
+    size?: string;
 }
 
 const { page, label, name, value, isChecked, icon, serif, size = "md" } = Astro.props;
 ---
 
 <div>
-	<input type="radio" name={name} id={value} value={value} class="peer hidden" checked={isChecked} />
-	<label
-		for={value}
-		class:list={[
-			size === "lg" ? "rounded-lg gap-2 px-4 py-2 text-lg" : "rounded-md gap-1 px-2 py-1 text-xs",
-			serif ? "font-serif" : "font-sans",
-			`cursor-pointer flex justify-center fill-${page}-primary peer-checked:dark:fill-${page}-background text-${page}-primary peer-checked:bg-base peer-checked:dark:bg-${page}-primary peer-checked:dark:text-${page}-background peer-checked:shadow-sm font-medium `,
-		]}>
-		{icon != null && <Icon name={icon} class={size === "lg" ? "w-7" : "w-3.5"} />}
-		{label}
-	</label>
+    <input type="radio" name={name} id={value} value={value} class="peer hidden" checked={isChecked} />
+    <label
+        for={value}
+        class:list={[
+            size === "lg" ? "rounded-lg gap-2 px-4 py-2 text-lg" : "rounded-md gap-1 px-2 py-1 text-xs",
+            serif ? "font-serif" : "font-sans",
+            `cursor-pointer flex justify-center fill-${page}-primary peer-checked:dark:fill-${page}-background text-${page}-primary peer-checked:bg-base peer-checked:dark:bg-${page}-primary peer-checked:dark:text-${page}-background peer-checked:shadow-sm font-medium `,
+        ]}
+    >
+        {icon != null && <Icon name={icon} class={size === "lg" ? "w-7" : "w-3.5"} />}
+        {label}
+    </label>
 </div>

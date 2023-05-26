@@ -1,7 +1,5 @@
-import VitePluginBrowserSync from 'vite-plugin-browser-sync'
+import VitePluginBrowserSync from "vite-plugin-browser-sync";
 
-export default ({
-    plugins: [
-        VitePluginBrowserSync(),
-    ]
-})
+export default {
+    plugins: [VitePluginBrowserSync()],
+};

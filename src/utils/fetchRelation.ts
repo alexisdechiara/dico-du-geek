@@ -54,32 +54,32 @@ export async function fetchRelation(slug: string) {
 
     const json = await response.json();
     const data = json.data;
-    let res: Page = { title: data.page[0].titre, articles: Array<Article>() }
-    data.page[0].articles.forEach(article => {
+    let res: Page = { title: data.page[0].titre, articles: Array<Article>() };
+    data.page[0].articles.forEach((article) => {
         let a: Article = {
             entry: article.entree,
             abbreviation: article.abreviation,
-            relations: Array<Relation>()
+            relations: Array<Relation>(),
         };
-        article.relations.forEach(relation => {
-            if (relation.relation_id != null && (relation.relation_id.type && relation.relation_id.article)) {
+        article.relations.forEach((relation) => {
+            if (relation.relation_id != null && relation.relation_id.type && relation.relation_id.article) {
                 let relatedArticle: Article = {
                     entry: relation.relation_id.article.entree,
                     slug: relation.relation_id.article.slug,
                     abbreviation: relation.relation_id.article.abreviation,
-                    definitions: Array<String>()
-                }
+                    definitions: Array<String>(),
+                };
 
-                relation.relation_id.article.sens.forEach(sens => {
+                relation.relation_id.article.sens.forEach((sens) => {
                     if (sens.sens_id != null) {
                         relatedArticle.definitions.push(sens.sens_id.definition);
                     }
-                })
+                });
 
                 let related: Relation = {
                     type: relation.relation_id.type,
-                    article: relatedArticle
-                }
+                    article: relatedArticle,
+                };
 
                 a.relations.push(related);
             }
@@ -88,5 +88,4 @@ export async function fetchRelation(slug: string) {
     });
 
     return res;
-
 }

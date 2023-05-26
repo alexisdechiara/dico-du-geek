@@ -2,8 +2,8 @@
 import { pwaInfo } from "virtual:pwa-info";
 import { SEO } from "astro-seo";
 export interface Props {
-	title: string;
-	isHomepage?: boolean;
+    title: string;
+    isHomepage?: boolean;
 }
 
 const { title, isHomepage = false } = Astro.props;
@@ -12,71 +12,84 @@ import "../styles/base.css";
 
 <!DOCTYPE html>
 <html
-	lang="fr"
-	data-theme="monochrome"
-	data-mode="dark"
-	class="scroll-smooth scrollbar scrollbar-thumb-slate-400 hover:scrollbar-thumb-slate-500 scrollbar-track-transparent scrollbar-thumb-rounded-full">
-	<head>
-		<script is:inline>
-			const darkMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-			darkMediaQuery.addEventListener("change", changeDarkmode);
-			if (!("theme" in localStorage) || localStorage.theme === "polychrome") {
-				document.documentElement.setAttribute("data-theme", "polychrome");
-			} else {
-				document.documentElement.setAttribute("data-theme", "monochrome");
-			}
-			if (!("font" in localStorage) || localStorage.font === "sans") {
-				document.documentElement.setAttribute("data-font", "sans");
-			} else {
-				document.documentElement.setAttribute("data-font", "serif");
-			}
-			changeDarkmode();
-			function changeDarkmode() {
-				if (localStorage.darkmode === "dark" || ("darkmode" in localStorage && localStorage.darkmode === "auto" && "(prefers-color-scheme: dark)".matches)) {
-					document.documentElement.setAttribute("data-mode", "dark");
-				} else {
-					document.documentElement.setAttribute("data-mode", "light");
-				}
-			}
-		</script>
+    lang="fr"
+    data-theme="monochrome"
+    data-mode="dark"
+    class="scrollbar-track--transparent scroll-smooth scrollbar scrollbar-thumb-slate-400 scrollbar-thumb-rounded-full scrollbar-w-6 hover:scrollbar-thumb-slate-500"
+>
+    <head>
+        <script is:inline>
+            const darkMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+            darkMediaQuery.addEventListener("change", changeDarkmode);
+            if (!("theme" in localStorage) || localStorage.theme === "polychrome") {
+                document.documentElement.setAttribute("data-theme", "polychrome");
+            } else {
+                document.documentElement.setAttribute("data-theme", "monochrome");
+            }
+            if (!("font" in localStorage) || localStorage.font === "sans") {
+                document.documentElement.setAttribute("data-font", "sans");
+            } else {
+                document.documentElement.setAttribute("data-font", "serif");
+            }
+            changeDarkmode();
+            function changeDarkmode() {
+                if (
+                    localStorage.darkmode === "dark" ||
+                    ("darkmode" in localStorage &&
+                        localStorage.darkmode === "auto" &&
+                        "(prefers-color-scheme: dark)".matches)
+                ) {
+                    document.documentElement.setAttribute("data-mode", "dark");
+                } else {
+                    document.documentElement.setAttribute("data-mode", "light");
+                }
+            }
+        </script>
 
-		<!-- SEO -->
-		<SEO
-			title={`Le dico du geek ${!isHomepage ? " | " + title : ""}`}
-			description="Le dictionnaire de la culture geek et plus"
-			charset="UTF-8"
-			openGraph={{
-				basic: {
-					title: `Le dico du geek ${!isHomepage ? " - " + title : ""}`,
-					type: "website",
-					image: "/img/le-dico-du-geek-logotype-dark.png",
-					url: "ledicodugeek.geekly.blog",
-				},
-				optional: {
-					locale: "fr",
-				},
-			}}
-			twitter={{
-				title: `Le dico du geek ${!isHomepage ? " - " + title : ""}`,
-				description: "Le dictionnaire de la culture geek et plus",
-				card: `${isHomepage ? "summary_large_image" : "summary"}`,
-				image: `${isHomepage ? "/img/le-dico-du-geek-logotype-dark.png" : "/favicon/pwa-icon.png"}`,
-			}}
-		/>
+        <!-- SEO -->
+        <SEO
+            title={`Le dico du geek ${!isHomepage ? " | " + title : ""}`}
+            description="Le dictionnaire de la culture geek et plus"
+            charset="UTF-8"
+            openGraph={{
+                basic: {
+                    title: `Le dico du geek ${!isHomepage ? " - " + title : ""}`,
+                    type: "website",
+                    image: "/img/le-dico-du-geek-logotype-dark.png",
+                    url: "ledicodugeek.geekly.blog",
+                },
+                optional: {
+                    locale: "fr",
+                },
+            }}
+            twitter={{
+                title: `Le dico du geek ${!isHomepage ? " - " + title : ""}`,
+                description: "Le dictionnaire de la culture geek et plus",
+                card: `${isHomepage ? "summary_large_image" : "summary"}`,
+                image: `${isHomepage ? "/img/le-dico-du-geek-logotype-dark.png" : "/favicon/pwa-icon.png"}`,
+            }}
+        />
 
-		<!-- PWA -->
-		<link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" sizes="128x128" />
-		<link rel="mask-icon" href="/favicon/pwa-icon.png" color="#121C40" />
-		<meta name="theme-color" content="#121C40" />
-		<!-- <script src="/src/pwa.ts"></script> -->
-		{pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} />}
+        <!-- PWA -->
+        <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" sizes="128x128" />
+        <link rel="mask-icon" href="/favicon/pwa-icon.png" color="#121C40" />
+        <meta name="theme-color" content="#121C40" />
+        <!-- <script src="/src/pwa.ts"></script> -->
+        {pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} />}
 
-		<!-- Other -->
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon/favicon-light.svg" />
-		<meta name="generator" content={Astro.generator} />
-	</head>
-	<body class="flex flex-col min-h-screen bg-base">
-		<slot />
-	</body>
+        <!-- Other -->
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon/favicon-light.svg" />
+        <meta name="generator" content={Astro.generator} />
+    </head>
+    <body class="flex min-h-screen flex-col bg-base">
+        <slot />
+        <style>
+            .scrollbar::-webkit-scrollbar-thumb {
+                border: 6px solid transparent;
+                background-clip: padding-box;
+                padding-right: 6px;
+            }
+        </style>
+    </body>
 </html>

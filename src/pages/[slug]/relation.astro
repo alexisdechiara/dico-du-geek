@@ -11,9 +11,9 @@ import { addPreviousSearch } from "../../utils/previousSearch";
 let data;
 
 try {
-	data = await fetchRelation(slug);
+    data = await fetchRelation(slug);
 } catch (error) {
-	return Astro.redirect("/404");
+    return Astro.redirect("/404");
 }
 const page = "relation";
 const uniqueArticle = data.articles == null || data.articles.length === 1;
@@ -21,29 +21,45 @@ addPreviousSearch(data.title, slug);
 ---
 
 <Layout title={data.title}>
-	<Content page={page}>
-		<h1 class="sr-only">{data.title}</h1>
-		{
-			uniqueArticle ? (
-				<ContentHeader page={page} title={data.articles[0].abbreviation ? `${data.articles[0].entry} (${data.articles[0].abbreviation})` : data.articles[0].entry} />
-			) : (
-				<ContentHeader page={page} title={data.title} />
-			)
-		}
-		{
-			data.articles.map(article => (
-				<div class="flex flex-col mb-8 gap-y-4 ">
-					<ContentHeader hidden={uniqueArticle} page={page} title={article.abbreviation ? `${article.abbreviation} (${article.entry})` : article.entry} subtitle />
-					{article.relations.map(relation => (
-						<ContentAccordion
-							entry={relation.article.abbreviation ? `${relation.article.entry} (${relation.article.abbreviation})` : relation.article.entry}
-							type={relation.type}
-							slug={relation.article.slug}
-							definitions={relation.article.definitions}
-						/>
-					))}
-				</div>
-			))
-		}
-	</Content>
+    <Content page={page}>
+        <h1 class="sr-only">{data.title}</h1>
+        {
+            uniqueArticle ? (
+                <ContentHeader
+                    page={page}
+                    title={
+                        data.articles[0].abbreviation
+                            ? `${data.articles[0].entry} (${data.articles[0].abbreviation})`
+                            : data.articles[0].entry
+                    }
+                />
+            ) : (
+                <ContentHeader page={page} title={data.title} />
+            )
+        }
+        {
+            data.articles.map((article) => (
+                <div class="mb-8 flex flex-col gap-y-4 ">
+                    <ContentHeader
+                        hidden={uniqueArticle}
+                        page={page}
+                        title={article.abbreviation ? `${article.abbreviation} (${article.entry})` : article.entry}
+                        subtitle
+                    />
+                    {article.relations.map((relation) => (
+                        <ContentAccordion
+                            entry={
+                                relation.article.abbreviation
+                                    ? `${relation.article.entry} (${relation.article.abbreviation})`
+                                    : relation.article.entry
+                            }
+                            type={relation.type}
+                            slug={relation.article.slug}
+                            definitions={relation.article.definitions}
+                        />
+                    ))}
+                </div>
+            ))
+        }
+    </Content>
 </Layout>

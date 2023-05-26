@@ -25,7 +25,6 @@ export async function fetchEtymology(slug: string) {
         }),
     });
 
-
     interface Page {
         title: string;
         articles: Array<Article>;
@@ -39,16 +38,16 @@ export async function fetchEtymology(slug: string) {
 
     const json = await response.json();
     const data = json.data;
-    let res: Page = { title: data.page[0].titre, articles: Array<Article>() }
-    data.page[0].articles.forEach(article => {
+    let res: Page = { title: data.page[0].titre, articles: Array<Article>() };
+    data.page[0].articles.forEach((article) => {
         let a: Article = {
             entry: article.entree,
             abbreviation: article.abreviation,
-            etymologies: Array<String>()
+            etymologies: Array<String>(),
         };
-        article.sens.forEach(sens => {
+        article.sens.forEach((sens) => {
             if (sens.sens_id != null) {
-                a.etymologies.push(sens.sens_id.etymologie ? sens.sens_id.etymologie : ' ');
+                a.etymologies.push(sens.sens_id.etymologie ? sens.sens_id.etymologie : " ");
             }
         });
         res.articles.push(a);

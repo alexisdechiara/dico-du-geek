@@ -1,39 +1,41 @@
 ---
 import SwitchButton from "./SwitchButton.astro";
 export interface Props {
-	size?: string;
-	page: string;
+    size?: string;
+    page: string;
 }
 
 const { page, size = "md" } = Astro.props;
 ---
 
 <div class={`grid grid-cols-3 w-full rounded-lg bg-${page}-background ${size === "lg" ? "py-3 px-4" : "py-1.5 px-2"}`}>
-	<SwitchButton page={page} label="Clair" icon="darkmode/sun" value="light" name="darkmode" size={size} />
-	<SwitchButton page={page} label="Auto" icon="darkmode/auto" value="auto" name="darkmode" size={size} />
-	<SwitchButton page={page} label="Sombre" icon="darkmode/moon" value="dark" name="darkmode" size={size} />
+    <SwitchButton page={page} label="Clair" icon="darkmode/sun" value="light" name="darkmode" size={size} />
+    <SwitchButton page={page} label="Auto" icon="darkmode/auto" value="auto" name="darkmode" size={size} />
+    <SwitchButton page={page} label="Sombre" icon="darkmode/moon" value="dark" name="darkmode" size={size} />
 </div>
 
 <script>
-	let switches = document.getElementsByName("darkmode") as NodeListOf<HTMLInputElement>;
-	switches.forEach(e => {
-		if (localStorage.darkmode === e.value) {
-			e.checked = true;
-		} else if (!("darkmode" in localStorage) && e.value === "auto") {
-			e.checked = true;
-		}
-		e.addEventListener("click", function () {
-			localStorage.darkmode = e.value;
-			if (localStorage.darkmode === "light") {
-				document.documentElement.setAttribute("data-mode", "light");
-			} else if (
-				localStorage.darkmode === "dark" ||
-				("darkmode" in localStorage && localStorage.darkmode === "auto" && window.matchMedia("(prefers-color-scheme: dark)").matches)
-			) {
-				document.documentElement.setAttribute("data-mode", "dark");
-			} else {
-				document.documentElement.setAttribute("data-mode", "light");
-			}
-		});
-	});
+    let switches = document.getElementsByName("darkmode") as NodeListOf<HTMLInputElement>;
+    switches.forEach((e) => {
+        if (localStorage.darkmode === e.value) {
+            e.checked = true;
+        } else if (!("darkmode" in localStorage) && e.value === "auto") {
+            e.checked = true;
+        }
+        e.addEventListener("click", function () {
+            localStorage.darkmode = e.value;
+            if (localStorage.darkmode === "light") {
+                document.documentElement.setAttribute("data-mode", "light");
+            } else if (
+                localStorage.darkmode === "dark" ||
+                ("darkmode" in localStorage &&
+                    localStorage.darkmode === "auto" &&
+                    window.matchMedia("(prefers-color-scheme: dark)").matches)
+            ) {
+                document.documentElement.setAttribute("data-mode", "dark");
+            } else {
+                document.documentElement.setAttribute("data-mode", "light");
+            }
+        });
+    });
 </script>

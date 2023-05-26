@@ -1,6 +1,13 @@
+/// <reference types="astro/client" />
+
 {
-  "extends": "astro/tsconfigs/base",
-  "compilerOptions": {
-    "types": ["vite-plugin-pwa/info"],
-  }
+    "extends": "astro/tsconfigs/base",
+    "compilerOptions": {
+        "types": ["vite-plugin-pwa/info"],
+        "plugins": [
+            {
+                "name": "@astrojs/ts-plugin"
+            }
+        ]
+    }
 }

@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,200..900;1,200..900&display=swap');  
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,200..900;1,200..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -10,16 +10,16 @@
 
 @layer base {
     :root {
-        font-family: 'Work Sans';
-        --font-header: 'Poppins';
+        font-family: "Work Sans";
+        --font-header: "Poppins";
 
-        --color-primary: #121C40;
+        --color-primary: #121c40;
         --color-secondary: #172554;
-        --color-ternary: #1E3A8A;
-        --color-border: #E2E8F0;
-        --color-hover: #E2E8F0;
-        --color-background: #F1F5F9;
-        --color-base: #FFFFFF;
+        --color-ternary: #1e3a8a;
+        --color-border: #e2e8f0;
+        --color-hover: #e2e8f0;
+        --color-background: #f1f5f9;
+        --color-base: #ffffff;
 
         --color-definition-primary: var(--color-primary);
         --color-definition-secondary: var(--color-secondary);
@@ -50,13 +50,13 @@
         --color-relation-background: var(--color-background);
     }
 
-    html[data-mode='dark'] {
-        --color-primary: #F1F5F9;
-        --color-secondary: #E2E8F0;
+    html[data-mode="dark"] {
+        --color-primary: #f1f5f9;
+        --color-secondary: #e2e8f0;
         --color-ternary: #94a3b8;
-        --color-border: #1E293B;
-        --color-hover: #1E293B;
-        --color-background: #0F172A;
+        --color-border: #1e293b;
+        --color-hover: #1e293b;
+        --color-background: #0f172a;
         --color-base: #171717;
 
         --color-definition-primary: var(--color-primary);
@@ -88,68 +88,68 @@
         --color-relation-background: var(--color-background);
     }
 
-    html[data-theme='polychrome'] {
+    html[data-theme="polychrome"] {
         --color-definition-primary: #172554;
-        --color-definition-secondary: #1E3A8A;
-        --color-definition-ternary: #1D4ED8;
-        --color-definition-border: #DBEAFE;
-        --color-definition-hover: #DBEAFE;
-        --color-definition-background: #EFF6FF;
+        --color-definition-secondary: #1e3a8a;
+        --color-definition-ternary: #1d4ed8;
+        --color-definition-border: #dbeafe;
+        --color-definition-hover: #dbeafe;
+        --color-definition-background: #eff6ff;
 
-        --color-etymology-primary: #022C22;
-        --color-etymology-secondary: #064E3B;
+        --color-etymology-primary: #022c22;
+        --color-etymology-secondary: #064e3b;
         --color-etymology-ternary: #047857;
-        --color-etymology-border: #D1FAE5;
-        --color-etymology-hover: #D1FAE5;
-        --color-etymology-background: #ECFDF5;
+        --color-etymology-border: #d1fae5;
+        --color-etymology-hover: #d1fae5;
+        --color-etymology-background: #ecfdf5;
 
-        --color-explanation-primary: #4C0519;
+        --color-explanation-primary: #4c0519;
         --color-explanation-secondary: #881337;
-        --color-explanation-ternary: #BE123C;
-        --color-explanation-border: #FFE4E6;
-        --color-explanation-hover: #FFE4E6;
-        --color-explanation-background: #FFF1F2;
+        --color-explanation-ternary: #be123c;
+        --color-explanation-border: #ffe4e6;
+        --color-explanation-hover: #ffe4e6;
+        --color-explanation-background: #fff1f2;
 
         --color-relation-primary: #422006;
-        --color-relation-secondary: #713F12;
-        --color-relation-ternary: #EAB308;
-        --color-relation-border: #FEF9C3;
-        --color-relation-hover: #FEF9C3;
-        --color-relation-background: #FEFCE8;
+        --color-relation-secondary: #713f12;
+        --color-relation-ternary: #eab308;
+        --color-relation-border: #fef9c3;
+        --color-relation-hover: #fef9c3;
+        --color-relation-background: #fefce8;
     }
 
-    html[data-theme='polychrome'][data-mode='dark'] {
-        --color-definition-primary: #DBEAFE;
-        --color-definition-secondary: #BFDBFE;
-        --color-definition-ternary: #3B82F6;
+    html[data-theme="polychrome"][data-mode="dark"] {
+        --color-definition-primary: #dbeafe;
+        --color-definition-secondary: #bfdbfe;
+        --color-definition-ternary: #3b82f6;
         --color-definition-border: #172554;
         --color-definition-hover: #172554;
         --color-definition-background: #172554;
 
-        --color-etymology-primary: #ECFDF5;
-        --color-etymology-secondary: #D1FAE5;
-        --color-etymology-ternary: #10B981;
-        --color-etymology-border: #022C22;
-        --color-etymology-hover: #022C22;
-        --color-etymology-background: #022C22;
+        --color-etymology-primary: #ecfdf5;
+        --color-etymology-secondary: #d1fae5;
+        --color-etymology-ternary: #10b981;
+        --color-etymology-border: #022c22;
+        --color-etymology-hover: #022c22;
+        --color-etymology-background: #022c22;
 
-        --color-explanation-primary: #FFF1F2;
-        --color-explanation-secondary: #FFE4E6;
-        --color-explanation-ternary: #F43F5E;
-        --color-explanation-border: #4C0519;
-        --color-explanation-hover: #4C0519;
-        --color-explanation-background: #4C0519;
+        --color-explanation-primary: #fff1f2;
+        --color-explanation-secondary: #ffe4e6;
+        --color-explanation-ternary: #f43f5e;
+        --color-explanation-border: #4c0519;
+        --color-explanation-hover: #4c0519;
+        --color-explanation-background: #4c0519;
 
-        --color-relation-primary: #FEFCE8;
-        --color-relation-secondary: #FEF9C3;
-        --color-relation-ternary: #EAB308;
+        --color-relation-primary: #fefce8;
+        --color-relation-secondary: #fef9c3;
+        --color-relation-ternary: #eab308;
         --color-relation-border: #422006;
         --color-relation-hover: #422006;
         --color-relation-background: #422006;
     }
 
     html[data-font="serif"] {
-        font-family: 'Source Serif 4';
-        --font-header: 'Source Serif 4';
+        font-family: "Source Serif 4";
+        --font-header: "Source Serif 4";
     }
 }

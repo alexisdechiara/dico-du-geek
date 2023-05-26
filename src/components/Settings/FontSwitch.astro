@@ -1,33 +1,33 @@
 ---
 import SwitchButton from "./SwitchButton.astro";
 export interface Props {
-	size?: string;
-	page: string;
+    size?: string;
+    page: string;
 }
 
 const { page, size = "md" } = Astro.props;
 ---
 
 <div class={`grid grid-cols-2 w-full rounded-lg bg-${page}-background ${size === "lg" ? "py-3 px-4" : "py-1.5 px-2"}`}>
-	<SwitchButton page={page} label="Sans" value="sans" name="fontMode" size={size} />
-	<SwitchButton page={page} label="Serif" value="serif" name="fontMode" serif size={size} />
+    <SwitchButton page={page} label="Sans" value="sans" name="fontMode" size={size} />
+    <SwitchButton page={page} label="Serif" value="serif" name="fontMode" serif size={size} />
 </div>
 
 <script>
-	let switches = document.getElementsByName("fontMode") as NodeListOf<HTMLInputElement>;
-	switches.forEach(e => {
-		if (localStorage.font === e.value) {
-			e.checked = true;
-		} else if (!("font" in localStorage) && e.value === "sans") {
-			e.checked = true;
-		}
-		e.addEventListener("click", function () {
-			localStorage.font = e.value;
-			if (!("font" in localStorage) || localStorage.font === "sans") {
-				document.documentElement.setAttribute("data-font", "sans");
-			} else {
-				document.documentElement.setAttribute("data-font", "serif");
-			}
-		});
-	});
+    let switches = document.getElementsByName("fontMode") as NodeListOf<HTMLInputElement>;
+    switches.forEach((e) => {
+        if (localStorage.font === e.value) {
+            e.checked = true;
+        } else if (!("font" in localStorage) && e.value === "sans") {
+            e.checked = true;
+        }
+        e.addEventListener("click", function () {
+            localStorage.font = e.value;
+            if (!("font" in localStorage) || localStorage.font === "sans") {
+                document.documentElement.setAttribute("data-font", "sans");
+            } else {
+                document.documentElement.setAttribute("data-font", "serif");
+            }
+        });
+    });
 </script>

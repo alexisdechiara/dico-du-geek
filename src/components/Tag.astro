@@ -1,23 +1,25 @@
 ---
 export interface Props {
-	page?: string;
-	text: string;
-	customClass?: string;
-	slug?: string;
+    page?: string;
+    text: string;
+    customClass?: string;
+    slug?: string;
 }
 
 const { page, text, customClass, slug } = Astro.props;
 const tagClass = `${customClass} flex w-fit cursor-default transition-colors items-center align-middle ${
-	page ? `text-${page}-secondary bg-${page}-background hover:bg-${page}-hover` : "text-secondary bg-background dark:bg-border hover:bg-hover dark:hover:bg-ternary"
+    page
+        ? `text-${page}-secondary bg-${page}-background hover:bg-${page}-hover`
+        : "text-secondary bg-background dark:bg-border hover:bg-hover dark:hover:bg-ternary"
 } rounded-full px-2 text-tag h-6 md:px-4 w-fit whitespace-nowrap`;
 ---
 
 {
-	slug ? (
-		<a href={`./${slug}`} class={`${tagClass} cursor-pointer `}>
-			{text}
-		</a>
-	) : (
-		<span class={`${tagClass} pointer-events-none`}>{text}</span>
-	)
+    slug ? (
+        <a href={`./${slug}`} class={`${tagClass} cursor-pointer `}>
+            {text}
+        </a>
+    ) : (
+        <span class={`${tagClass} pointer-events-none`}>{text}</span>
+    )
 }
