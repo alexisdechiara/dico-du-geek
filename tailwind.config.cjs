@@ -339,5 +339,8 @@ module.exports = {
             variants: ["sm", "md", "lg", "xl", "hover", "dark", "peer-checked:dark", "group-checked:dark"],
         },
     ],
+    variants: {
+        scrollbar: ["dark"],
+    },
     plugins: [require("@tailwindcss/typography"), require("tailwind-scrollbar")({ nocompatible: true })],
 };
