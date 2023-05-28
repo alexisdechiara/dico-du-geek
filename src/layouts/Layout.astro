@@ -13,9 +13,9 @@ import "../styles/base.css";
 <!DOCTYPE html>
 <html
     lang="fr"
-    data-theme="monochrome"
-    data-mode="dark"
-    class="scrollbar-track--transparent scroll-smooth scrollbar scrollbar-thumb-slate-400 scrollbar-thumb-rounded-full scrollbar-w-6 hover:scrollbar-thumb-slate-500"
+    data-theme="polychrome"
+    data-mode="light"
+    class="scrollbar-track--transparent scroll-smooth scrollbar scrollbar-thumb-gray-500 scrollbar-thumb-rounded-full scrollbar-w-4 hover:scrollbar-thumb-gray-400"
 >
     <head>
         <script is:inline>
@@ -34,10 +34,9 @@ import "../styles/base.css";
             changeDarkmode();
             function changeDarkmode() {
                 if (
-                    localStorage.darkmode === "dark" ||
-                    ("darkmode" in localStorage &&
-                        localStorage.darkmode === "auto" &&
-                        "(prefers-color-scheme: dark)".matches)
+                    "darkmode" in localStorage &&
+                    (localStorage.darkmode === "dark" ||
+                        (localStorage.darkmode === "auto" && window.matchMedia("(prefers-color-scheme: dark)").matches))
                 ) {
                     document.documentElement.setAttribute("data-mode", "dark");
                 } else {
@@ -70,6 +69,9 @@ import "../styles/base.css";
             }}
         />
 
+        <!-- Vercel analytics -->
+        <script defer src="/_vercel/insights/script.js" type="text/partytown"></script>
+
         <!-- PWA -->
         <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" sizes="128x128" />
         <link rel="mask-icon" href="/favicon/pwa-icon.png" color="#121C40" />
@@ -85,12 +87,5 @@ import "../styles/base.css";
     </head>
     <body class="flex min-h-screen flex-col bg-base">
         <slot />
-        <style>
-            .scrollbar::-webkit-scrollbar-thumb {
-                border: 6px solid transparent;
-                background-clip: padding-box;
-                padding-right: 6px;
-            }
-        </style>
     </body>
 </html>
