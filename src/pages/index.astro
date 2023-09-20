@@ -10,11 +10,7 @@ import FontSwitch from "../components/Settings/FontSwitch.astro";
 import TextSizeCounter from "../components/Settings/TextSizeCounter.astro";
 import ContentHeader from "../components/Content/ContentHeader.astro";
 import Presentation from "../components/presentation.astro";
-import Tag from "../components/Tag.astro";
-import { getPreviousSearch } from "../utils/previousSearch";
-
 export const prerender = true;
-const tags = getPreviousSearch() || [];
 ---
 
 <Layout title="Accueil" isHomepage>
@@ -23,9 +19,9 @@ const tags = getPreviousSearch() || [];
         <div class="flex justify-center bg-primary pb-48 pt-24 dark:bg-background">
             <div class="flex w-3/4 flex-col gap-y-4 md:w-2/3 lg:w-1/2">
                 <Searchbar size="lg" url={import.meta.env.API_URL} client:load />
-                <div class="scrollbar-hide flex touch-pan-x gap-2 overflow-x-auto">
+                <!-- <div class="scrollbar-hide flex touch-pan-x gap-2 overflow-x-auto">
                     {tags.map((tag) => <Tag text={tag.title} slug={tag.slug} />)}
-                </div>
+                </div> -->
             </div>
         </div>
         <Presentation

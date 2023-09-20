@@ -6,7 +6,6 @@ import Content from "../../layouts/Content.astro";
 import ContentHeader from "../../components/Content/ContentHeader.astro";
 import ContentAccordion from "../../components/Content/ContentAccordion.astro";
 import { fetchRelation } from "../../utils/fetchRelation";
-import { addPreviousSearch } from "../../utils/previousSearch";
 
 let data;
 
@@ -17,7 +16,6 @@ try {
 }
 const page = "relation";
 const uniqueArticle = data.articles == null || data.articles.length === 1;
-addPreviousSearch(data.title, slug);
 ---
 
 <Layout title={data.title}>
