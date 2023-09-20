@@ -6,7 +6,6 @@ import Content from "../../layouts/Content.astro";
 import ContentHeader from "../../components/Content/ContentHeader.astro";
 import { Markdown } from "astro-remote";
 import { fetchEtymology } from "../../utils/fetchEtymology";
-import { addPreviousSearch } from "../../utils/previousSearch";
 import Tag from "../../components/Tag.astro";
 
 let data;
@@ -18,7 +17,6 @@ try {
 }
 const page = "etymology";
 const uniqueArticle = data.articles == null || data.articles.length === 1;
-addPreviousSearch(data.title, slug);
 ---
 
 <Layout title={data.title}>
@@ -44,7 +42,7 @@ addPreviousSearch(data.title, slug);
 								)
 							}
 						</>
-						<article class="mb-16 prose prose-etymology prose-p:mt-0 prose-p:mb-2 prose-blockquote:mb-0 prose-pre:overflow-auto prose-pre:max-w-xs sm:prose-pre:max-w-none text-paragraph text-justify">
+						<article class="mb-16 leading-normal prose prose-explanation prose-p:mt-0 prose-blockquote:leading-tight prose-blockquote:font-normal prose-blockquote:mt-0 prose-p:prose-blockquote:mb-0 prose-blockquote:mb-8 prose-ul:mt-2 prose-ul:mb-8 prose-pre:overflow-auto prose-pre:max-w-xs sm:prose-pre:max-w-none text-paragraph text-justify">
 							<Markdown content={etymology as string} components={{ h1: "h3", h2: "h4" }} />
 						</article>
 					))}

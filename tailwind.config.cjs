@@ -63,9 +63,7 @@ module.exports = {
                     },
                 ],
                 entry: [
-                    "4rem",
                     {
-                        lineHeight: "4rem",
                         fontWeight: "700",
                     },
                 ],

@@ -7,7 +7,6 @@ import ContentHeader from "../../components/Content/ContentHeader.astro";
 import { Icon } from "astro-icon";
 import { Markdown } from "astro-remote";
 import { fetchDefinition } from "../../utils/fetchDefinition";
-import { addPreviousSearch } from "../../utils/previousSearch";
 
 let data;
 
@@ -19,7 +18,6 @@ try {
 
 const page = "definition";
 const uniqueArticle = data.articles == null || data.articles.length === 1;
-addPreviousSearch(data.title, slug);
 ---
 
 <Layout title={data.title}>
@@ -59,7 +57,7 @@ addPreviousSearch(data.title, slug);
                                 <dd
                                     class:list={[
                                         { "list-item list-decimal list-inside": article.definitions.length > 1 },
-                                        "prose prose-definition text-definition-primary text-paragraph prose-p:inline",
+                                        "leading-normal prose prose-definition text-definition-primary text-paragraph prose-p:inline",
                                     ]}
                                 >
                                     <Markdown content={definition as string} />
@@ -67,13 +65,13 @@ addPreviousSearch(data.title, slug);
                             ))}
                         </dl>
                         {article.examples.length > 0 && (
-                            <div class="relative rounded border-l-4 border-definition-ternary bg-definition-background p-4 pr-8 text-definition-secondary">
+                            <div class="relative space-y-3 rounded border-l-4 border-definition-ternary bg-definition-background p-4 pr-8 text-definition-secondary">
                                 <h2 class="pb-2 text-lg font-bold"> Exemple </h2>
                                 {article.examples.map((example) => (
                                     <span
                                         class:list={[
                                             { "list-item list-decimal list-inside": article.definitions.length > 1 },
-                                            "prose prose-definition italic tracking-tight prose-p:inline leading-tight mb-2",
+                                            "prose prose-definition italic tracking-tight prose-p:inline leading-tight",
                                         ]}
                                     >
                                         <Markdown content={example as string} />

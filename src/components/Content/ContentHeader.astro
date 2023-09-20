@@ -11,13 +11,25 @@ interface Props {
     hidden?: boolean;
 }
 const { page, title, pronounciation, tags, subtitle, hidden } = Astro.props;
+
+let titleHeight = "text-6xl";
+
+if (title.length > 20) {
+    titleHeight = "text-5xl";
+} else if (title.length > 30) {
+    titleHeight = "text-4xl";
+} else if (title.length > 40) {
+    titleHeight = "text-3xl";
+}
 ---
 
 <div class={`flex flex-col mb-4 md:mb-6 ${hidden && "sr-only"}`}>
     <div class="flex items-center gap-x-4">
         {
             subtitle == null || subtitle === false ? (
-                <h1 class={`font-header text-4xl md:text-entry text-${page}-ternary transition-colors`}>{title}</h1>
+                <h1 class={`font-header ${titleHeight} md:text-entry text-${page}-ternary transition-colors`}>
+                    {title}
+                </h1>
             ) : (
                 <h2 class={`font-header text-2xl md:text-4xl text-${page}-ternary transition-colors`}>{title}</h2>
             )

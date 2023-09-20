@@ -29,3 +29,5 @@ pnpm-debug.log*
 *.vsix
 .vscode/
 .vercel
+
+*.development
